@@ -29,9 +29,8 @@ function fmtAuthorHtml(name: string): string {
   return name
 }
 
-function authorListHtml(authors: string[], max = 10): string {
-  const shown = authors.slice(0, max).map(fmtAuthorHtml)
-  return shown.join(', ') + (authors.length > max ? ', et al.' : '')
+function authorListHtml(authors: string[]): string {
+  return authors.map(fmtAuthorHtml).join(', ')
 }
 ---
 <Base title="论文" description="王岳，浙江大学，期刊论文列表">
@@ -52,6 +51,7 @@ function authorListHtml(authors: string[], max = 10): string {
     .badge { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px }
     .badge-green { background: #d1fae5; color: #065f46 }
     .badge-yellow { background: #fef3c7; color: #92400e }
+    .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 6px; vertical-align: middle }
   </style>
 
   <div class="page-header">
@@ -88,7 +88,7 @@ function authorListHtml(authors: string[], max = 10): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.if5 != null && <span> · IF5 = {p.if5}</span>}
+                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
                   </div>
                 </div>
               </div>
@@ -128,7 +128,7 @@ function authorListHtml(authors: string[], max = 10): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.if5 != null && <span> · IF5 = {p.if5}</span>}
+                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
                   </div>
                 </div>
               </div>
