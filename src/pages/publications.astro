@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro'
+import papers from '../../public-data/papers.json'
+
+const byYear: Record<string, any[]> = {}
+for (const p of papers) {
+  const yr = p.date ? p.date.slice(0, 4) : 'n.d.'
+  if (!byYear[yr]) byYear[yr] = []
+  byYear[yr].push(p)
+}
+const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a))
+const total = papers.length
+const firstCorr = papers.filter((p: any) =>
+  p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
+).length
+---
+<Base title="Publications" description="Full list of journal papers by Wang Yue, Zhejiang University">
+  <style>
+    .page-header { margin-bottom: 32px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
+    .page-header p { color: var(--gray); font-size: 14px }
+    .year-section { margin-bottom: 36px }
+    .year-label {
+      font-size: 15px; font-weight: 700; color: var(--gray);
+      margin-bottom: 12px; padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .paper-list { display: flex; flex-direction: column; gap: 12px }
+    .paper-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .paper-num { color: var(--gray); font-size: 12px; min-width: 28px; padding-top: 2px }
+    .paper-body { flex: 1 }
+    .paper-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
+    .paper-meta { font-size: 12px; color: var(--gray); line-height: 1.5 }
+    .journal { color: var(--blue); font-weight: 500 }
+    .badge {
+      display: inline-block; padding: 1px 7px; border-radius: 99px;
+      font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px;
+    }
+    .badge-blue { background: #dbeafe; color: #1e40af }
+    .badge-green { background: #d1fae5; color: #065f46 }
+    .badge-yellow { background: #fef3c7; color: #92400e }
+  </style>
+
+  <div class="page-header">
+    <h1>Publications</h1>
+    <p>{total} journal papers total · {firstCorr} as first or corresponding author</p>
+  </div>
+
+  {years.map(yr => (
+    <div class="year-section">
+      <div class="year-label">{yr}</div>
+      <div class="paper-list">
+        {byYear[yr].map((p: any, i: number) => (
+          <div class="paper-card">
+            <div class="paper-num">{i + 1}</div>
+            <div class="paper-body">
+              <div class="paper-title">
+                {p.doi
+                  ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                  : p.title
+                }
+                {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding') &&
+                  <span class="badge badge-blue">First/Corr.</span>
+                }
+                {p.author_role === 'corresponding' &&
+                  <span class="badge badge-blue">Corr.</span>
+                }
+                {p.is_highly_cited &&
+                  <span class="badge badge-yellow">Highly Cited</span>
+                }
+              </div>
+              <div class="paper-meta">
+                {p.authors.slice(0, 8).join(', ')}{p.authors.length > 8 ? ', et al.' : ''}
+                <br />
+                <span class="journal">{p.journal}</span>
+                {p.volume && `, ${p.volume}`}
+                {p.issue && `(${p.issue})`}
+                {p.pages && `, ${p.pages}`}
+                {p.if5 != null && <span> · IF {p.if5}</span>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  ))}
+</Base>

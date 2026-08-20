@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro'
+import papers from '../../public-data/papers.json'
+import stats from '../../public-data/stats.json'
+
+const firstAuthorPapers = papers.filter((p: any) =>
+  p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
+)
+const recent = papers.slice(0, 5)
+---
+<Base title="Home">
+  <style>
+    .hero { margin-bottom: 48px }
+    .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px }
+    .hero .affil { color: var(--gray); font-size: 15px; margin-bottom: 16px }
+    .hero p { font-size: 15px; max-width: 640px; color: #374151; line-height: 1.7 }
+    .hero .links { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap }
+    .hero .links a {
+      padding: 7px 16px; border-radius: 8px; font-size: 14px; font-weight: 600;
+      background: var(--blue); color: #fff;
+    }
+    .hero .links a.outline {
+      background: #fff; color: var(--blue); border: 1px solid var(--blue);
+    }
+    .stats-row { display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap }
+    .stat-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: 18px 24px; flex: 1; min-width: 140px;
+    }
+    .stat-card .num { font-size: 28px; font-weight: 800; color: var(--blue) }
+    .stat-card .label { font-size: 13px; color: var(--gray); margin-top: 2px }
+    h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+    .paper-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px }
+    .paper-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .paper-card .title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
+    .paper-card .meta { font-size: 12px; color: var(--gray) }
+    .paper-card .journal { color: var(--blue); font-weight: 500 }
+    .badge {
+      display: inline-block; padding: 1px 8px; border-radius: 99px;
+      font-size: 11px; font-weight: 600; margin-left: 6px;
+    }
+    .badge-blue { background: #dbeafe; color: #1e40af }
+    .see-all { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 600 }
+  </style>
+
+  <div class="hero">
+    <h1>Wang Yue (王悦)</h1>
+    <div class="affil">Associate Professor · College of Biosystems Engineering and Food Science, Zhejiang University</div>
+    <p>
+      My research focuses on the biosynthesis, metabolism, and health benefits of plant secondary metabolites —
+      particularly flavonoids and polymethoxyflavones in citrus fruits. I combine biochemistry, molecular biology,
+      and food science to understand how plants make bioactive compounds and how these compounds benefit human health.
+    </p>
+    <div class="links">
+      <a href="/publications">Publications</a>
+      <a href="/patents" class="outline">Patents &amp; IP</a>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="num">{stats.papers}</div>
+      <div class="label">Journal Papers</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{firstAuthorPapers.length}</div>
+      <div class="label">First / Corresponding Author</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{stats.patents}</div>
+      <div class="label">Patents</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">{stats.software}</div>
+      <div class="label">Software Copyrights</div>
+    </div>
+  </div>
+
+  <h2>Recent Publications</h2>
+  <div class="paper-list">
+    {recent.map((p: any) => (
+      <div class="paper-card">
+        <div class="title">
+          {p.doi
+            ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+            : p.title
+          }
+          {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding') &&
+            <span class="badge badge-blue">First/Corr.</span>
+          }
+        </div>
+        <div class="meta">
+          {p.authors.slice(0, 5).join(', ')}{p.authors.length > 5 ? ', et al.' : ''}
+          {' · '}
+          <span class="journal">{p.journal}</span>
+          {p.date && ` · ${p.date.slice(0, 4)}`}
+          {p.if5 && <span> · IF {p.if5}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+  <a class="see-all" href="/publications">View all {stats.papers} publications →</a>
+</Base>

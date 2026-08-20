@@ -1,0 +1,84 @@
+---
+interface Props {
+  title: string
+  description?: string
+}
+const { title, description = 'Personal research portal of Wang Yue, Zhejiang University' } = Astro.props
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/publications', label: 'Publications' },
+  { href: '/patents', label: 'Patents & IP' },
+]
+const current = Astro.url.pathname
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title === 'Home' ? 'Wang Yue | wyzju.com' : `${title} | wyzju.com`}</title>
+  <link rel="canonical" href={Astro.url} />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    :root {
+      --blue: #1d4ed8;
+      --blue-light: #eff6ff;
+      --gray: #6b7280;
+      --border: #e5e7eb;
+      --text: #111827;
+      --bg: #f9fafb;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: var(--blue); text-decoration: none }
+    a:hover { text-decoration: underline }
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 10;
+    }
+    .nav-inner {
+      max-width: 900px; margin: 0 auto;
+      display: flex; align-items: center; gap: 32px;
+      padding: 0 20px; height: 54px;
+    }
+    .site-name { font-weight: 700; font-size: 15px; color: var(--text) }
+    nav { display: flex; gap: 4px }
+    nav a {
+      padding: 6px 12px; border-radius: 6px; font-size: 14px;
+      color: var(--gray); font-weight: 500;
+    }
+    nav a.active, nav a:hover { background: var(--blue-light); color: var(--blue) }
+    main { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px }
+    footer {
+      text-align: center; padding: 24px; font-size: 13px; color: var(--gray);
+      border-top: 1px solid var(--border); background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a class="site-name" href="/">wyzju.com</a>
+      <nav>
+        {nav.map(n => (
+          <a href={n.href} class={current === n.href || (n.href !== '/' && current.startsWith(n.href)) ? 'active' : ''}>
+            {n.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    © {new Date().getFullYear()} Wang Yue · Zhejiang University · Generated from wy_database
+  </footer>
+</body>
+</html>

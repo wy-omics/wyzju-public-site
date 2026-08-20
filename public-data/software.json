@@ -1,0 +1,142 @@
+[
+  {
+    "id": "57c16276-85a0-456b-b78e-09a5c727c663",
+    "title": "柑橘功能基因组数据库系统 [简称CFGD] V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR0990875",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "00416f37-4af9-48f1-98c6-08d4962a4041",
+    "title": "柑橘品质评价系统 [简称CQES] V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR0992941",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "c5bd77c9-4274-4b78-b1cb-147205051e94",
+    "title": "果树育种优良性状智能化筛选与评估系统 V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR2154517",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "06246efa-7c56-48b0-b13c-d0341d074217",
+    "title": "果蔬风味品质数据库智能管理与分析系统 V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR1339571",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "00d6406d-bfb4-4c5e-8cd8-bcf26247ee10",
+    "title": "柑橘精油提取系统 V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR0999946",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "4e6906ec-4b62-4621-987e-48b2bb44d472",
+    "title": "香料植物精油数据库系统[简称：APEOD]V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR1811145",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "55f2c4d6-2620-41a8-b50b-6d92c147723b",
+    "title": "果蔬冷害识别系统[简称：FVCDIS]V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR1823943",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "e3dea81d-a61a-4ca8-8487-e96447c6e399",
+    "title": "智能化香料植物精油信息检索平台V1.0",
+    "date": "2024-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2024SR1822658",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "19f3bb5c-ffc4-49e4-b940-03af7c65b896",
+    "title": "柑橘类黄酮数据库系统[简称：CFD系统]V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR1029650",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "0b7a386e-2495-4f1e-8620-d08d43a28e24",
+    "title": "类黄酮抗氧化数据库系统[简称：FAD系统]V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR1037857",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "9648117a-3b24-4566-a9b4-f6448e65968e",
+    "title": "果蔬天然产物分离纯化控制系统[简称：FVNCC系统]V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR1029652",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "28ad6581-2fb8-414c-9235-c27b1e182aba",
+    "title": "药食同源产品功能评价系统[简称：HMFE系统]V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR1032456",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "d59e3d8f-2da7-44df-aef8-777733c5b483",
+    "title": "植物天然产物数据库系统V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR0728202",
+    "authors": [],
+    "organization": null
+  },
+  {
+    "id": "a503b338-5497-4978-ab74-7a32905edcbb",
+    "title": "药食同源数据库系统V1.0",
+    "date": "2022-01-01",
+    "featured": false,
+    "public_summary": null,
+    "registration_number": "2022SR0728206",
+    "authors": [],
+    "organization": null
+  }
+]
