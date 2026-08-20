@@ -14,7 +14,7 @@ const firstCorr = papers.filter((p: any) =>
   p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
 ).length
 ---
-<Base title="Publications" description="Full list of journal papers by Wang Yue, Zhejiang University">
+<Base title="论文" description="王岳，浙江大学，期刊论文列表">
   <style>
     .page-header { margin-bottom: 32px }
     .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
@@ -45,8 +45,8 @@ const firstCorr = papers.filter((p: any) =>
   </style>
 
   <div class="page-header">
-    <h1>Publications</h1>
-    <p>{total} journal papers total · {firstCorr} as first or corresponding author</p>
+    <h1>论文</h1>
+    <p>共 {total} 篇期刊论文 · 其中第一/通讯作者 {firstCorr} 篇</p>
   </div>
 
   {years.map(yr => (
@@ -62,14 +62,15 @@ const firstCorr = papers.filter((p: any) =>
                   ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
                   : p.title
                 }
+                {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
                 {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding') &&
-                  <span class="badge badge-blue">First/Corr.</span>
+                  <span class="badge badge-blue">第一/通讯</span>
                 }
                 {p.author_role === 'corresponding' &&
-                  <span class="badge badge-blue">Corr.</span>
+                  <span class="badge badge-blue">通讯作者</span>
                 }
                 {p.is_highly_cited &&
-                  <span class="badge badge-yellow">Highly Cited</span>
+                  <span class="badge badge-yellow">高被引</span>
                 }
               </div>
               <div class="paper-meta">

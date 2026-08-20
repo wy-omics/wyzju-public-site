@@ -4,7 +4,7 @@ import patents from '../../public-data/patents.json'
 import software from '../../public-data/software.json'
 import standards from '../../public-data/standards.json'
 ---
-<Base title="Patents & IP" description="Patents, software copyrights, and standards by Wang Yue">
+<Base title="专利与IP" description="王岳的专利、软件著作权和标准">
   <style>
     .page-header { margin-bottom: 32px }
     .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
@@ -26,34 +26,40 @@ import standards from '../../public-data/standards.json'
   </style>
 
   <div class="page-header">
-    <h1>Patents &amp; IP</h1>
-    <p>{patents.length} patents · {software.length} software copyrights · {standards.length} standards</p>
+    <h1>专利与IP</h1>
+    <p>{patents.length} 项专利 · {software.length} 项软件著作权 · {standards.length} 项标准</p>
   </div>
 
-  <h2>Patents ({patents.length})</h2>
+  <h2>专利（{patents.length}）</h2>
   <div class="card-list">
     {patents.map((p: any) => (
       <div class="card">
-        <div class="card-title">{p.title}</div>
+        <div class="card-title">
+          {p.title}
+          {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-teal" style="text-decoration:none;margin-left:8px">PDF</a>}
+        </div>
         <div class="card-meta">
-          <span class="badge badge-purple">{p.patent_type || 'Patent'}</span>
+          <span class="badge badge-purple">{p.patent_type || '专利'}</span>
           {p.patent_number && <span>{p.patent_number} · </span>}
           {p.inventors && p.inventors.slice(0, 6).join(', ')}
           {p.inventors && p.inventors.length > 6 ? ', et al.' : ''}
-          {p.grant_date && <span> · Granted {p.grant_date}</span>}
-          {!p.grant_date && p.application_date && <span> · Applied {p.application_date}</span>}
+          {p.grant_date && <span> · 授权日期 {p.grant_date}</span>}
+          {!p.grant_date && p.application_date && <span> · 申请日期 {p.application_date}</span>}
         </div>
       </div>
     ))}
   </div>
 
-  <h2>Software Copyrights ({software.length})</h2>
+  <h2>软件著作权（{software.length}）</h2>
   <div class="card-list">
     {software.map((s: any) => (
       <div class="card">
-        <div class="card-title">{s.title}</div>
+        <div class="card-title">
+          {s.title}
+          {s.pdf_url && <a href={s.pdf_url} target="_blank" rel="noopener" class="badge badge-teal" style="text-decoration:none;margin-left:8px">PDF</a>}
+        </div>
         <div class="card-meta">
-          <span class="badge badge-teal">Software</span>
+          <span class="badge badge-teal">软著</span>
           {s.registration_number && <span>{s.registration_number} · </span>}
           {s.authors && s.authors.slice(0, 6).join(', ')}
           {s.date && <span> · {s.date.slice(0, 4)}</span>}
@@ -64,7 +70,7 @@ import standards from '../../public-data/standards.json'
 
   {standards.length > 0 && (
     <>
-      <h2>Standards ({standards.length})</h2>
+      <h2>标准（{standards.length}）</h2>
       <div class="card-list">
         {standards.map((s: any) => (
           <div class="card">

@@ -3,21 +3,23 @@ interface Props {
   title: string
   description?: string
 }
-const { title, description = 'Personal research portal of Wang Yue, Zhejiang University' } = Astro.props
+const { title, description = '王岳，浙江大学生物系统工程与食品科学学院副研究员' } = Astro.props
 const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/publications', label: 'Publications' },
-  { href: '/patents', label: 'Patents & IP' },
+  { href: '/', label: '主页' },
+  { href: '/publications', label: '论文' },
+  { href: '/patents', label: '专利与IP' },
+  { href: '/programs', label: '科研项目' },
+  { href: '/teaching', label: '教学' },
 ]
 const current = Astro.url.pathname
 ---
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
-  <title>{title === 'Home' ? 'Wang Yue | wyzju.com' : `${title} | wyzju.com`}</title>
+  <title>{title === '主页' ? '王岳 | wyzju.com' : `${title} | wyzju.com`}</title>
   <link rel="canonical" href={Astro.url} />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
@@ -78,7 +80,7 @@ const current = Astro.url.pathname
     <slot />
   </main>
   <footer>
-    © {new Date().getFullYear()} Wang Yue · Zhejiang University · Generated from wy_database
+    © {new Date().getFullYear()} 王岳 · 浙江大学
   </footer>
 </body>
 </html>

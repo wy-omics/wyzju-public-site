@@ -8,9 +8,12 @@ const firstAuthorPapers = papers.filter((p: any) =>
 )
 const recent = papers.slice(0, 5)
 ---
-<Base title="Home">
+<Base title="主页">
   <style>
-    .hero { margin-bottom: 48px }
+    .hero { margin-bottom: 48px; display: flex; gap: 32px; align-items: flex-start }
+    .hero-text { flex: 1 }
+    .hero-photo { width: 140px; flex-shrink: 0 }
+    .hero-photo img { width: 140px; height: 140px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border) }
     .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px }
     .hero .affil { color: var(--gray); font-size: 15px; margin-bottom: 16px }
     .hero p { font-size: 15px; max-width: 640px; color: #374151; line-height: 1.7 }
@@ -22,6 +25,8 @@ const recent = papers.slice(0, 5)
     .hero .links a.outline {
       background: #fff; color: var(--blue); border: 1px solid var(--blue);
     }
+    .contact-row { margin-top: 12px; font-size: 14px; color: var(--gray) }
+    .contact-row a { color: var(--gray) }
     .stats-row { display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap }
     .stat-card {
       background: #fff; border: 1px solid var(--border); border-radius: 10px;
@@ -44,42 +49,75 @@ const recent = papers.slice(0, 5)
     }
     .badge-blue { background: #dbeafe; color: #1e40af }
     .see-all { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 600 }
+    .info-section { margin-bottom: 48px }
+    .info-section ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px }
+    .info-section li { font-size: 14px; color: #374151; padding-left: 12px; border-left: 3px solid var(--border) }
+    .info-section li .year { color: var(--gray); font-size: 13px; margin-right: 8px }
   </style>
 
   <div class="hero">
-    <h1>Wang Yue (王悦)</h1>
-    <div class="affil">Associate Professor · College of Biosystems Engineering and Food Science, Zhejiang University</div>
+    <div class="hero-photo">
+      <img src="/photo.png" alt="王岳" />
+    </div>
+    <div class="hero-text">
+    <h1>王岳</h1>
+    <div class="affil">副研究员 · 浙江大学生物系统工程与食品科学学院 · 特种作物数智化技术研究中心副主任</div>
     <p>
-      My research focuses on the biosynthesis, metabolism, and health benefits of plant secondary metabolites —
-      particularly flavonoids and polymethoxyflavones in citrus fruits. I combine biochemistry, molecular biology,
-      and food science to understand how plants make bioactive compounds and how these compounds benefit human health.
+      研究方向为果实天然产物与人类健康，着重研究果实生物活性物质的生物合成和活性评价。
+      主持国家自然科学基金青年项目、浙江省重点研发计划子课题等项目。
+      以主要完成人获得教育部科技进步一等奖1项。
+      相关研究成果在 Molecular Plant 等杂志发表论文70余篇，被引2100+，高被引论文2篇，H-index 27，i10-index 40。
     </p>
+    <div class="contact-row">
+      📧 <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a>
+      &nbsp;·&nbsp; 浙江省杭州市西湖区浙江大学紫金港校区农生环A座
+    </div>
     <div class="links">
-      <a href="/publications">Publications</a>
-      <a href="/patents" class="outline">Patents &amp; IP</a>
+      <a href="/publications">论文列表</a>
+      <a href="/patents" class="outline">专利与IP</a>
+      <a href="/programs" class="outline">科研项目</a>
+      <a href="/teaching" class="outline">教学</a>
+    </div>
     </div>
   </div>
 
   <div class="stats-row">
     <div class="stat-card">
       <div class="num">{stats.papers}</div>
-      <div class="label">Journal Papers</div>
+      <div class="label">期刊论文</div>
     </div>
     <div class="stat-card">
       <div class="num">{firstAuthorPapers.length}</div>
-      <div class="label">First / Corresponding Author</div>
+      <div class="label">第一/通讯作者</div>
     </div>
     <div class="stat-card">
       <div class="num">{stats.patents}</div>
-      <div class="label">Patents</div>
+      <div class="label">授权专利</div>
     </div>
     <div class="stat-card">
       <div class="num">{stats.software}</div>
-      <div class="label">Software Copyrights</div>
+      <div class="label">软件著作权</div>
     </div>
   </div>
 
-  <h2>Recent Publications</h2>
+  <div class="info-section">
+    <h2>工作经历</h2>
+    <ul>
+      <li><span class="year">2024.03 - 至今</span>浙江大学 新农村发展研究院 交叉研究平台</li>
+      <li><span class="year">2023.01 - 至今</span>浙江大学 果树所 副研究员</li>
+      <li><span class="year">2020.07 - 2024.02</span>浙江大学 果树所 博士后；合作导师：孙崇德 教授</li>
+    </ul>
+  </div>
+
+  <div class="info-section">
+    <h2>教育经历</h2>
+    <ul>
+      <li><span class="year">2015.09 - 2020.06</span>浙江大学 果树学 博士；导师：孙崇德 教授</li>
+      <li><span class="year">2011.09 - 2015.06</span>浙江大学 园艺学 学士</li>
+    </ul>
+  </div>
+
+  <h2>近期论文</h2>
   <div class="paper-list">
     {recent.map((p: any) => (
       <div class="paper-card">
@@ -89,7 +127,7 @@ const recent = papers.slice(0, 5)
             : p.title
           }
           {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding') &&
-            <span class="badge badge-blue">First/Corr.</span>
+            <span class="badge badge-blue">第一/通讯</span>
           }
         </div>
         <div class="meta">
@@ -102,5 +140,5 @@ const recent = papers.slice(0, 5)
       </div>
     ))}
   </div>
-  <a class="see-all" href="/publications">View all {stats.papers} publications →</a>
+  <a class="see-all" href="/publications">查看全部 {stats.papers} 篇论文 →</a>
 </Base>
