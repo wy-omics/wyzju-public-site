@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro'
+import standards from '../../public-data/standards.json'
+---
+<Base title="标准" description="王岳参与制定的标准">
+  <style>
+    .page-header { margin-bottom: 32px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
+    .page-header p { color: var(--gray); font-size: 14px }
+    .card-list { display: flex; flex-direction: column; gap: 10px }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
+    .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
+    .card-meta { font-size: 12px; color: var(--gray) }
+    .badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 6px }
+    .badge-orange { background: #ffedd5; color: #9a3412 }
+  </style>
+
+  <div class="page-header">
+    <h1>标准</h1>
+    <p>共 {standards.length} 项</p>
+  </div>
+
+  <div class="card-list">
+    {standards.map((s: any, i: number) => (
+      <div class="card">
+        <div class="card-title">{i + 1}. {s.title}</div>
+        <div class="card-meta">
+          <span class="badge badge-orange">{s.standard_type || '标准'}</span>
+          {s.standard_number && <span>{s.standard_number}</span>}
+          {s.authors && (
+            <span> · <Fragment set:html={
+              s.authors.slice(0, 10).map((n: string) =>
+                n === '王岳' ? `<strong>${n}</strong>` : n
+              ).join('，') + (s.authors.length > 10 ? '，等' : '')
+            } /></span>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</Base>

@@ -1,39 +1,36 @@
 ---
 import Base from '../layouts/Base.astro'
-import papers from '../../public-data/papers.json'
 import stats from '../../public-data/stats.json'
-
-const recent = papers.slice(0, 5)
 ---
 <Base title="主页">
   <style>
     .hero { margin-bottom: 48px }
-    .hero-top { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 18px }
-    .hero-photo img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border) }
-    .hero-info h1 { font-size: 28px; font-weight: 800; margin-bottom: 5px }
-    .hero-info .affil { color: var(--gray); font-size: 14px; margin-bottom: 6px; line-height: 1.5 }
+    .hero-top { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 20px }
+    .hero-photo img { width: 160px; height: 160px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border); display: block }
+    .hero-info { padding-top: 2px }
+    .hero-info h1 { font-size: 30px; font-weight: 800; margin-bottom: 6px }
+    .hero-info .affil { color: var(--gray); font-size: 14px; margin-bottom: 10px; line-height: 1.6 }
     .hero-info .contact { font-size: 13px; color: var(--gray) }
     .hero-info .contact a { color: var(--gray) }
-    .hero-bio { font-size: 15px; color: #374151; line-height: 1.75; max-width: 760px }
-    h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
-    .paper-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px }
-    .paper-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
-    .paper-card .title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
-    .paper-card .meta { font-size: 12px; color: var(--gray) }
-    .paper-card .journal { color: var(--blue); font-weight: 500 }
-    .badge { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; margin-left: 6px }
-    .badge-blue { background: #dbeafe; color: #1e40af }
-    .see-all { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 600 }
-    .info-section { margin-bottom: 48px }
+    .hero-bio { font-size: 15px; color: #374151; line-height: 1.8; margin-bottom: 40px }
+    h2 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+    .info-section { margin-bottom: 40px }
     .info-section ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px }
     .info-section li { font-size: 14px; color: #374151; padding-left: 12px; border-left: 3px solid var(--border) }
     .info-section li .year { color: var(--gray); font-size: 13px; margin-right: 8px }
+    .acad-list { display: flex; flex-direction: column; gap: 8px }
+    .acad-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 11px 15px; font-size: 13px; line-height: 1.6; color: #374151 }
+    .acad-card strong { color: #111827 }
+    .acad-card .sub { font-size: 12px; color: var(--gray); margin-top: 2px }
+    .reviewer-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
+    .rev-tag { background: #f3f4f6; border-radius: 4px; padding: 2px 9px; font-size: 12px }
+    .talk-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 11px 15px; font-size: 13px; line-height: 1.6; color: #374151 }
   </style>
 
   <div class="hero">
     <div class="hero-top">
-      <div class="hero-photo">
-        <img src="/photo.png" alt="王岳" />
+      <div>
+        <img src="/photo.png" alt="王岳" style="width:160px;height:160px;object-fit:cover;border-radius:10px;border:1px solid var(--border)" />
       </div>
       <div class="hero-info">
         <h1>王岳</h1>
@@ -72,28 +69,45 @@ const recent = papers.slice(0, 5)
     </ul>
   </div>
 
-  <h2>近期论文</h2>
-  <div class="paper-list">
-    {recent.map((p: any) => (
-      <div class="paper-card">
-        <div class="title">
-          {p.doi
-            ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-            : p.title
-          }
-          {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding') &&
-            <span class="badge badge-blue">第一/通讯</span>
-          }
-        </div>
-        <div class="meta">
-          {p.authors.slice(0, 5).join(', ')}{p.authors.length > 5 ? ', et al.' : ''}
-          {' · '}
-          <span class="journal">{p.journal}</span>
-          {p.date && ` · ${p.date.slice(0, 4)}`}
-          {p.if5 && <span> · IF {p.if5}</span>}
-        </div>
+  <h2>学术兼职</h2>
+  <div class="acad-list">
+    <div class="acad-card"><strong>eFood</strong> 副主编（Associate Editor）<div class="sub">2024.10 - 至今</div></div>
+    <div class="acad-card"><strong>Frontiers in Nutrition</strong> 副主编（Associate Editor）<div class="sub">2024.10 - 至今</div></div>
+    <div class="acad-card"><strong>Food Chemistry International</strong> 编辑部主任（Deputy Editor）<div class="sub">2024.12 - 至今</div></div>
+    <div class="acad-card"><strong>Food Frontiers</strong> 编委（Editorial Board Member）<div class="sub">2025.08 - 至今</div></div>
+    <div class="acad-card"><strong>Letters in Functional Foods</strong> 编委（Editorial Board Member）<div class="sub">2024.12 - 至今</div></div>
+    <div class="acad-card"><strong>iMeta</strong> 青年编委<div class="sub">2025.04 - 至今</div></div>
+    <div class="acad-card"><strong>Phyton-International Journal of Experimental Botany</strong> 青年编委（Early Career Editorial Board Member）<div class="sub">2023.04 - 至今</div></div>
+    <div class="acad-card"><strong>Antioxidants</strong> 专题咨询小组成员（Topical Advisory Panel Member）<div class="sub">2022.06 - 至今</div></div>
+    <div class="acad-card"><strong>Frontiers in Nutrition</strong> 编委会审稿编辑（Review Editor on the Editorial Board）<div class="sub">2022.07 - 至今</div></div>
+    <div class="acad-card"><strong>Journal of Integrative Agriculture（农业科学学报）</strong> 学术联络员<div class="sub">2023.06 - 至今</div></div>
+    <div class="acad-card">
+      客座主编（Guest Editor）：<strong>Antioxidants</strong>（3期SI）· <strong>Frontiers in Nutrition</strong> · <strong>Frontiers in Immunology</strong>
+    </div>
+    <div class="acad-card">
+      审稿人（Reviewer）：
+      <div class="reviewer-wrap">
+        <span class="rev-tag">Trends in Food Science &amp; Technology</span>
+        <span class="rev-tag">Nature Communications</span>
+        <span class="rev-tag">Journal of Advanced Research</span>
+        <span class="rev-tag">Critical Reviews in Food Science and Nutrition</span>
+        <span class="rev-tag">Food Frontiers</span>
+        <span class="rev-tag">Food Hydrocolloids</span>
+        <span class="rev-tag">Food Chemistry</span>
+        <span class="rev-tag">Pharmacological Research</span>
+        <span class="rev-tag">Phytomedicine</span>
+        <span class="rev-tag">Food and Chemical Toxicology</span>
+        <span class="rev-tag">Plant Communications</span>
+        <span class="rev-tag">Current Opinion in Plant Biology</span>
+        <span class="rev-tag">Food Control</span>
+        <span class="rev-tag">Postharvest Biology and Technology</span>
+        <span class="rev-tag">LWT - Food Science &amp; Technology</span>
+        <span class="rev-tag">Journal of Environmental Sciences</span>
       </div>
-    ))}
+    </div>
+    <div class="acad-card">
+      受邀报告：第二届农业食品青年科学家学术沙龙 大会报告（<strong>最佳汇报奖</strong>）
+      <div class="sub">2024.11.8~10，山东 济南</div>
+    </div>
   </div>
-  <a class="see-all" href="/publications">查看全部 {stats.papers} 篇论文 →</a>
 </Base>

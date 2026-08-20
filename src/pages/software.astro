@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro'
+import software from '../../public-data/software.json'
+---
+<Base title="软著" description="王岳的软件著作权">
+  <style>
+    .page-header { margin-bottom: 32px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
+    .page-header p { color: var(--gray); font-size: 14px }
+    .card-list { display: flex; flex-direction: column; gap: 10px }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
+    .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
+    .card-meta { font-size: 12px; color: var(--gray) }
+    .badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 6px }
+    .badge-teal { background: #ccfbf1; color: #065f46 }
+  </style>
+
+  <div class="page-header">
+    <h1>软件著作权</h1>
+    <p>共 {software.length} 项</p>
+  </div>
+
+  <div class="card-list">
+    {software.map((s: any, i: number) => (
+      <div class="card">
+        <div class="card-title">
+          {i + 1}. {s.title}
+          {s.pdf_url && <a href={s.pdf_url} target="_blank" rel="noopener" class="badge badge-teal" style="text-decoration:none;margin-left:8px">PDF</a>}
+        </div>
+        <div class="card-meta">
+          <span class="badge badge-teal">软著</span>
+          {s.registration_number && <span>{s.registration_number}</span>}
+          {s.authors && (
+            <span> · <Fragment set:html={
+              s.authors.slice(0, 8).map((n: string) =>
+                n === '王岳' ? `<strong>${n}</strong>` : n
+              ).join('，') + (s.authors.length > 8 ? '，等' : '')
+            } /></span>
+          )}
+          {s.date && <span> · {s.date.slice(0, 4)}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</Base>
