@@ -1,0 +1,256 @@
+---
+import Base from '../layouts/Base.astro'
+import papers from '../../public-data/papers.json'
+
+const isFirstCorr = (p: any) =>
+  p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
+
+const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a: any, b: any) => b.date?.localeCompare(a.date))
+const coAuthorPapers  = [...papers].filter((p: any) => !isFirstCorr(p)).sort((a: any, b: any) => b.date?.localeCompare(a.date))
+
+function groupByYear(list: any[]) {
+  const byYear: Record<string, any[]> = {}
+  for (const p of list) {
+    const yr = p.date ? p.date.slice(0, 4) : 'n.d.'
+    if (!byYear[yr]) byYear[yr] = []
+    byYear[yr].push(p)
+  }
+  return Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map(yr => ({ yr, papers: byYear[yr] }))
+}
+
+function fmtAuthorHtml(name: string): string {
+  if (name === '王岳' || name === 'Wang Yue') return `<strong>${name}</strong>`
+  const parts = name.trim().split(' ')
+  if (parts.length === 2) return `${parts[1]} ${parts[0]}`
+  return name
+}
+
+function authorListHtml(authors: string[]): string {
+  return authors.map(fmtAuthorHtml).join(', ')
+}
+---
+<Base title="English" description="Wang Yue, Associate Researcher, Zhejiang University">
+  <style>
+    .page-header { margin-bottom: 36px }
+    .hero-top { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 20px }
+    .hero-info { display: flex; flex-direction: column; justify-content: space-between; height: 160px }
+    .hero-info h1 { font-size: 34px; font-weight: 800; letter-spacing: 0.04em }
+    .hero-info .affil { color: #374151; font-size: 14px; line-height: 1.6 }
+    .hero-info .contact { font-size: 13px; color: #4b5563 }
+    .hero-info .contact a { color: #4b5563 }
+    .hero-bio { font-size: 16px; color: #374151; line-height: 1.8; margin-bottom: 40px }
+    h2 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+    .info-section { margin-bottom: 40px }
+    .info-section ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px }
+    .info-section li { font-size: 15px; color: #374151; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px }
+    .info-section li .year { color: #4b5563; font-size: 13px; margin-right: 8px }
+    .acad-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px }
+    .acad-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 15px; font-size: 14px; line-height: 1.5; color: #374151; display: flex; justify-content: space-between; align-items: baseline; gap: 16px }
+    .acad-card strong { color: #111827 }
+    .acad-card .acad-time { font-size: 12px; color: var(--gray); white-space: nowrap; flex-shrink: 0 }
+    .reviewer-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
+    .rev-tag { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 2px 9px; font-size: 12px; color: #374151 }
+    .section-title { font-size: 17px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+    .year-section { margin-bottom: 24px }
+    .year-label { font-size: 13px; font-weight: 600; color: var(--gray); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border) }
+    .paper-list { display: flex; flex-direction: column; gap: 8px }
+    .paper-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start }
+    .paper-num { color: var(--gray); font-size: 12px; min-width: 28px; padding-top: 2px; text-align: right; flex-shrink: 0 }
+    .paper-body { flex: 1 }
+    .paper-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
+    .paper-meta { font-size: 12px; color: var(--gray); line-height: 1.6 }
+    .journal { color: var(--blue); font-weight: 500 }
+    .badge { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px }
+    .badge-green { background: #d1fae5; color: #065f46 }
+    .badge-yellow { background: #fef3c7; color: #92400e }
+    .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 6px; vertical-align: middle }
+    .book-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 8px }
+  </style>
+
+  <!-- Hero -->
+  <div class="page-header">
+    <div class="hero-top">
+      <div>
+        <img src="/photo.png" alt="Wang Yue" style="width:160px;height:160px;object-fit:cover;border-radius:10px;border:1px solid var(--border)" />
+      </div>
+      <div class="hero-info">
+        <h1>Wang Yue</h1>
+        <div class="affil">
+          Associate Researcher · Zhejiang University<br />
+          Deputy Director, Center for Digital Intelligence in Specialty Crops
+        </div>
+        <div class="contact">
+          📧 <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a><br />
+          College of Biosystems Engineering and Food Science, Zhejiang University, Hangzhou, China
+        </div>
+      </div>
+    </div>
+    <p class="hero-bio">
+      Research focuses on natural products from fruits and human health, with emphasis on the biosynthesis and bioactivity evaluation of bioactive compounds in fruits.
+      He has led several grants including the NSFC Youth Program and sub-projects of the Zhejiang Provincial Key R&D Program.
+      As a key contributor, he received the First Prize of the Ministry of Education Science and Technology Progress Award.
+      His work has resulted in 70+ publications in journals including <em>Molecular Plant</em>, with 2,200+ citations, 2 highly cited papers, H-index 27, and i10-index 40.
+    </p>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="info-section">
+    <h2>Work Experience</h2>
+    <ul>
+      <li><span class="year">2024.03 – present</span>Zhejiang University · New Rural Development Research Institute · Interdisciplinary Research Platform</li>
+      <li><span class="year">2023.01 – present</span>Zhejiang University · Fruit Research Institute · Associate Researcher</li>
+      <li><span class="year">2020.07 – 2024.02</span>Zhejiang University · Fruit Research Institute · Postdoctoral Researcher (Supervisor: Prof. Chongde Sun)</li>
+    </ul>
+  </div>
+
+  <!-- Education -->
+  <div class="info-section">
+    <h2>Education</h2>
+    <ul>
+      <li><span class="year">2015.09 – 2020.06</span>Zhejiang University · Pomology · Ph.D. (Supervisor: Prof. Chongde Sun)</li>
+      <li><span class="year">2011.09 – 2015.06</span>Zhejiang University · Horticulture · B.S.</li>
+    </ul>
+  </div>
+
+  <!-- Academic Service -->
+  <h2>Academic Service</h2>
+  <div class="acad-list">
+    <div class="acad-card"><span><strong>eFood</strong> — Associate Editor</span><span class="acad-time">2024.10 – present</span></div>
+    <div class="acad-card"><span><strong>Frontiers in Nutrition</strong> — Associate Editor</span><span class="acad-time">2024.10 – present</span></div>
+    <div class="acad-card"><span><strong>Food Chemistry International</strong> — Deputy Editor</span><span class="acad-time">2024.12 – present</span></div>
+    <div class="acad-card"><span><strong>Food Frontiers</strong> — Editorial Board Member</span><span class="acad-time">2025.08 – present</span></div>
+    <div class="acad-card"><span><strong>Letters in Functional Foods</strong> — Editorial Board Member</span><span class="acad-time">2024.12 – present</span></div>
+    <div class="acad-card"><span><strong>iMeta</strong> — Early Career Editorial Board Member</span><span class="acad-time">2025.04 – present</span></div>
+    <div class="acad-card"><span><strong>Phyton-International Journal of Experimental Botany</strong> — Early Career Editorial Board Member</span><span class="acad-time">2023.04 – present</span></div>
+    <div class="acad-card"><span><strong>Antioxidants</strong> — Topical Advisory Panel Member</span><span class="acad-time">2022.06 – present</span></div>
+    <div class="acad-card"><span><strong>Frontiers in Nutrition</strong> — Review Editor on the Editorial Board</span><span class="acad-time">2022.07 – present</span></div>
+    <div class="acad-card"><span><strong>Journal of Integrative Agriculture</strong> — Academic Liaison</span><span class="acad-time">2023.06 – present</span></div>
+    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:4px">
+      <div style="font-weight:600;color:#111827;margin-bottom:2px">Guest Editor — <strong>Antioxidants</strong> (3 Special Issues)</div>
+      <div style="color:#4b5563;font-size:13px;line-height:1.7;padding-left:2px">
+        · The Preventive and Therapeutic Effects of Fruit Antioxidants on Chronic Diseases<br/>
+        · Antioxidants in Fruits and Their Health-Promoting Effects<br/>
+        · <a href="https://www.mdpi.com/journal/antioxidants/special_issues/9F28CX25D8" target="_blank" rel="noopener">Natural Antioxidants from Plants in Combating Metabolism-Related Diseases</a>
+      </div>
+    </div>
+    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:4px">
+      <div style="font-weight:600;color:#111827;margin-bottom:2px">Guest Editor — <strong>Frontiers in Nutrition</strong> &amp; <strong>Frontiers in Immunology</strong> (Joint Special Issue)</div>
+      <div style="color:#4b5563;font-size:13px;padding-left:2px">
+        · Effects of Plant-Derived Bioactive Compounds as Nutritional Supplements on Inflammation
+      </div>
+    </div>
+    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:6px">
+      <div style="font-weight:600;color:#111827;margin-bottom:2px">Reviewer</div>
+      <div class="reviewer-wrap">
+        <span class="rev-tag">Trends in Food Science &amp; Technology</span>
+        <span class="rev-tag">Nature Communications</span>
+        <span class="rev-tag">Journal of Advanced Research</span>
+        <span class="rev-tag">Critical Reviews in Food Science and Nutrition</span>
+        <span class="rev-tag">Food Frontiers</span>
+        <span class="rev-tag">Food Hydrocolloids</span>
+        <span class="rev-tag">Food Chemistry</span>
+        <span class="rev-tag">Pharmacological Research</span>
+        <span class="rev-tag">Phytomedicine</span>
+        <span class="rev-tag">Food and Chemical Toxicology</span>
+        <span class="rev-tag">Plant Communications</span>
+        <span class="rev-tag">Current Opinion in Plant Biology</span>
+        <span class="rev-tag">Food Control</span>
+        <span class="rev-tag">Postharvest Biology and Technology</span>
+        <span class="rev-tag">LWT - Food Science &amp; Technology</span>
+        <span class="rev-tag">Journal of Environmental Sciences</span>
+      </div>
+    </div>
+    <div class="acad-card" style="align-items:center">
+      <span>Invited Talk: 2nd Agricultural Food Young Scientists Academic Salon · 2024.11.8–10 · Jinan, Shandong</span>
+      <span style="font-size:12px;font-weight:600;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0">Best Presentation Award</span>
+    </div>
+  </div>
+
+  <!-- Books -->
+  <h2>Books</h2>
+  <div class="book-card">
+    Chongde Sun, Yang Shan (Editors-in-Chief), <strong>Yue Wang (Associate Editor)</strong>, Jianbo Xiao, Gaoyang Li, Yujuan Xu (Associate Editors), Jinping Cao, Shaojia Li, Chenning Zhao, Xiaojuan Liu, Cui Sun, Peng Wang, Dengliang Wang, Jiebiao Chen, Yunyi Chen, Zhenkun Liao, Xiao Liang, Jiaojiao Liang, Bin Liao, Chenwen Zhou, Manxi Wu, Han Yang, Chen Kang, Mangqin Fu, Yuanshan Yu (Editors).
+    <em>Citrus Flavonoids: Purification, Identification, Biosynthesis and Medical Application</em> [M].
+    Zhejiang University Press / Springer, Singapore, 2026. (ISBN 978-981-92-1406-8; DOI: <a href="https://doi.org/10.1007/978-981-92-1407-5" target="_blank" rel="noopener">10.1007/978-981-92-1407-5</a>)
+  </div>
+
+  <!-- Publications: First / Corresponding -->
+  <div class="section-title">Publications — First or Corresponding Author ({firstCorrPapers.length} papers)</div>
+  {(() => {
+    const groups = groupByYear(firstCorrPapers)
+    let idx = firstCorrPapers.length
+    return groups.map(({ yr, papers: ps }) => (
+      <div class="year-section">
+        <div class="year-label">{yr}</div>
+        <div class="paper-list">
+          {ps.map((p: any) => {
+            const num = idx--
+            return (
+              <div class="paper-card">
+                <div class="paper-num">{num}</div>
+                <div class="paper-body">
+                  <div class="paper-title">
+                    {p.doi
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                      : p.title}
+                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
+                    {p.is_highly_cited && <span class="badge badge-yellow">Highly Cited</span>}
+                  </div>
+                  <div class="paper-meta">
+                    <Fragment set:html={authorListHtml(p.authors)} />
+                    <br />
+                    <span class="journal">{p.journal}</span>
+                    {p.volume && `, ${p.volume}`}
+                    {p.issue && `(${p.issue})`}
+                    {p.pages && `, ${p.pages}`}
+                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    ))
+  })()}
+
+  <!-- Publications: Co-Author -->
+  <div class="section-title">Publications — Co-Author ({coAuthorPapers.length} papers)</div>
+  {(() => {
+    const groups = groupByYear(coAuthorPapers)
+    let idx = coAuthorPapers.length
+    return groups.map(({ yr, papers: ps }) => (
+      <div class="year-section">
+        <div class="year-label">{yr}</div>
+        <div class="paper-list">
+          {ps.map((p: any) => {
+            const num = idx--
+            return (
+              <div class="paper-card">
+                <div class="paper-num">{num}</div>
+                <div class="paper-body">
+                  <div class="paper-title">
+                    {p.doi
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                      : p.title}
+                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
+                    {p.is_highly_cited && <span class="badge badge-yellow">Highly Cited</span>}
+                  </div>
+                  <div class="paper-meta">
+                    <Fragment set:html={authorListHtml(p.authors)} />
+                    <br />
+                    <span class="journal">{p.journal}</span>
+                    {p.volume && `, ${p.volume}`}
+                    {p.issue && `(${p.issue})`}
+                    {p.pages && `, ${p.pages}`}
+                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    ))
+  })()}
+</Base>
