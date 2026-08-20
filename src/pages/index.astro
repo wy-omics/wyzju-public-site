@@ -11,14 +11,14 @@ import stats from '../../public-data/stats.json'
     .hero-info .affil { color: var(--gray); font-size: 14px; margin-bottom: 0; line-height: 1.6 }
     .hero-info .contact { font-size: 13px; color: var(--gray) }
     .hero-info .contact a { color: var(--gray) }
-    .hero-bio { font-size: 15px; color: #374151; line-height: 1.8; margin-bottom: 40px }
+    .hero-bio { font-size: 16px; color: #374151; line-height: 1.8; margin-bottom: 40px }
     h2 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
     .info-section { margin-bottom: 40px }
     .info-section ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px }
-    .info-section li { font-size: 14px; color: #374151; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px }
+    .info-section li { font-size: 15px; color: #374151; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px }
     .info-section li .year { color: var(--gray); font-size: 13px; margin-right: 8px }
     .acad-list { display: flex; flex-direction: column; gap: 8px }
-    .acad-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 15px; font-size: 13px; line-height: 1.5; color: #374151; display: flex; justify-content: space-between; align-items: baseline; gap: 16px }
+    .acad-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 15px; font-size: 14px; line-height: 1.5; color: #374151; display: flex; justify-content: space-between; align-items: baseline; gap: 16px }
     .acad-card strong { color: #111827 }
     .acad-card .acad-time { font-size: 12px; color: var(--gray); white-space: nowrap; flex-shrink: 0 }
     .reviewer-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
@@ -80,8 +80,21 @@ import stats from '../../public-data/stats.json'
     <div class="acad-card"><span><strong>Antioxidants</strong> 专题咨询小组成员（Topical Advisory Panel Member）</span><span class="acad-time">2022.06 - 至今</span></div>
     <div class="acad-card"><span><strong>Frontiers in Nutrition</strong> 编委会审稿编辑（Review Editor on the Editorial Board）</span><span class="acad-time">2022.07 - 至今</span></div>
     <div class="acad-card"><span><strong>Journal of Integrative Agriculture（农业科学学报）</strong> 学术联络员</span><span class="acad-time">2023.06 - 至今</span></div>
-    <div class="acad-card">
-      客座主编（Guest Editor）：<strong>Antioxidants</strong>（3期SI）· <strong>Frontiers in Nutrition</strong> · <strong>Frontiers in Immunology</strong>
+    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:6px">
+      <div style="font-weight:600;color:#111827;margin-bottom:2px">客座主编（Guest Editor）</div>
+      <div style="display:flex;flex-direction:column;gap:5px;font-size:13px">
+        <div><strong>Antioxidants</strong>（3期SI）
+          <div style="color:var(--gray);margin-top:2px;padding-left:12px;line-height:1.6">
+            · The Preventive and Therapeutic Effects of Fruit Antioxidants on Chronic Diseases<br/>
+            · Antioxidants in Fruits and Their Health-Promoting Effects<br/>
+            · Natural Antioxidants from Plants in Combating Metabolism-Related Diseases
+          </div>
+        </div>
+        <div><strong>Frontiers in Nutrition</strong></div>
+        <div><strong>Frontiers in Immunology</strong>
+          <div style="color:var(--gray);margin-top:2px;padding-left:12px">· Effects of Plant-Derived Bioactive Compounds as Nutritional Supplements on Inflammation</div>
+        </div>
+      </div>
     </div>
     <div class="acad-card">
       审稿人（Reviewer）：
@@ -104,9 +117,9 @@ import stats from '../../public-data/stats.json'
         <span class="rev-tag">Journal of Environmental Sciences</span>
       </div>
     </div>
-    <div class="acad-card">
-      受邀报告：第二届农业食品青年科学家学术沙龙 大会报告（<strong>最佳汇报奖</strong>）
-      <div class="sub">2024.11.8~10，山东 济南</div>
+    <div class="acad-card" style="align-items:center">
+      <span>受邀报告：第二届农业食品青年科学家学术沙龙 大会报告 · 2024.11.8~10 · 山东 济南</span>
+      <span style="font-size:12px;font-weight:600;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0">最佳汇报奖</span>
     </div>
   </div>
 </Base>
