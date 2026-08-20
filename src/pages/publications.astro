@@ -2,43 +2,41 @@
 import Base from '../layouts/Base.astro'
 import papers from '../../public-data/papers.json'
 
-const byYear: Record<string, any[]> = {}
-for (const p of papers) {
-  const yr = p.date ? p.date.slice(0, 4) : 'n.d.'
-  if (!byYear[yr]) byYear[yr] = []
-  byYear[yr].push(p)
-}
-const years = Object.keys(byYear).sort((a, b) => b.localeCompare(a))
-const total = papers.length
-const firstCorr = papers.filter((p: any) =>
+const isFirstCorr = (p: any) =>
   p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
-).length
+
+const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a: any, b: any) => b.date?.localeCompare(a.date))
+const coAuthorPapers = [...papers].filter((p: any) => !isFirstCorr(p)).sort((a: any, b: any) => b.date?.localeCompare(a.date))
+
+const total = papers.length
+const firstCorr = firstCorrPapers.length
+
+function groupByYear(list: any[]) {
+  const byYear: Record<string, any[]> = {}
+  for (const p of list) {
+    const yr = p.date ? p.date.slice(0, 4) : 'n.d.'
+    if (!byYear[yr]) byYear[yr] = []
+    byYear[yr].push(p)
+  }
+  return Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map(yr => ({ yr, papers: byYear[yr] }))
+}
 ---
 <Base title="论文" description="王岳，浙江大学，期刊论文列表">
   <style>
     .page-header { margin-bottom: 32px }
     .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
     .page-header p { color: var(--gray); font-size: 14px }
-    .year-section { margin-bottom: 36px }
-    .year-label {
-      font-size: 15px; font-weight: 700; color: var(--gray);
-      margin-bottom: 12px; padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-    }
-    .paper-list { display: flex; flex-direction: column; gap: 12px }
-    .paper-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 8px;
-      padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
-    }
-    .paper-num { color: var(--gray); font-size: 12px; min-width: 28px; padding-top: 2px }
+    .section-title { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+    .year-section { margin-bottom: 28px }
+    .year-label { font-size: 14px; font-weight: 600; color: var(--gray); margin-bottom: 10px; padding-bottom: 4px; border-bottom: 1px solid var(--border) }
+    .paper-list { display: flex; flex-direction: column; gap: 10px }
+    .paper-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; display: flex; gap: 12px; align-items: flex-start }
+    .paper-num { color: var(--gray); font-size: 12px; min-width: 28px; padding-top: 2px; text-align: right }
     .paper-body { flex: 1 }
     .paper-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
     .paper-meta { font-size: 12px; color: var(--gray); line-height: 1.5 }
     .journal { color: var(--blue); font-weight: 500 }
-    .badge {
-      display: inline-block; padding: 1px 7px; border-radius: 99px;
-      font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px;
-    }
+    .badge { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px }
     .badge-blue { background: #dbeafe; color: #1e40af }
     .badge-green { background: #d1fae5; color: #065f46 }
     .badge-yellow { background: #fef3c7; color: #92400e }
@@ -49,43 +47,83 @@ const firstCorr = papers.filter((p: any) =>
     <p>共 {total} 篇期刊论文 · 其中第一/通讯作者 {firstCorr} 篇</p>
   </div>
 
-  {years.map(yr => (
-    <div class="year-section">
-      <div class="year-label">{yr}</div>
-      <div class="paper-list">
-        {byYear[yr].map((p: any, i: number) => (
-          <div class="paper-card">
-            <div class="paper-num">{i + 1}</div>
-            <div class="paper-body">
-              <div class="paper-title">
-                {p.doi
-                  ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                  : p.title
-                }
-                {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
-                {(p.author_role === 'first_author' || p.author_role === 'first_or_corresponding') &&
-                  <span class="badge badge-blue">第一/通讯</span>
-                }
-                {p.author_role === 'corresponding' &&
-                  <span class="badge badge-blue">通讯作者</span>
-                }
-                {p.is_highly_cited &&
-                  <span class="badge badge-yellow">高被引</span>
-                }
+  <div class="section-title">第一或通讯作者 / First or Corresponding Author</div>
+  {(() => {
+    const groups = groupByYear(firstCorrPapers)
+    let globalIdx = firstCorrPapers.length
+    return groups.map(({ yr, papers: ps }) => (
+      <div class="year-section">
+        <div class="year-label">{yr}</div>
+        <div class="paper-list">
+          {ps.map((p: any) => {
+            const num = globalIdx--
+            return (
+              <div class="paper-card">
+                <div class="paper-num">{num}</div>
+                <div class="paper-body">
+                  <div class="paper-title">
+                    {p.doi
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                      : p.title
+                    }
+                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
+                    {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
+                  </div>
+                  <div class="paper-meta">
+                    {p.authors.slice(0, 10).join(', ')}{p.authors.length > 10 ? ', et al.' : ''}
+                    <br />
+                    <span class="journal">{p.journal}</span>
+                    {p.volume && `, ${p.volume}`}
+                    {p.issue && `(${p.issue})`}
+                    {p.pages && `, ${p.pages}`}
+                    {p.if5 != null && <span> · IF {p.if5}</span>}
+                  </div>
+                </div>
               </div>
-              <div class="paper-meta">
-                {p.authors.slice(0, 8).join(', ')}{p.authors.length > 8 ? ', et al.' : ''}
-                <br />
-                <span class="journal">{p.journal}</span>
-                {p.volume && `, ${p.volume}`}
-                {p.issue && `(${p.issue})`}
-                {p.pages && `, ${p.pages}`}
-                {p.if5 != null && <span> · IF {p.if5}</span>}
-              </div>
-            </div>
-          </div>
-        ))}
+            )
+          })}
+        </div>
       </div>
-    </div>
-  ))}
+    ))
+  })()}
+
+  <div class="section-title">参与作者 / Co-Author</div>
+  {(() => {
+    const groups = groupByYear(coAuthorPapers)
+    let globalIdx = coAuthorPapers.length
+    return groups.map(({ yr, papers: ps }) => (
+      <div class="year-section">
+        <div class="year-label">{yr}</div>
+        <div class="paper-list">
+          {ps.map((p: any) => {
+            const num = globalIdx--
+            return (
+              <div class="paper-card">
+                <div class="paper-num">{num}</div>
+                <div class="paper-body">
+                  <div class="paper-title">
+                    {p.doi
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                      : p.title
+                    }
+                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
+                    {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
+                  </div>
+                  <div class="paper-meta">
+                    {p.authors.slice(0, 10).join(', ')}{p.authors.length > 10 ? ', et al.' : ''}
+                    <br />
+                    <span class="journal">{p.journal}</span>
+                    {p.volume && `, ${p.volume}`}
+                    {p.issue && `(${p.issue})`}
+                    {p.pages && `, ${p.pages}`}
+                    {p.if5 != null && <span> · IF {p.if5}</span>}
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      </div>
+    ))
+  })()}
 </Base>

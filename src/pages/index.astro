@@ -3,50 +3,25 @@ import Base from '../layouts/Base.astro'
 import papers from '../../public-data/papers.json'
 import stats from '../../public-data/stats.json'
 
-const firstAuthorPapers = papers.filter((p: any) =>
-  p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
-)
 const recent = papers.slice(0, 5)
 ---
 <Base title="主页">
   <style>
-    .hero { margin-bottom: 48px; display: flex; gap: 32px; align-items: flex-start }
-    .hero-text { flex: 1 }
-    .hero-photo { width: 140px; flex-shrink: 0 }
-    .hero-photo img { width: 140px; height: 140px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border) }
-    .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px }
-    .hero .affil { color: var(--gray); font-size: 15px; margin-bottom: 16px }
-    .hero p { font-size: 15px; max-width: 640px; color: #374151; line-height: 1.7 }
-    .hero .links { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap }
-    .hero .links a {
-      padding: 7px 16px; border-radius: 8px; font-size: 14px; font-weight: 600;
-      background: var(--blue); color: #fff;
-    }
-    .hero .links a.outline {
-      background: #fff; color: var(--blue); border: 1px solid var(--blue);
-    }
-    .contact-row { margin-top: 12px; font-size: 14px; color: var(--gray) }
-    .contact-row a { color: var(--gray) }
-    .stats-row { display: flex; gap: 16px; margin-bottom: 48px; flex-wrap: wrap }
-    .stat-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 10px;
-      padding: 18px 24px; flex: 1; min-width: 140px;
-    }
-    .stat-card .num { font-size: 28px; font-weight: 800; color: var(--blue) }
-    .stat-card .label { font-size: 13px; color: var(--gray); margin-top: 2px }
+    .hero { margin-bottom: 48px }
+    .hero-top { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 18px }
+    .hero-photo img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 1px solid var(--border) }
+    .hero-info h1 { font-size: 28px; font-weight: 800; margin-bottom: 5px }
+    .hero-info .affil { color: var(--gray); font-size: 14px; margin-bottom: 6px; line-height: 1.5 }
+    .hero-info .contact { font-size: 13px; color: var(--gray) }
+    .hero-info .contact a { color: var(--gray) }
+    .hero-bio { font-size: 15px; color: #374151; line-height: 1.75; max-width: 760px }
     h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
     .paper-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px }
-    .paper-card {
-      background: #fff; border: 1px solid var(--border); border-radius: 8px;
-      padding: 14px 16px;
-    }
+    .paper-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
     .paper-card .title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
     .paper-card .meta { font-size: 12px; color: var(--gray) }
     .paper-card .journal { color: var(--blue); font-weight: 500 }
-    .badge {
-      display: inline-block; padding: 1px 8px; border-radius: 99px;
-      font-size: 11px; font-weight: 600; margin-left: 6px;
-    }
+    .badge { display: inline-block; padding: 1px 8px; border-radius: 99px; font-size: 11px; font-weight: 600; margin-left: 6px }
     .badge-blue { background: #dbeafe; color: #1e40af }
     .see-all { display: inline-block; margin-top: 4px; font-size: 14px; font-weight: 600 }
     .info-section { margin-bottom: 48px }
@@ -56,48 +31,28 @@ const recent = papers.slice(0, 5)
   </style>
 
   <div class="hero">
-    <div class="hero-photo">
-      <img src="/photo.png" alt="王岳" />
+    <div class="hero-top">
+      <div class="hero-photo">
+        <img src="/photo.png" alt="王岳" />
+      </div>
+      <div class="hero-info">
+        <h1>王岳</h1>
+        <div class="affil">
+          副研究员 · 浙江大学<br />
+          特种作物数智化技术研究中心副主任
+        </div>
+        <div class="contact">
+          📧 <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a><br />
+          浙江省杭州市西湖区浙江大学紫金港校区农生环A座
+        </div>
+      </div>
     </div>
-    <div class="hero-text">
-    <h1>王岳</h1>
-    <div class="affil">副研究员 · 浙江大学生物系统工程与食品科学学院 · 特种作物数智化技术研究中心副主任</div>
-    <p>
+    <p class="hero-bio">
       研究方向为果实天然产物与人类健康，着重研究果实生物活性物质的生物合成和活性评价。
       主持国家自然科学基金青年项目、浙江省重点研发计划子课题等项目。
       以主要完成人获得教育部科技进步一等奖1项。
       相关研究成果在 Molecular Plant 等杂志发表论文70余篇，被引2100+，高被引论文2篇，H-index 27，i10-index 40。
     </p>
-    <div class="contact-row">
-      📧 <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a>
-      &nbsp;·&nbsp; 浙江省杭州市西湖区浙江大学紫金港校区农生环A座
-    </div>
-    <div class="links">
-      <a href="/publications">论文列表</a>
-      <a href="/patents" class="outline">专利与IP</a>
-      <a href="/programs" class="outline">科研项目</a>
-      <a href="/teaching" class="outline">教学</a>
-    </div>
-    </div>
-  </div>
-
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="num">{stats.papers}</div>
-      <div class="label">期刊论文</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">{firstAuthorPapers.length}</div>
-      <div class="label">第一/通讯作者</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">{stats.patents}</div>
-      <div class="label">授权专利</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">{stats.software}</div>
-      <div class="label">软件著作权</div>
-    </div>
   </div>
 
   <div class="info-section">
