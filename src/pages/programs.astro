@@ -1,18 +1,158 @@
 ---
 import Base from '../layouts/Base.astro'
+
+const active = [
+  {
+    type: '浙江省三农九方项目',
+    cn: '衢橘产业高质量发展关键技术研究与应用',
+    en: 'the Scientific and Technological Cooperation Project of the Agriculture and Rural Affairs Department of Zhejiang Province',
+    number: '2026SNJF079',
+    period: '2026.01~2027.12',
+    role: '主持',
+  },
+  {
+    type: '浙江省自然科学基金杭州联合基金重大项目',
+    cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究',
+    en: 'the Zhejiang Provincial Natural Science Foundation of China – Hangzhou Joint Fund',
+    number: 'LHZSD24C150001',
+    period: '2024.01~2026.12',
+    role: '课题负责人',
+  },
+  {
+    type: '国家自然科学基金区域联合基金',
+    cn: '柑橘类黄酮生物合成关键基因及其网络调控机制研究',
+    en: 'the National Natural Science Foundation of China',
+    number: 'U25A20688',
+    period: '2026.01~2029.12',
+    role: '课题负责人',
+  },
+  {
+    type: '浙江省农业重大技术协同推广计划',
+    cn: '柑橘采后品质维持及高值化利用技术研究与集成推广',
+    en: 'the Agricultural Major Technology Collaborative Promotion Program of Zhejiang Province',
+    number: '2026ZDXT02',
+    period: '2026.01~2027.12',
+    role: '课题负责人',
+  },
+  {
+    type: '四川省重点研发省校合作项目',
+    cn: '川红橘现代化加工关键技术创新与高值化陈皮产品研发',
+    en: 'the Science and Technology Program of Sichuan Province',
+    number: '2026YFHZ0239',
+    period: '2026.01~2027.12',
+    role: '课题负责人',
+  },
+  {
+    type: '北京生命科技研究院合作项目',
+    cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发',
+    en: 'Collaborative Project with Beijing Life Science Academy',
+    number: '2025-KYY-135000-0004-01',
+    period: '2026.01~2029.12',
+    role: '课题负责人',
+  },
+  {
+    type: '北京生命科技研究院合作项目',
+    cn: '基于能量与代谢流协同优化的烟草多模态合成底盘构建',
+    en: 'Collaborative Project with Beijing Life Science Academy',
+    number: '2025-KYY-135000-0004-05',
+    period: '2026.01~2028.12',
+    role: '课题负责人',
+  },
+  {
+    type: '横向项目',
+    cn: '衢州柑橘果实风味和营养评价研究',
+    en: 'Commissioned Research Project',
+    number: '2025-KYY-600101-0017',
+    period: '2026.01~2026.12',
+    role: '主持',
+  },
+]
+
+const finished = [
+  {
+    type: '国家自然科学基金青年项目',
+    cn: '基于Nrf2泛素化抑制的果实类黄酮抗氧化机制研究',
+    en: 'National Natural Science Foundation of China (Youth Program)',
+    number: '32101932',
+    period: '2022.01~2024.12',
+    role: '主持',
+  },
+  {
+    type: '浙江省重点研发计划课题',
+    cn: '药食同源功能健康食品研发——浙江省特色药食同源功能健康食品开发',
+    en: 'Key R&D Program of Zhejiang Province',
+    number: '2021C02018',
+    period: '2021.01~2023.12',
+    role: '主持',
+  },
+  {
+    type: '中国博士后科学基金面上资助',
+    cn: '柑橘黄酮对细胞内源性ROS的双向调控机制研究',
+    en: 'China Postdoctoral Science Foundation',
+    number: '2021M692833',
+    period: '2021.06~2023.06',
+    role: '主持',
+  },
+  {
+    type: '横向项目',
+    cn: '衢州柑橘果实品质评价研究',
+    en: 'Commissioned Research Project',
+    number: '2024-KYY-600101-0022',
+    period: '2024.12~2025.12',
+    role: '主持',
+  },
+  {
+    type: '横向项目',
+    cn: '衢州特色柑橘果实品质检测',
+    en: 'Commissioned Research Project',
+    number: '2023-KYY-516103-0008',
+    period: '2023.12~2024.12',
+    role: '主持',
+  },
+  {
+    type: '浙江省高校基本科研业务费',
+    cn: '水果风味表型组学研究',
+    en: 'Fundamental Research Funds for the Zhejiang Provincial Universities',
+    number: '226-2024-00211',
+    period: '2024.01~2025.12',
+    role: '主持',
+  },
+  {
+    type: '国家自然科学基金面上项目',
+    cn: '柑橘果实PMFs抗氧化应激作用机理研究',
+    en: 'National Natural Science Foundation of China',
+    number: '32072132',
+    period: '2021.01~2024.12',
+    role: '参与',
+  },
+  {
+    type: '国家重点研发计划',
+    cn: '食品营养及生物活性物质的健康功能作用研究',
+    en: 'National Key R&D Program of China',
+    number: '2017YFD0400200',
+    period: '2017.01~2020.12',
+    role: '参与',
+  },
+]
 ---
 <Base title="科研项目" description="王岳主持的科研项目">
   <style>
     .page-header { margin-bottom: 32px }
     .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
     h2 { font-size: 18px; font-weight: 700; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
-    .proj-list { display: flex; flex-direction: column; gap: 12px }
+    .proj-list { display: flex; flex-direction: column; gap: 10px }
     .proj-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
-    .proj-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.5 }
-    .proj-meta { font-size: 12px; color: var(--gray); line-height: 1.7 }
-    .badge { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-right: 6px }
-    .badge-blue { background: #dbeafe; color: #1e40af }
-    .badge-gray { background: #f3f4f6; color: #374151 }
+    .proj-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 12px }
+    .proj-type { font-size: 13px; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 3px 10px; border-radius: 4px; white-space: nowrap }
+    .proj-period { font-size: 12px; font-weight: 600; color: #fff; background: #059669; padding: 2px 9px; border-radius: 4px; white-space: nowrap }
+    .proj-cn { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 3px; line-height: 1.5 }
+    .proj-en { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 6px }
+    .proj-footer { display: flex; gap: 12px; font-size: 12px; color: var(--gray) }
+    .proj-number { font-family: monospace }
+    .role-badge { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: #f0fdf4; color: #166534 }
+    .role-badge.coauth { background: #f9fafb; color: #6b7280 }
+    .proj-type-fin { color: #6b7280; background: #f3f4f6 }
+    .proj-period-fin { background: #9ca3af }
   </style>
 
   <div class="page-header">
@@ -21,139 +161,35 @@ import Base from '../layouts/Base.astro'
 
   <h2>在研项目</h2>
   <div class="proj-list">
-
-    <div class="proj-card">
-      <div class="proj-title">衢橘产业高质量发展关键技术研究与应用（2026SNJF079）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">主持</span>
-        浙江省三农九方项目，the Scientific and Technological Cooperation Project of the Agriculture and Rural Affairs Department of Zhejiang Province (Grant No. 2026SNJF079) · 2026.01~2027.12
+    {active.map(p => (
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class="proj-type">{p.type}</span>
+          <span class="proj-period">{p.period}</span>
+        </div>
+        <div class="proj-cn">{p.cn}（{p.number}）</div>
+        <div class="proj-en">{p.en} (Grant No. {p.number})</div>
+        <div class="proj-footer">
+          <span class={`role-badge${p.role === '参与' ? ' coauth' : ''}`}>{p.role}</span>
+        </div>
       </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">柑橘风味和营养物质形成的关键基因及其分子调控机制研究（LHZSD24C150001）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        浙江省自然科学基金杭州联合基金重大项目，the Zhejiang Provincial Natural Science Foundation of China – Hangzhou Joint Fund (Grant No. LHZSD24C150001) · 2024.01~2026.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">柑橘类黄酮生物合成关键基因及其网络调控机制研究（U25A20688）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        国家自然科学基金区域联合基金，the National Natural Science Foundation of China (Grant No. U25A20688) · 2026.01~2029.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">柑橘采后品质维持及高值化利用技术研究与集成推广（2026ZDXT02）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        浙江省农业重大技术协同推广计划，the Agricultural Major Technology Collaborative Promotion Program of Zhejiang Province · 2026.01~2027.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">川红橘现代化加工关键技术创新与高值化陈皮产品研发（2026YFHZ0239）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        四川省重点研发项目省校合作项目，the Science and Technology Program of Sichuan Province (Grant No. 2026YFHZ0239) · 2026.01~2027.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发（2025-KYY-135000-0004-01）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        北京生命科技研究院合作项目 · 2026.01~2029.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">基于能量与代谢流协同优化的烟草多模态合成底盘构建（2025-KYY-135000-0004-05）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">课题负责人</span>
-        北京生命科技研究院合作项目 · 2026.01~2028.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">衢州柑橘果实风味和营养评价研究（2025-KYY-600101-0017）</div>
-      <div class="proj-meta">
-        <span class="badge badge-blue">主持</span>
-        横向项目 · 2026.01~2026.12
-      </div>
-    </div>
-
+    ))}
   </div>
 
   <h2>已结题项目</h2>
   <div class="proj-list">
-
-    <div class="proj-card">
-      <div class="proj-title">基于Nrf2泛素化抑制的果实类黄酮抗氧化机制研究（32101932）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        国家自然科学基金青年项目 · 2022.01~2024.12
+    {finished.map(p => (
+      <div class="proj-card">
+        <div class="proj-header">
+          <span class={`proj-type proj-type-fin`}>{p.type}</span>
+          <span class={`proj-period proj-period-fin`}>{p.period}</span>
+        </div>
+        <div class="proj-cn">{p.cn}（{p.number}）</div>
+        <div class="proj-en">{p.en} (Grant No. {p.number})</div>
+        <div class="proj-footer">
+          <span class={`role-badge${p.role === '参与' ? ' coauth' : ''}`}>{p.role}</span>
+        </div>
       </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">药食同源功能健康食品研发——浙江省特色药食同源功能健康食品开发（2021C02018）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        浙江省重点研发计划课题 · 2021.01~2023.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">柑橘黄酮对细胞内源性ROS的双向调控机制研究（2021M692833）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        中国博士后科学基金面上资助项目 · 2021.06~2023.06
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">衢州柑橘果实品质评价研究（2024-KYY-600101-0022）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        横向项目 · 2024.12~2025.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">衢州特色柑橘果实品质检测（2023-KYY-516103-0008）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        横向项目 · 2023.12~2024.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">水果风味表型组学研究（226-2024-00211）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 主持</span>
-        浙江省高校基本科研业务费，the Fundamental Research Funds for the Zhejiang Provincial Universities · 2024.01~2025.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">柑橘果实PMFs抗氧化应激作用机理研究（32072132）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 参与</span>
-        国家自然科学基金面上项目 · 2021.01~2024.12
-      </div>
-    </div>
-
-    <div class="proj-card">
-      <div class="proj-title">食品营养及生物活性物质的健康功能作用研究（2017YFD0400200）</div>
-      <div class="proj-meta">
-        <span class="badge badge-gray">已结题 · 参与</span>
-        国家重点研发计划 · 2017.01~2020.12
-      </div>
-    </div>
-
+    ))}
   </div>
 </Base>
