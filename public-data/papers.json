@@ -1,5 +1,31 @@
 [
   {
+    "id": "4669614d-cd58-444a-8d8a-8bfae767121e",
+    "title": "Tissue-Specific Bioactive Metabolites and Antioxidant Activity in Minicitrus (Fortunella hindsii) and Responses to a Fruit-Associated Weissella Strain",
+    "date": "2026-08-20",
+    "featured": true,
+    "public_summary": null,
+    "authors": [
+      "Han Yang",
+      "Wu Manxi",
+      "Huang Xinlin",
+      "Cao Hujing",
+      "Cao Jinping",
+      "Sun Chongde",
+      "Wang Yue"
+    ],
+    "journal": "Antioxidants",
+    "doi": "10.3390/antiox15081037",
+    "volume": "15",
+    "issue": "8",
+    "pages": "1037",
+    "if": 8.2,
+    "if5": 8.5,
+    "author_role": "first_or_corresponding",
+    "is_highly_cited": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BAntioxidants%5D%20Tissue-Specific%20Bioactive%20Metabolites%20and%20Antioxidant%20Activity%20in%20Minicitrus%20%28Fortunella%20hindsii%29%20and%20Responses%20to%20a%20Fruit-Associated%20Weissell.pdf"
+  },
+  {
     "id": "2fd9cbdb-83c0-4145-8864-998c356999e7",
     "title": "A novel C5-O-methyltransferase for naringenin refines the biosynthetic strategy for polymethoxyflavones",
     "date": "2026-01-01",
@@ -835,10 +861,11 @@
     "volume": "13",
     "issue": "2",
     "pages": "243",
-    "if5": 8.2,
+    "if5": 8.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2024%20%5BAntioxidants%5D%20Metabolome%20and%20Transcriptome%20Analysis%20Revealed%20the%20Basis%20of%20the%20Difference%20in%20Antioxidant%20Capacity%20in%20Different%20Tissues%20of%20Citrus%20reticulata%20%E2%80%98Ponkan%E2%80%99.pdf"
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2024%20%5BAntioxidants%5D%20Metabolome%20and%20Transcriptome%20Analysis%20Revealed%20the%20Basis%20of%20the%20Difference%20in%20Antioxidant%20Capacity%20in%20Different%20Tissues%20of%20Citrus%20reticulata%20%E2%80%98Ponkan%E2%80%99.pdf",
+    "if": 8.2
   },
   {
     "id": "5299c5f2-fdfe-4ab4-a1a1-9cd2bfef63ca",
@@ -1041,10 +1068,11 @@
     "volume": "12",
     "issue": "10",
     "pages": "1795",
-    "if5": 8.2,
+    "if5": 8.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2023%20%5BAntioxidants%5D%20Phenolics%20and%20Terpenoids%20Profiling%20in%20Diverse%20Loquat%20Fruit%20Varieties%20and%20Systematic%20Assessment%20of%20Their%20Mitigation%20of%20Alcohol-Induced%20Oxidative%20Stress.pdf"
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2023%20%5BAntioxidants%5D%20Phenolics%20and%20Terpenoids%20Profiling%20in%20Diverse%20Loquat%20Fruit%20Varieties%20and%20Systematic%20Assessment%20of%20Their%20Mitigation%20of%20Alcohol-Induced%20Oxidative%20Stress.pdf",
+    "if": 8.2
   },
   {
     "id": "bd8bb639-37da-4a39-bc3e-1cf5f2ee165c",
@@ -1240,10 +1268,11 @@
     "volume": "11",
     "issue": "5",
     "pages": "1020",
-    "if5": 8.2,
+    "if5": 8.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2022%20%5BAntioxidants%5D%20Evaluation%20of%20Antioxidant%20Capacity%20and%20Gut%20Microbiota%20Modulatory%20Effects%20of%20Different%20Kinds%20of%20Berries.pdf"
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2022%20%5BAntioxidants%5D%20Evaluation%20of%20Antioxidant%20Capacity%20and%20Gut%20Microbiota%20Modulatory%20Effects%20of%20Different%20Kinds%20of%20Berries.pdf",
+    "if": 8.2
   },
   {
     "id": "6b777a97-91be-4d93-911f-0a5ddcc60518",
@@ -1596,10 +1625,11 @@
     "volume": "9",
     "issue": "9",
     "pages": "831",
-    "if5": 8.2,
+    "if5": 8.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2020%20%5BAntioxidants%5D%20Beneficial%20Regulatory%20Effects%20of%20Polymethoxyflavone.pdf"
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2020%20%5BAntioxidants%5D%20Beneficial%20Regulatory%20Effects%20of%20Polymethoxyflavone.pdf",
+    "if": 8.2
   },
   {
     "id": "fd0807f1-114d-4a01-88e1-f0c2ac1c9893",
