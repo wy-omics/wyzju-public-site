@@ -19,7 +19,8 @@ function groupByYear(list: any[]) {
 }
 
 function fmtAuthorHtml(name: string): string {
-  if (name === '王岳' || name === 'Wang Yue') return `<strong>${name}</strong>`
+  if (name === '王岳') return `<strong>王岳</strong>`
+  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>`
   const parts = name.trim().split(' ')
   if (parts.length === 2) return `${parts[1]} ${parts[0]}`
   return name

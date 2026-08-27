@@ -2,18 +2,15 @@
 import Base from '../layouts/Base.astro'
 import patents from '../../public-data/patents.json'
 
-function fmtAuthors(list: string[]) {
-  return list.slice(0, 8).map(n => {
-    const parts = n.split(' ')
-    return parts.length === 2 ? `${parts[1]} ${parts[0]}` : n
-  }).join(', ') + (list.length > 8 ? ', et al.' : '')
-}
+const firstInventor = (patents as any[]).filter(p => p.inventors?.[0] === '王岳' || p.inventors?.[0] === 'Wang Yue')
+const coInventor    = (patents as any[]).filter(p => p.inventors?.[0] !== '王岳' && p.inventors?.[0] !== 'Wang Yue')
 ---
 <Base title="专利" description="王岳的授权专利">
   <style>
     .page-header { margin-bottom: 32px }
     .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
     .page-header p { color: var(--gray); font-size: 14px }
+    .section-title { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
     .card-list { display: flex; flex-direction: column; gap: 10px }
     .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px }
     .card-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
@@ -25,11 +22,12 @@ function fmtAuthors(list: string[]) {
 
   <div class="page-header">
     <h1>专利</h1>
-    <p>共 {patents.length} 项授权专利</p>
+    <p>共 {patents.length} 项授权专利 · 第一发明人 {firstInventor.length} 项</p>
   </div>
 
+  <div class="section-title">第一发明人</div>
   <div class="card-list">
-    {patents.map((p: any, i: number) => (
+    {firstInventor.map((p: any, i: number) => (
       <div class="card">
         <div class="card-title">
           {i + 1}. {p.title}
@@ -40,9 +38,30 @@ function fmtAuthors(list: string[]) {
           {p.patent_number && <span>{p.patent_number} · </span>}
           <Fragment set:html={
             (p.inventors || []).slice(0, 8).map((n: string) => {
-              const parts = n.split(' ')
-              const display = parts.length === 2 ? `${parts[1]} ${parts[0]}` : n
-              return n === '王岳' ? `<strong>${n}</strong>` : n
+              return n === '王岳' || n === 'Wang Yue' ? `<strong>${n}</strong>` : n
+            }).join('，') + ((p.inventors?.length > 8) ? '，等' : '')
+          } />
+          {p.grant_date && <span> · 授权 {p.grant_date}</span>}
+          {!p.grant_date && p.application_date && <span> · 申请 {p.application_date}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="section-title">共同发明人</div>
+  <div class="card-list">
+    {coInventor.map((p: any, i: number) => (
+      <div class="card">
+        <div class="card-title">
+          {i + 1}. {p.title}
+          {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-teal" style="text-decoration:none;margin-left:8px">PDF</a>}
+        </div>
+        <div class="card-meta">
+          <span class="badge badge-purple">{p.patent_type || '专利'}</span>
+          {p.patent_number && <span>{p.patent_number} · </span>}
+          <Fragment set:html={
+            (p.inventors || []).slice(0, 8).map((n: string) => {
+              return n === '王岳' || n === 'Wang Yue' ? `<strong>${n}</strong>` : n
             }).join('，') + ((p.inventors?.length > 8) ? '，等' : '')
           } />
           {p.grant_date && <span> · 授权 {p.grant_date}</span>}
