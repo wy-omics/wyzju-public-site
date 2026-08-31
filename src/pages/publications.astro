@@ -77,14 +77,17 @@ function wyRole(p: any): string {
     .badge { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px }
     .badge-green { background: #d1fae5; color: #065f46 }
     .badge-yellow { background: #fef3c7; color: #92400e }
-    .if-badge  { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 6px; vertical-align: middle }
-    .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #e0e7ff; color: #4338ca; margin-left: 4px; vertical-align: middle }
+    .if-badge  { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 6px; vertical-align: middle }
+    .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 4px; vertical-align: middle }
+    .if-high  { background: #059669; color: #fff }
+    .if-mid   { background: #0284c7; color: #fff }
+    .if-low   { background: #e5e7eb; color: #6b7280 }
     .role-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; vertical-align: middle; margin-left: 6px }
     .rb-corr       { background: #1e40af; color: #fff }
-    .rb-lastcorr   { background: #d1fae5; color: #065f46 }
-    .rb-cocorr     { background: #ede9fe; color: #4c1d95 }
+    .rb-lastcorr   { background: #1e40af; color: #fff }
+    .rb-cocorr     { background: #1e40af; color: #fff }
     .rb-first      { background: #bfdbfe; color: #1e3a8a }
-    .rb-cofirst    { background: #e2e8f0; color: #475569 }
+    .rb-cofirst    { background: #bfdbfe; color: #1e3a8a }
   </style>
 
   <div class="page-header">
@@ -124,8 +127,8 @@ function wyRole(p: any): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.jif != null && <span class="if-badge">IF {p.jif}</span>}
-                    {p.if5 != null && <span class="if5-badge">IF<sub>5</sub> {p.if5}</span>}
+                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
                   </div>
                 </div>
               </div>
@@ -165,8 +168,8 @@ function wyRole(p: any): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.jif != null && <span class="if-badge">IF {p.jif}</span>}
-                    {p.if5 != null && <span class="if5-badge">IF<sub>5</sub> {p.if5}</span>}
+                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
                   </div>
                 </div>
               </div>

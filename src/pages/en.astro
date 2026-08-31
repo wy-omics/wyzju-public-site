@@ -112,12 +112,15 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
   .badge-pdf { display: inline-block; background: #d1fae5; color: #065f46; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; text-decoration: none }
   .role-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 5px; vertical-align: middle }
   .rb-corr     { background: #1e40af; color: #fff }
-  .rb-lastcorr { background: #d1fae5; color: #065f46 }
-  .rb-cocorr   { background: #ede9fe; color: #4c1d95 }
+  .rb-lastcorr { background: #1e40af; color: #fff }
+  .rb-cocorr   { background: #1e40af; color: #fff }
   .rb-first    { background: #bfdbfe; color: #1e3a8a }
-  .rb-cofirst  { background: #e2e8f0; color: #475569 }
-  .if-badge  { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 5px; vertical-align: middle }
-  .if5-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; background: #e0e7ff; color: #4338ca; margin-left: 3px; vertical-align: middle }
+  .rb-cofirst  { background: #bfdbfe; color: #1e3a8a }
+  .if-badge  { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 5px; vertical-align: middle }
+  .if5-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 3px; vertical-align: middle }
+  .if-high  { background: #059669; color: #fff }
+  .if-mid   { background: #0284c7; color: #fff }
+  .if-low   { background: #e5e7eb; color: #6b7280 }
 
   .yr-sep { font-size: 12px; font-weight: 700; color: #6b7280; margin: 14px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 2px }
 
@@ -285,8 +288,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
               {p.issue && `(${p.issue})`}
               {p.pages && `, ${p.pages}`}
               {p.date && ` (${p.date.slice(0,4)})`}
-              {p.jif != null && <span class="if-badge">IF {p.jif}</span>}
-              {p.if5 != null && <span class="if5-badge">IF<sub>5</sub> {p.if5}</span>}
+              {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
+              {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
               {p.doi && <span>. DOI: {p.doi}</span>}
             </span>
           </div>
@@ -317,8 +320,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
             {p.issue && `(${p.issue})`}
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
-            {p.jif != null && <span class="if-badge">IF {p.jif}</span>}
-            {p.if5 != null && <span class="if5-badge">IF<sub>5</sub> {p.if5}</span>}
+            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
           </span>
         </div>
       ))}
