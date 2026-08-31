@@ -21,17 +21,19 @@ function groupByYear(list: any[]) {
   return Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map(yr => ({ yr, papers: byYear[yr] }))
 }
 
-// 名字：从"Surname Given"翻转为"Given Surname"，王岳加粗
-function fmtAuthorHtml(name: string): string {
-  if (name === '王岳') return `<strong>王岳</strong>`
-  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>`
+// 名字：从"Surname Given"翻转为"Given Surname"，王岳加粗，通讯作者加 *
+function fmtAuthorHtml(name: string, corrSet: Set<string>): string {
+  const star = corrSet.has(name) ? '<sup>*</sup>' : ''
+  if (name === '王岳') return `<strong>王岳</strong>${star}`
+  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>${star}`
   const parts = name.trim().split(' ')
-  if (parts.length === 2) return `${parts[1]} ${parts[0]}`
-  return name
+  const display = parts.length === 2 ? `${parts[1]} ${parts[0]}` : name
+  return display + star
 }
 
-function authorListHtml(authors: string[]): string {
-  return authors.map(fmtAuthorHtml).join(', ')
+function authorListHtml(authors: string[], correspondingAuthors: string[] = []): string {
+  const corrSet = new Set(correspondingAuthors)
+  return authors.map(n => fmtAuthorHtml(n, corrSet)).join(', ')
 }
 ---
 <Base title="论文" description="王岳，浙江大学，期刊论文列表">
@@ -84,11 +86,10 @@ function authorListHtml(authors: string[]): string {
                     }
                     {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
-                    {p.is_corresponding && <span class="badge badge-corr">通讯</span>}
                     {p.is_co_first && <span class="badge badge-cofirst">共同第一</span>}
                   </div>
                   <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors)} />
+                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors)} />
                     <br />
                     <span class="journal">{p.journal}</span>
                     {p.volume && `, ${p.volume}`}
@@ -129,7 +130,7 @@ function authorListHtml(authors: string[]): string {
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
                   </div>
                   <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors)} />
+                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors)} />
                     <br />
                     <span class="journal">{p.journal}</span>
                     {p.volume && `, ${p.volume}`}

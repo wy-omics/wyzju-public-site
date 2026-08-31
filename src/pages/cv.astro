@@ -14,17 +14,19 @@ const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:a
 const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
 const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
 
-function fmtName(name: string): string {
-  if (name==='王岳') return '<strong>王岳</strong>'
-  if (name==='Wang Yue') return '<strong>Yue Wang</strong>'
+function fmtName(name: string, corrSet?: Set<string>): string {
+  const star = (corrSet instanceof Set && corrSet.has(name)) ? '<sup>*</sup>' : ''
+  if (name==='王岳') return `<strong>王岳</strong>${star}`
+  if (name==='Wang Yue') return `<strong>Yue Wang</strong>${star}`
   const parts = name.trim().split(' ')
-  if (parts.length===2) return `${parts[1]} ${parts[0]}`
-  return name
+  const display = parts.length===2 ? `${parts[1]} ${parts[0]}` : name
+  return display + star
 }
-function authorHtml(authors: string[]): string {
+function authorHtml(authors: string[], correspondingAuthors: string[] = []): string {
+  const corrSet = new Set(correspondingAuthors)
   const shown = authors.slice(0,10)
   const suffix = authors.length>10 ? ', <em>et al.</em>' : ''
-  return shown.map(fmtName).join(', ') + suffix
+  return shown.map(n => fmtName(n, corrSet)).join(', ') + suffix
 }
 
 function groupByYear(list: any[]): { yr: string; pubs: any[] }[] {
@@ -255,12 +257,11 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
               : p.title}
             {p.is_highly_cited && <span class="badge-hc">高被引</span>}
             {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
-            {p.is_corresponding && <span class="badge-corr">通讯</span>}
             {p.is_co_first && <span class="badge-cofirst">共同第一</span>}
           </span>
           <br />
           <span class="pmeta">
-            <Fragment set:html={authorHtml(p.authors)} />
+            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors)} />
             {'. '}
             <span class="jname">{p.journal}</span>
             {p.volume && `, ${p.volume}`}
@@ -289,7 +290,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
           </span>
           <br />
           <span class="pmeta">
-            <Fragment set:html={authorHtml(p.authors)} />
+            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors)} />
             {'. '}
             <span class="jname">{p.journal}</span>
             {p.volume && `, ${p.volume}`}
