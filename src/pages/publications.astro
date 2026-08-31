@@ -116,8 +116,8 @@ function wyRole(p: any): string {
                 <div class="paper-body">
                   <div class="paper-title">
                     {p.doi
-                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                      : p.title
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+                      : <Fragment set:html={p.title} />
                     }
                     {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
@@ -158,8 +158,8 @@ function wyRole(p: any): string {
                 <div class="paper-body">
                   <div class="paper-title">
                     {p.doi
-                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                      : p.title
+                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+                      : <Fragment set:html={p.title} />
                     }
                     {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}

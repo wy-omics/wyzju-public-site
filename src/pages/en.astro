@@ -187,7 +187,7 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
     </div>
     <div class="rd-item">
       <h3>Endophyte-Driven Nutritional &amp; Flavor Quality of Citrus</h3>
-      Investigating how endophytic microbial communities regulate both citrus flavonoid accumulation (nutritional quality) and volatile organic compound (VOC) production (flavor quality), with nutrition and flavor as dual guiding objectives. We characterize endophyte diversity and host-interaction patterns, study oxidative stress responses during endophyte-mediated fermentation, and establish standardized protocols for endophyte isolation, identification, and cryopreservation.
+      Investigating how endophytic microbial communities regulate both citrus flavonoid accumulation (nutritional quality) and volatile organic compound (VOC) production (flavor quality), with nutrition and flavor as dual guiding objectives. We characterize endophyte diversity and host-interaction patterns, study oxidative stress responses during endophyte-mediated fermentation, establish standardized protocols for endophyte isolation, identification, and cryopreservation, and build a comprehensive citrus endophyte library as a resource foundation.
     </div>
     <div class="rd-item">
       <h3>AI Databases &amp; Intelligent Agents for Agricultural Research</h3>
@@ -297,8 +297,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
             <span class="num">{p.num}.</span>
             <span class="ptitle">
               {p.doi
-                ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                : p.title}
+                ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+                : <Fragment set:html={p.title} />}
               {p.is_highly_cited && <span class="badge-hc">Highly Cited</span>}
               {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
               {p.role && <span class={`role-badge ${cls}`}>{p.role}</span>}
@@ -331,8 +331,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
           <span class="num">{p.num}.</span>
           <span class="ptitle">
             {p.doi
-              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-              : p.title}
+              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+              : <Fragment set:html={p.title} />}
             {p.is_highly_cited && <span class="badge-hc">Highly Cited</span>}
           </span>
           <br />

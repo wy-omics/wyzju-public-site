@@ -194,7 +194,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
     </div>
     <div class="rd-item">
       <h3>内生菌驱动的柑橘营养与风味品质</h3>
-      聚焦内生菌对柑橘类黄酮积累与香气物质（VOCs）形成的调控作用，以"营养与风味双导向"为研究主线，系统解析内生菌群落多样性及其与宿主的互作规律。同时研究内生菌在食品发酵中的氧化应激响应机制，并建立标准化分离、鉴定与低温保藏操作规程，为内生菌资源开发奠定基础。
+      聚焦内生菌对柑橘类黄酮积累与香气物质（VOCs）形成的调控作用，以"营养与风味双导向"为研究主线，系统解析内生菌群落多样性及其与宿主的互作规律。同时研究内生菌在食品发酵中的氧化应激响应机制，建立标准化分离、鉴定与低温保藏操作规程，构建了柑橘内生菌库，为内生菌资源开发奠定基础。
     </div>
     <div class="rd-item">
       <h3>农业科研 AI 数据库与智能体</h3>
@@ -310,8 +310,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
           <span class="num">{p.num}.</span>
           <span class="ptitle">
             {p.doi
-              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-              : p.title}
+              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+              : <Fragment set:html={p.title} />}
             {p.is_highly_cited && <span class="badge-hc">高被引</span>}
             {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
             {p.role && (() => {
@@ -346,8 +346,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
           <span class="num">{p.num}.</span>
           <span class="ptitle">
             {p.doi
-              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-              : p.title}
+              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener" set:html={p.title} />
+              : <Fragment set:html={p.title} />}
             {p.is_highly_cited && <span class="badge-hc">高被引</span>}
           </span>
           <br />
