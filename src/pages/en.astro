@@ -1,257 +1,410 @@
 ---
 import Base from '../layouts/Base.astro'
 import papers from '../../public-data/papers.json'
+import patents from '../../public-data/patents.json'
+import software from '../../public-data/software.json'
+import standards from '../../public-data/standards.json'
 
 const isFirstCorr = (p: any) =>
-  p.author_role === 'first_author' || p.author_role === 'first_or_corresponding' || p.author_role === 'corresponding'
+  ['first_author','first_or_corresponding','corresponding'].includes(p.author_role)
 
-const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a: any, b: any) => b.date?.localeCompare(a.date))
-const coAuthorPapers  = [...papers].filter((p: any) => !isFirstCorr(p)).sort((a: any, b: any) => b.date?.localeCompare(a.date))
+const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a:any,b:any) => b.date?.localeCompare(a.date))
+const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:any,b:any) => b.date?.localeCompare(a.date))
+const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
+const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
 
-function groupByYear(list: any[]) {
+function fmtName(name: string, corrSet?: Set<string>, cofirstSet?: Set<string>): string {
+  const hash = (cofirstSet instanceof Set && cofirstSet.has(name)) ? '<sup>#</sup>' : ''
+  const star = (corrSet instanceof Set && corrSet.has(name)) ? '<sup>*</sup>' : ''
+  if (name==='王岳') return `<strong>王岳</strong>${hash}${star}`
+  if (name==='Wang Yue') return `<strong>Yue Wang</strong>${hash}${star}`
+  const parts = name.trim().split(' ')
+  const display = parts.length===2 ? `${parts[1]} ${parts[0]}` : name
+  return display + hash + star
+}
+function authorHtml(authors: string[], corr: string[] = [], cofirst: string[] = []): string {
+  const corrSet = new Set(corr)
+  const cofirstSet = new Set(cofirst)
+  return authors.map(n => fmtName(n, corrSet, cofirstSet)).join(', ')
+}
+function wyRoleEn(p: any): string {
+  const authors: string[] = p.authors || []
+  const corr: string[] = p.corresponding_authors || []
+  const cofirst: string[] = p.co_first_authors || []
+  const wy = authors.includes('Wang Yue') ? 'Wang Yue' : '王岳'
+  const idx = authors.indexOf(wy)
+  if (idx < 0) return ''
+  const isWyCofirst = cofirst.includes(wy)
+  const isWyFirst = idx === 0
+  const isWyCorr = corr.includes(wy)
+  const isLast = idx === authors.length - 1
+  const parts: string[] = []
+  if (isWyCofirst) parts.push('Co-first')
+  else if (isWyFirst) parts.push('First')
+  if (isWyCorr) {
+    if (corr.length > 1) parts.push('Co-corresp.')
+    else if (isLast) parts.push('Last corresp.')
+    else parts.push('Corresp.')
+  }
+  return parts.join(' / ')
+}
+
+function groupByYear(list: any[]): { yr: string; pubs: any[] }[] {
   const byYear: Record<string, any[]> = {}
   for (const p of list) {
-    const yr = p.date ? p.date.slice(0, 4) : 'n.d.'
+    const yr = p.date?.slice(0,4) ?? 'n.d.'
     if (!byYear[yr]) byYear[yr] = []
     byYear[yr].push(p)
   }
-  return Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map(yr => ({ yr, papers: byYear[yr] }))
+  return Object.keys(byYear).sort((a,b) => b.localeCompare(a)).map(yr => ({ yr, pubs: byYear[yr] }))
 }
 
-function fmtAuthorHtml(name: string): string {
-  if (name === '王岳') return `<strong>王岳</strong>`
-  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>`
-  const parts = name.trim().split(' ')
-  if (parts.length === 2) return `${parts[1]} ${parts[0]}`
-  return name
-}
+let fcIdx = firstCorrPapers.length
+const fcGroupsNum = groupByYear(firstCorrPapers).map(({ yr, pubs }) => ({
+  yr,
+  pubs: pubs.map(p => {
+    const role = wyRoleEn(p)
+    return { ...p, num: fcIdx--, role }
+  })
+}))
 
-function authorListHtml(authors: string[]): string {
-  return authors.map(fmtAuthorHtml).join(', ')
-}
+let coIdx = coAuthorPapers.length
+const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
+  yr,
+  pubs: pubs.map(p => ({ ...p, num: coIdx-- }))
+}))
 ---
-<Base title="English" description="Wang Yue, Associate Researcher, Zhejiang University">
-  <style>
-    .page-header { margin-bottom: 36px }
-    .hero-top { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 20px }
-    .hero-info { display: flex; flex-direction: column; justify-content: space-between; height: 160px }
-    .hero-info h1 { font-size: 34px; font-weight: 800; letter-spacing: 0.04em }
-    .hero-info .affil { color: #374151; font-size: 14px; line-height: 1.6 }
-    .hero-info .contact { font-size: 13px; color: #4b5563 }
-    .hero-info .contact a { color: #4b5563 }
-    .hero-bio { font-size: 16px; color: #374151; line-height: 1.8; margin-bottom: 40px }
-    h2 { font-size: 18px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
-    .info-section { margin-bottom: 40px }
-    .info-section ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px }
-    .info-section li { font-size: 15px; color: #374151; background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px }
-    .info-section li .year { color: #4b5563; font-size: 13px; margin-right: 8px }
-    .acad-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 40px }
-    .acad-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 15px; font-size: 14px; line-height: 1.5; color: #374151; display: flex; justify-content: space-between; align-items: baseline; gap: 16px }
-    .acad-card strong { color: #111827 }
-    .acad-card .acad-time { font-size: 12px; color: var(--gray); white-space: nowrap; flex-shrink: 0 }
-    .reviewer-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px }
-    .rev-tag { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 2px 9px; font-size: 12px; color: #374151 }
-    .section-title { font-size: 17px; font-weight: 700; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
-    .year-section { margin-bottom: 24px }
-    .year-label { font-size: 13px; font-weight: 600; color: var(--gray); margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border) }
-    .paper-list { display: flex; flex-direction: column; gap: 8px }
-    .paper-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start }
-    .paper-num { color: var(--gray); font-size: 12px; min-width: 28px; padding-top: 2px; text-align: right; flex-shrink: 0 }
-    .paper-body { flex: 1 }
-    .paper-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.5 }
-    .paper-meta { font-size: 12px; color: var(--gray); line-height: 1.6 }
-    .journal { color: var(--blue); font-weight: 500 }
-    .badge { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11px; font-weight: 600; vertical-align: middle; margin-left: 6px }
-    .badge-green { background: #d1fae5; color: #065f46 }
-    .badge-yellow { background: #fef3c7; color: #92400e }
-    .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 6px; vertical-align: middle }
-    .book-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; font-size: 14px; line-height: 1.7; color: #374151; margin-bottom: 8px }
-  </style>
+<Base title="CV (EN)" description="Wang Yue, Associate Researcher, Zhejiang University">
+<style>
+  .cv-wrap { max-width: 860px; margin: 0 auto }
+  .print-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--blue); color: #fff; border: none; border-radius: 6px;
+    padding: 8px 18px; font-size: 13px; font-weight: 600; cursor: pointer;
+    margin-bottom: 24px;
+  }
+  .print-btn:hover { background: #1e40af }
 
-  <!-- Hero -->
-  <div class="page-header">
-    <div class="hero-top">
-      <div>
-        <img src="/photo.png" alt="Wang Yue" style="width:160px;height:160px;object-fit:cover;border-radius:10px;border:1px solid var(--border)" />
+  .cv-header { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 28px; padding-bottom: 20px; border-bottom: 2px solid #111827 }
+  .cv-header img { width: 120px; height: 120px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); flex-shrink: 0 }
+  .cv-name { font-size: 28px; font-weight: 800; letter-spacing: .04em; margin-bottom: 4px }
+  .cv-title { font-size: 14px; color: #374151; line-height: 1.7; margin-bottom: 6px }
+  .cv-contact { font-size: 13px; color: #4b5563; line-height: 1.8 }
+  .cv-contact a { color: #4b5563 }
+
+  .s-title {
+    font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+    color: #111827; border-bottom: 2px solid #111827;
+    padding-bottom: 4px; margin: 28px 0 12px;
+  }
+  .item { margin-bottom: 8px; font-size: 13.5px; line-height: 1.65; color: #1f2937 }
+  .item .year { display: inline-block; min-width: 140px; color: #6b7280; font-size: 12.5px; vertical-align: top }
+  .item .body { display: inline-block; width: calc(100% - 150px); vertical-align: top }
+
+  .pub { font-size: 13px; line-height: 1.7; margin-bottom: 10px; padding-left: 28px; position: relative; color: #1f2937 }
+  .pub .num { position: absolute; left: 0; color: #6b7280; font-size: 12px; top: 1px }
+  .pub .ptitle { font-weight: 600 }
+  .pub .ptitle a { color: #111827 }
+  .pub .ptitle a:hover { color: var(--blue) }
+  .pub .pmeta { color: #4b5563 }
+  .jname { font-style: italic }
+  .badge-hc  { display: inline-block; background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
+  .badge-pdf { display: inline-block; background: #d1fae5; color: #065f46; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; text-decoration: none }
+  .role-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 5px; vertical-align: middle }
+  .rb-first    { background: #dbeafe; color: #1e40af }
+  .rb-cofirst  { background: #ede9fe; color: #5b21b6 }
+  .rb-corr     { background: #fce7f3; color: #9d174d }
+  .rb-cocorr   { background: #ffedd5; color: #9a3412 }
+  .rb-lastcorr { background: #dcfce7; color: #166534 }
+
+  .yr-sep { font-size: 12px; font-weight: 700; color: #6b7280; margin: 14px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 2px }
+
+  .grant { margin-bottom: 9px; font-size: 13px; line-height: 1.6 }
+  .grant .g-name { font-weight: 600; color: #111827 }
+  .grant .g-meta { color: #4b5563; font-size: 12px }
+  .g-badge { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 4px; margin-left: 6px }
+  .g-badge-sub { background: #f0fdf4; color: #166534 }
+
+  .rev-wrap { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px }
+  .rev-tag { background: #f3f4f6; border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 11.5px }
+
+  @media print {
+    @page { size: A4; margin: 18mm 18mm 20mm }
+    body { background: #fff !important }
+    header, footer, .print-btn { display: none !important }
+    main { padding: 0 !important; max-width: 100% !important }
+    .cv-wrap { max-width: 100% }
+    .pub, .item, .grant { page-break-inside: avoid }
+    .s-title { page-break-after: avoid }
+    a { color: #111827 !important; text-decoration: none }
+    .badge-hc, .badge-pdf { display: none }
+  }
+</style>
+
+<div class="cv-wrap">
+  <button class="print-btn" onclick="window.print()">⎙ Print / Export PDF</button>
+
+  <div class="cv-header">
+    <img src="/photo.png" alt="Wang Yue" />
+    <div>
+      <div class="cv-name">Wang Yue　<span style="font-size:16px;font-weight:500;letter-spacing:0.06em">王岳</span></div>
+      <div class="cv-title">
+        Associate Researcher<br />
+        College of Agriculture and Biotechnology / The Rural Development Academy Agricultural Research Station<br />
+        Deputy Director, Center for Digital Intelligence in Specialty Crops<br />
+        <span style="font-size:12.5px;color:#6b7280">Zhejiang University, Hangzhou, China</span>
       </div>
-      <div class="hero-info">
-        <h1>Wang Yue</h1>
-        <div class="affil">
-          Associate Researcher · Zhejiang University<br />
-          Deputy Director, Center for Digital Intelligence in Specialty Crops
+      <div class="cv-contact">
+        ✉ <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a>
+        🌐 <a href="https://wyzju.com" target="_blank">wyzju.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-title">Research Interests</div>
+  <p class="item" style="padding-left:0">
+    Nutritional and flavor quality of fruits. Focused on elucidating the biosynthetic regulation, quality evolution, and endophyte-driven mechanisms of bioactive compounds in citrus and other fruits, alongside their health-promoting effects, and the development of AI-based agricultural databases and intelligent agents.
+  </p>
+
+  <div class="s-title">Education</div>
+  <div class="item"><span class="year">2015.09 – 2020.06</span><span class="body">Zhejiang University · Pomology · <strong>Ph.D.</strong> (Supervisor: Prof. Chongde Sun)</span></div>
+  <div class="item"><span class="year">2011.09 – 2015.06</span><span class="body">Zhejiang University · Horticulture · <strong>B.S.</strong></span></div>
+
+  <div class="s-title">Work Experience</div>
+  <div class="item"><span class="year">2024.03 – present</span><span class="body">Zhejiang University · New Rural Development Research Institute · Interdisciplinary Research Platform</span></div>
+  <div class="item"><span class="year">2023.01 – present</span><span class="body">Zhejiang University · Fruit Research Institute · <strong>Associate Researcher</strong></span></div>
+  <div class="item"><span class="year">2020.07 – 2024.02</span><span class="body">Zhejiang University · Fruit Research Institute · <strong>Postdoctoral Researcher</strong> (Supervisor: Prof. Chongde Sun)</span></div>
+
+  <div class="s-title">Honors & Awards</div>
+  <div class="item"><span class="year">2023</span><span class="body"><strong>First Prize, Ministry of Education Science and Technology Progress Award</strong> (Key Contributor)</span></div>
+  <div class="item"><span class="year">2024.11</span><span class="body"><strong>Best Presentation Award</strong>, 2nd Agricultural Food Young Scientists Academic Salon, Jinan, Shandong</span></div>
+
+  <div class="s-title">Research Metrics</div>
+  <div class="item" style="padding-left:0">
+    {papers.length} journal papers ({firstCorrPapers.length} as first/corresponding author, 2 highly cited) ·
+    <strong>2,200+</strong> citations · H-index <strong>27</strong> · i10-index <strong>40</strong> ·
+    {(patents as any[]).length} patents ({firstPatents.length} as first inventor) ·
+    {software.length} software copyrights · {(standards as any[]).length} standards
+  </div>
+
+  <div class="s-title">Active Grants</div>
+  <div class="grant">
+    <span class="g-name">Citrus endophytic Pseudomonas-mediated key quality formation of Chenpi and its SoxR–SoxS–zwf axis regulation</span>
+    <span class="g-badge">PI</span><br/>
+    <span class="g-meta">NSFC General Program (32672846) · Jan 2027–Dec 2030</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Key technology research and application for high-quality development of the Quzhou citrus industry</span>
+    <span class="g-badge">PI</span><br/>
+    <span class="g-meta">Zhejiang Province San-Nong-Jiu-Fang Program (2026SNJF079) · Jan 2026–Dec 2027</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Key technologies for intelligent preservation logistics and processing of plant-derived fresh agricultural products</span>
+    <span class="g-badge">PI</span><br/>
+    <span class="g-meta">Fundamental Research Funds for the Central Universities (226-2026-00062) · Jan 2026–Dec 2028</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Evaluation of flavor and nutritional quality of Quzhou citrus fruits</span>
+    <span class="g-badge">PI</span><br/>
+    <span class="g-meta">Commissioned Research (2025-KYY-600101-0017) · Jan–Dec 2026</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Key genes and molecular regulatory mechanisms underlying citrus flavor and nutritional quality</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">Zhejiang Provincial NSF – Hangzhou Joint Fund (LHZSD24C150001) · Jan 2024–Dec 2026</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Key genes and network regulatory mechanisms of citrus flavonoid biosynthesis</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">NSFC Regional Joint Fund (U25A20688) · Jan 2026–Dec 2029</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Research and integrated promotion of citrus postharvest quality maintenance and high-value utilization</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">Zhejiang Agricultural Major Technology Collaborative Promotion Program (2026ZDXT02) · Jan 2026–Dec 2027</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Innovation of key processing technologies and development of high-value Chenpi products from Sichuan Hongju</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">Sichuan Province Key R&D Program (2026YFHZ0239) · Jan 2026–Dec 2027</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Key technology and integrated process for isolation and purification of tobacco-derived alkaline phosphatase</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">Collaborative Project with Beijing Life Science Academy (2025-KYY-135000-0004-01) · Jan 2026–Dec 2029</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Construction of a tobacco multimodal synthetic chassis based on synergistic optimization of energy and metabolic flux</span>
+    <span class="g-badge g-badge-sub">Sub-PI</span><br/>
+    <span class="g-meta">Collaborative Project with Beijing Life Science Academy (2025-KYY-135000-0004-05) · Jan 2026–Dec 2028</span>
+  </div>
+
+  <div class="s-title">Completed Grants (PI)</div>
+  <div class="grant">
+    <span class="g-name">Mechanism of fruit flavonoid antioxidant activity based on inhibition of Nrf2 ubiquitination</span><br/>
+    <span class="g-meta">NSFC Youth Program (32101932) · Jan 2022–Dec 2024</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Development of functional health foods from homologous food-medicine sources in Zhejiang Province</span><br/>
+    <span class="g-meta">Zhejiang Province Key R&D Program (2021C02018) · Jan 2021–Dec 2023</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Bidirectional regulatory mechanism of citrus flavonoids on endogenous ROS in cells</span><br/>
+    <span class="g-meta">China Postdoctoral Science Foundation (2021M692833) · Jun 2021–Jun 2023</span>
+  </div>
+  <div class="grant">
+    <span class="g-name">Fruit flavor phenomics</span><br/>
+    <span class="g-meta">Zhejiang Provincial Universities Fundamental Research Funds (226-2024-00211) · Jan 2024–Dec 2025</span>
+  </div>
+
+  <div class="s-title">Publications — First or Corresponding Author ({firstCorrPapers.length})</div>
+  {fcGroupsNum.map(({ yr, pubs }) => (
+    <div>
+      <div class="yr-sep">{yr}</div>
+      {pubs.map((p: any) => {
+        const cls = p.role?.includes('Last') ? 'rb-lastcorr' : p.role?.includes('Co-corresp') ? 'rb-cocorr' : p.role?.includes('Corresp') ? 'rb-corr' : p.role?.includes('Co-first') ? 'rb-cofirst' : 'rb-first'
+        return (
+          <div class="pub">
+            <span class="num">{p.num}.</span>
+            <span class="ptitle">
+              {p.doi
+                ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+                : p.title}
+              {p.is_highly_cited && <span class="badge-hc">Highly Cited</span>}
+              {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
+              {p.role && <span class={`role-badge ${cls}`}>{p.role}</span>}
+            </span>
+            <br />
+            <span class="pmeta">
+              <Fragment set:html={authorHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
+              {'. '}
+              <span class="jname">{p.journal}</span>
+              {p.volume && `, ${p.volume}`}
+              {p.issue && `(${p.issue})`}
+              {p.pages && `, ${p.pages}`}
+              {p.date && ` (${p.date.slice(0,4)})`}
+              {p.doi && <span>. DOI: {p.doi}</span>}
+            </span>
+          </div>
+        )
+      })}
+    </div>
+  ))}
+
+  <div class="s-title">Publications — Co-Author ({coAuthorPapers.length})</div>
+  {coGroupsNum.map(({ yr, pubs }) => (
+    <div>
+      <div class="yr-sep">{yr}</div>
+      {pubs.map((p: any) => (
+        <div class="pub">
+          <span class="num">{p.num}.</span>
+          <span class="ptitle">
+            {p.doi
+              ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
+              : p.title}
+            {p.is_highly_cited && <span class="badge-hc">Highly Cited</span>}
+          </span>
+          <br />
+          <span class="pmeta">
+            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
+            {'. '}
+            <span class="jname">{p.journal}</span>
+            {p.volume && `, ${p.volume}`}
+            {p.issue && `(${p.issue})`}
+            {p.pages && `, ${p.pages}`}
+            {p.date && ` (${p.date.slice(0,4)})`}
+          </span>
         </div>
-        <div class="contact">
-          📧 <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a><br />
-          College of Biosystems Engineering and Food Science, Zhejiang University, Hangzhou, China
-        </div>
-      </div>
+      ))}
     </div>
-    <p class="hero-bio">
-      Research focuses on the nutritional and flavor quality of fruits, with emphasis on elucidating the biosynthetic regulation, quality evolution, endophyte-driven mechanisms, and health-promoting effects of quality-related bioactive compounds in citrus and other fruits, alongside the development of AI-oriented agricultural databases and intelligent agents for scientific research.
-      He has led multiple grants including the NSFC General Program, the NSFC Regional Joint Key Program, the Zhejiang Province San-Nong-Jiu-Fang Program, the Zhejiang Provincial Agricultural Major Technology Collaborative Promotion Program, and the Zhejiang Provincial Key R&D Program.
-      As a key contributor, he received the First Prize of the Ministry of Education Science and Technology Progress Award.
-      His work has resulted in 70+ publications in journals including <em>Molecular Plant</em>, with 2,200+ citations, 2 highly cited papers, H-index 27, and i10-index 40.
-    </p>
+  ))}
+
+  <div class="s-title">Patents — First Inventor ({firstPatents.length})</div>
+  {firstPatents.map((p: any, i: number) => (
+    <div class="pub">
+      <span class="num">{i+1}.</span>
+      <span class="ptitle">{p.title}</span>
+      {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
+      <br/>
+      <span class="pmeta">
+        <Fragment set:html={(p.inventors||[]).map((n:string) => fmtName(n)).join('，')} />
+        {p.patent_number && <span>. {p.patent_number}</span>}
+        {p.grant_date && <span>. Granted {p.grant_date}</span>}
+      </span>
+    </div>
+  ))}
+
+  <div class="s-title">Patents — Co-Inventor ({coPatents.length})</div>
+  {coPatents.map((p: any, i: number) => (
+    <div class="pub">
+      <span class="num">{i+1}.</span>
+      <span class="ptitle">{p.title}</span><br/>
+      <span class="pmeta">
+        <Fragment set:html={(p.inventors||[]).slice(0,8).map((n:string) => fmtName(n)).join('，') + (p.inventors?.length>8 ? '，等' : '')} />
+        {p.patent_number && <span>. {p.patent_number}</span>}
+        {p.grant_date && <span>. Granted {p.grant_date}</span>}
+      </span>
+    </div>
+  ))}
+
+  <div class="s-title">Software Copyrights ({software.length})</div>
+  {(software as any[]).map((s, i) => (
+    <div class="pub">
+      <span class="num">{i+1}.</span>
+      <span class="ptitle">{s.title}</span>
+      {s.pdf_url && <a href={s.pdf_url} target="_blank" rel="noopener" class="badge-pdf">Cert.</a>}
+      <br/>
+      <span class="pmeta">Reg. No. {s.registration_number}{s.date ? ` · ${s.date.slice(0,4)}` : ''}</span>
+    </div>
+  ))}
+
+  <div class="s-title">Standards ({(standards as any[]).length})</div>
+  {(standards as any[]).map((s, i) => (
+    <div class="pub">
+      <span class="num">{i+1}.</span>
+      <span class="ptitle">{s.title}</span><br/>
+      <span class="pmeta">
+        <Fragment set:html={(s.authors||[]).map((n:string) => fmtName(n)).join('，')} />
+        {s.standard_number && <span>. {s.standard_number}</span>}
+        {s.standard_type && <span> · {s.standard_type}</span>}
+      </span>
+    </div>
+  ))}
+
+  <div class="s-title">Academic Service</div>
+
+  <div class="item" style="padding-left:0;margin-bottom:4px"><strong>Associate Editor</strong></div>
+  <div class="item"><span class="year">2024.10 – present</span><span class="body"><em>eFood</em></span></div>
+  <div class="item"><span class="year">2024.10 – present</span><span class="body"><em>Frontiers in Nutrition</em></span></div>
+
+  <div class="item" style="padding-left:0;margin:12px 0 4px"><strong>Deputy Editor</strong></div>
+  <div class="item"><span class="year">2024.12 – present</span><span class="body"><em>Food Chemistry International</em></span></div>
+
+  <div class="item" style="padding-left:0;margin:12px 0 4px"><strong>Editorial Board Member</strong></div>
+  <div class="item"><span class="year">2025.08 – present</span><span class="body"><em>Food Frontiers</em></span></div>
+  <div class="item"><span class="year">2024.12 – present</span><span class="body"><em>Letters in Functional Foods</em></span></div>
+  <div class="item"><span class="year">2025.04 – present</span><span class="body"><em>iMeta</em> (Early Career)</span></div>
+  <div class="item"><span class="year">2023.04 – present</span><span class="body"><em>Phyton-International Journal of Experimental Botany</em> (Early Career)</span></div>
+  <div class="item"><span class="year">2022.06 – present</span><span class="body"><em>Antioxidants</em> (Topical Advisory Panel Member)</span></div>
+  <div class="item"><span class="year">2022.07 – present</span><span class="body"><em>Frontiers in Nutrition</em> (Review Editor)</span></div>
+  <div class="item"><span class="year">2023.06 – present</span><span class="body"><em>Journal of Integrative Agriculture</em> (Academic Liaison)</span></div>
+
+  <div class="item" style="padding-left:0;margin:12px 0 4px"><strong>Guest Editor</strong></div>
+  <div class="item"><span class="year"></span><span class="body"><em>Antioxidants</em>: 3 Special Issues</span></div>
+  <div class="item"><span class="year"></span><span class="body"><em>Frontiers in Nutrition</em> &amp; <em>Frontiers in Immunology</em> (Joint SI): Effects of Plant-Derived Bioactive Compounds as Nutritional Supplements on Inflammation</span></div>
+
+  <div class="item" style="padding-left:0;margin:12px 0 4px"><strong>Peer Reviewer</strong></div>
+  <div class="rev-wrap">
+    {[
+      'Trends in Food Science & Technology','Nature Communications','Journal of Advanced Research',
+      'Critical Reviews in Food Science and Nutrition','Food Frontiers','Food Hydrocolloids',
+      'Food Chemistry','Pharmacological Research','Phytomedicine','Food and Chemical Toxicology',
+      'Plant Communications','Current Opinion in Plant Biology','Food Control',
+      'Postharvest Biology and Technology','LWT - Food Science & Technology','Journal of Environmental Sciences',
+    ].map(j => <span class="rev-tag">{j}</span>)}
   </div>
 
-  <!-- Work Experience -->
-  <div class="info-section">
-    <h2>Work Experience</h2>
-    <ul>
-      <li><span class="year">2024.03 – present</span>Zhejiang University · New Rural Development Research Institute · Interdisciplinary Research Platform</li>
-      <li><span class="year">2023.01 – present</span>Zhejiang University · Fruit Research Institute · Associate Researcher</li>
-      <li><span class="year">2020.07 – 2024.02</span>Zhejiang University · Fruit Research Institute · Postdoctoral Researcher (Supervisor: Prof. Chongde Sun)</li>
-    </ul>
-  </div>
-
-  <!-- Education -->
-  <div class="info-section">
-    <h2>Education</h2>
-    <ul>
-      <li><span class="year">2015.09 – 2020.06</span>Zhejiang University · Pomology · Ph.D. (Supervisor: Prof. Chongde Sun)</li>
-      <li><span class="year">2011.09 – 2015.06</span>Zhejiang University · Horticulture · B.S.</li>
-    </ul>
-  </div>
-
-  <!-- Academic Service -->
-  <h2>Academic Service</h2>
-  <div class="acad-list">
-    <div class="acad-card"><span><strong>eFood</strong> — Associate Editor</span><span class="acad-time">2024.10 – present</span></div>
-    <div class="acad-card"><span><strong>Frontiers in Nutrition</strong> — Associate Editor</span><span class="acad-time">2024.10 – present</span></div>
-    <div class="acad-card"><span><strong>Food Chemistry International</strong> — Deputy Editor</span><span class="acad-time">2024.12 – present</span></div>
-    <div class="acad-card"><span><strong>Food Frontiers</strong> — Editorial Board Member</span><span class="acad-time">2025.08 – present</span></div>
-    <div class="acad-card"><span><strong>Letters in Functional Foods</strong> — Editorial Board Member</span><span class="acad-time">2024.12 – present</span></div>
-    <div class="acad-card"><span><strong>iMeta</strong> — Early Career Editorial Board Member</span><span class="acad-time">2025.04 – present</span></div>
-    <div class="acad-card"><span><strong>Phyton-International Journal of Experimental Botany</strong> — Early Career Editorial Board Member</span><span class="acad-time">2023.04 – present</span></div>
-    <div class="acad-card"><span><strong>Antioxidants</strong> — Topical Advisory Panel Member</span><span class="acad-time">2022.06 – present</span></div>
-    <div class="acad-card"><span><strong>Frontiers in Nutrition</strong> — Review Editor on the Editorial Board</span><span class="acad-time">2022.07 – present</span></div>
-    <div class="acad-card"><span><strong>Journal of Integrative Agriculture</strong> — Academic Liaison</span><span class="acad-time">2023.06 – present</span></div>
-    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:4px">
-      <div style="font-weight:600;color:#111827;margin-bottom:2px">Guest Editor — <strong>Antioxidants</strong> (3 Special Issues)</div>
-      <div style="color:#4b5563;font-size:13px;line-height:1.7;padding-left:2px">
-        · The Preventive and Therapeutic Effects of Fruit Antioxidants on Chronic Diseases<br/>
-        · Antioxidants in Fruits and Their Health-Promoting Effects<br/>
-        · <a href="https://www.mdpi.com/journal/antioxidants/special_issues/9F28CX25D8" target="_blank" rel="noopener">Natural Antioxidants from Plants in Combating Metabolism-Related Diseases</a>
-      </div>
-    </div>
-    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:4px">
-      <div style="font-weight:600;color:#111827;margin-bottom:2px">Guest Editor — <strong>Frontiers in Nutrition</strong> &amp; <strong>Frontiers in Immunology</strong> (Joint Special Issue)</div>
-      <div style="color:#4b5563;font-size:13px;padding-left:2px">
-        · Effects of Plant-Derived Bioactive Compounds as Nutritional Supplements on Inflammation
-      </div>
-    </div>
-    <div class="acad-card" style="flex-direction:column;align-items:flex-start;gap:6px">
-      <div style="font-weight:600;color:#111827;margin-bottom:2px">Reviewer</div>
-      <div class="reviewer-wrap">
-        <span class="rev-tag">Trends in Food Science &amp; Technology</span>
-        <span class="rev-tag">Nature Communications</span>
-        <span class="rev-tag">Journal of Advanced Research</span>
-        <span class="rev-tag">Critical Reviews in Food Science and Nutrition</span>
-        <span class="rev-tag">Food Frontiers</span>
-        <span class="rev-tag">Food Hydrocolloids</span>
-        <span class="rev-tag">Food Chemistry</span>
-        <span class="rev-tag">Pharmacological Research</span>
-        <span class="rev-tag">Phytomedicine</span>
-        <span class="rev-tag">Food and Chemical Toxicology</span>
-        <span class="rev-tag">Plant Communications</span>
-        <span class="rev-tag">Current Opinion in Plant Biology</span>
-        <span class="rev-tag">Food Control</span>
-        <span class="rev-tag">Postharvest Biology and Technology</span>
-        <span class="rev-tag">LWT - Food Science &amp; Technology</span>
-        <span class="rev-tag">Journal of Environmental Sciences</span>
-      </div>
-    </div>
-    <div class="acad-card" style="align-items:center">
-      <span>Invited Talk: 2nd Agricultural Food Young Scientists Academic Salon · 2024.11.8–10 · Jinan, Shandong</span>
-      <span style="font-size:12px;font-weight:600;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0">Best Presentation Award</span>
-    </div>
-  </div>
-
-  <!-- Books -->
-  <h2>Books</h2>
-  <div class="book-card">
-    Chongde Sun, Yang Shan (Editors-in-Chief), <strong>Yue Wang (Associate Editor)</strong>, Jianbo Xiao, Gaoyang Li, Yujuan Xu (Associate Editors), Jinping Cao, Shaojia Li, Chenning Zhao, Xiaojuan Liu, Cui Sun, Peng Wang, Dengliang Wang, Jiebiao Chen, Yunyi Chen, Zhenkun Liao, Xiao Liang, Jiaojiao Liang, Bin Liao, Chenwen Zhou, Manxi Wu, Han Yang, Chen Kang, Mangqin Fu, Yuanshan Yu (Editors).
-    <em>Citrus Flavonoids: Purification, Identification, Biosynthesis and Medical Application</em> [M].
-    Zhejiang University Press / Springer, Singapore, 2026. (ISBN 978-981-92-1406-8; DOI: <a href="https://doi.org/10.1007/978-981-92-1407-5" target="_blank" rel="noopener">10.1007/978-981-92-1407-5</a>)
-  </div>
-
-  <!-- Publications: First / Corresponding -->
-  <div class="section-title">Publications — First or Corresponding Author ({firstCorrPapers.length} papers)</div>
-  {(() => {
-    const groups = groupByYear(firstCorrPapers)
-    let idx = firstCorrPapers.length
-    return groups.map(({ yr, papers: ps }) => (
-      <div class="year-section">
-        <div class="year-label">{yr}</div>
-        <div class="paper-list">
-          {ps.map((p: any) => {
-            const num = idx--
-            return (
-              <div class="paper-card">
-                <div class="paper-num">{num}</div>
-                <div class="paper-body">
-                  <div class="paper-title">
-                    {p.doi
-                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                      : p.title}
-                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
-                    {p.is_highly_cited && <span class="badge badge-yellow">Highly Cited</span>}
-                  </div>
-                  <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors)} />
-                    <br />
-                    <span class="journal">{p.journal}</span>
-                    {p.volume && `, ${p.volume}`}
-                    {p.issue && `(${p.issue})`}
-                    {p.pages && `, ${p.pages}`}
-                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    ))
-  })()}
-
-  <!-- Publications: Co-Author -->
-  <div class="section-title">Publications — Co-Author ({coAuthorPapers.length} papers)</div>
-  {(() => {
-    const groups = groupByYear(coAuthorPapers)
-    let idx = coAuthorPapers.length
-    return groups.map(({ yr, papers: ps }) => (
-      <div class="year-section">
-        <div class="year-label">{yr}</div>
-        <div class="paper-list">
-          {ps.map((p: any) => {
-            const num = idx--
-            return (
-              <div class="paper-card">
-                <div class="paper-num">{num}</div>
-                <div class="paper-body">
-                  <div class="paper-title">
-                    {p.doi
-                      ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a>
-                      : p.title}
-                    {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
-                    {p.is_highly_cited && <span class="badge badge-yellow">Highly Cited</span>}
-                  </div>
-                  <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors)} />
-                    <br />
-                    <span class="journal">{p.journal}</span>
-                    {p.volume && `, ${p.volume}`}
-                    {p.issue && `(${p.issue})`}
-                    {p.pages && `, ${p.pages}`}
-                    {p.if5 != null && <span class="if5-badge">IF5 {p.if5}</span>}
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    ))
-  })()}
+  <div class="item" style="padding-left:0;margin:16px 0 4px"><strong>Invited Talk</strong></div>
+  <div class="item"><span class="year">2024.11</span><span class="body">2nd Agricultural Food Young Scientists Academic Salon, Jinan, Shandong (<strong>Best Presentation Award</strong>)</span></div>
+</div>
 </Base>

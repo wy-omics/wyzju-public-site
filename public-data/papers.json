@@ -28,7 +28,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "2fd9cbdb-83c0-4145-8864-998c356999e7",
@@ -61,7 +62,8 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "2fe46d0c-19f4-48b7-b348-06f66a2d4965",
@@ -97,7 +99,8 @@
     "jif": 13.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "3e4cac19-773d-424c-b5e0-53ca64d4fca9",
@@ -132,7 +135,8 @@
     "corresponding_authors": [
       "Sun Chongde",
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "207646eb-7f02-436f-98f4-1f5229916acf",
@@ -160,7 +164,8 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "3c8b675e-f86e-477e-aeff-636035f13d0f",
@@ -195,7 +200,8 @@
     "jif": 7.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "beaa776b-a271-4b93-ad64-9a441397867f",
@@ -232,7 +238,8 @@
     "corresponding_authors": [
       "Wang Yue",
       "Li Dongliang"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "df9aac82-8662-4a15-b7a0-3ee65ddc9a86",
@@ -261,6 +268,10 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
+    ],
+    "co_first_authors": [
+      "Yang Han",
+      "Wu Manxi"
     ]
   },
   {
@@ -298,7 +309,8 @@
       "Liu Yaqun",
       "Gao Feifei",
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "52e66640-5ecf-4999-9190-ff851ab670ff",
@@ -332,7 +344,8 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "596c9665-ca45-4030-a52b-a5f56292edbf",
@@ -363,7 +376,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "f54fe927-3dbf-495a-aa78-842fff2ed8bf",
@@ -394,7 +408,8 @@
     "jif": 4.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c",
@@ -431,6 +446,10 @@
     "corresponding_authors": [
       "Zhang Yu",
       "Wang Yue"
+    ],
+    "co_first_authors": [
+      "Yang Han",
+      "Wu Manxi"
     ]
   },
   {
@@ -465,7 +484,8 @@
     "jif": 6.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "90356dd5-a74c-497c-beef-839e06f2ab47",
@@ -495,7 +515,8 @@
     "jif": 6.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "c30e6718-c72c-4657-9ec7-4b5f834dc074",
@@ -531,7 +552,8 @@
     "corresponding_authors": [
       "Wang Yanshuai",
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "904e8316-7253-4c90-9eb5-0be796d15ac4",
@@ -568,7 +590,8 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "4b3d5bb2-d0a5-47be-b6d1-9be3619d2b88",
@@ -600,7 +623,8 @@
     "jif": 6.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "05a65254-86b1-4063-899e-a20640d6f95e",
@@ -633,7 +657,8 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "ec6b5506-b1ce-48d0-9208-d536e4725996",
@@ -661,7 +686,8 @@
     "jif": 10.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "4223ef36-3e5e-4952-8125-3e7adeff3165",
@@ -693,6 +719,11 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
+    ],
+    "co_first_authors": [
+      "Hu Jiazheng",
+      "Ye Hongyu",
+      "Wang Mengxin"
     ]
   },
   {
@@ -717,7 +748,8 @@
     "is_highly_cited": false,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "9ef19f7d-eba2-4741-a2dd-cc421d1e5dcf",
@@ -746,7 +778,8 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2024%20%5Blihuajianyan%5D.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "3f15ce3f-5909-4a3b-a26c-ef9fd1b958c8",
@@ -774,7 +807,8 @@
     "jif": 5.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "442e7451-01f8-4583-a869-1a2452ded523",
@@ -803,7 +837,8 @@
     "jif": 5.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0",
@@ -846,6 +881,11 @@
     "is_co_first": true,
     "corresponding_authors": [
       "Sun Chongde"
+    ],
+    "co_first_authors": [
+      "Liang Xiao",
+      "Wang Yue",
+      "Shen Wanxia"
     ]
   },
   {
@@ -882,7 +922,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "27dce7f1-fd45-4435-8fa5-0d211f26af40",
@@ -919,7 +960,8 @@
     "corresponding_authors": [
       "Wang Dengliang",
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "ab15d531-f34e-43da-b3ae-9f4addafad9c",
@@ -951,7 +993,8 @@
     "jif": 5.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "ef1a947b-5179-4e53-883d-0c4751312c55",
@@ -985,7 +1028,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "a4451b0f-dd6f-495c-b5c4-1ae663519c1d",
@@ -1020,7 +1064,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "5299c5f2-fdfe-4ab4-a1a1-9cd2bfef63ca",
@@ -1049,7 +1094,8 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "8340ea44-de4c-4754-b97d-b23a6f91a85e",
@@ -1082,7 +1128,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "f37589f4-1d3b-4460-8ac2-bc07d8224fe4",
@@ -1114,7 +1161,8 @@
     "corresponding_authors": [
       "Wang Yue",
       "Leng Feng"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "c5c50b67-163a-4543-b681-8e8788dc44e2",
@@ -1142,7 +1190,8 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "11aa7a38-35e2-48c2-873a-0c1ca041c8bc",
@@ -1175,7 +1224,11 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": [
+      "Zheng Juan",
+      "Zhao Chenning"
+    ]
   },
   {
     "id": "3d7dde2e-9ba4-4fc5-9793-c9088e3bb9af",
@@ -1205,7 +1258,8 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "2f757e7c-6754-475c-9af3-f9ef982d5f38",
@@ -1237,7 +1291,8 @@
     "corresponding_authors": [
       "Wang Yue",
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "7a712ce2-84b4-45ca-b639-5d7ad253735f",
@@ -1268,7 +1323,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "bd8bb639-37da-4a39-bc3e-1cf5f2ee165c",
@@ -1298,7 +1354,8 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "d3bb04c0-06a8-496d-aa8b-ffb56bc078f4",
@@ -1324,7 +1381,8 @@
     "is_highly_cited": false,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "702d7d4b-bd3a-4348-84ea-49cf52fa27fb",
@@ -1349,7 +1407,8 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "084871dd-bcba-4c18-b740-01f0ba5fd31e",
@@ -1379,7 +1438,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "f107141f-a0cc-4abb-8721-936592052632",
@@ -1407,7 +1467,8 @@
     "jif": 10.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "daf4c636-f0cc-4e88-9d95-e5d30fe3d8f9",
@@ -1439,7 +1500,11 @@
     "jif": 5.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": [
+      "Wang Yanshuai",
+      "Chen Jiebiao"
+    ]
   },
   {
     "id": "5f570ffe-e1c0-4c49-bd97-bb6bba4dbeac",
@@ -1469,7 +1534,8 @@
     "jif": 3.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "c9373a3f-ab6d-448a-a569-6a9851468d96",
@@ -1502,7 +1568,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Wang Yue"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "6b777a97-91be-4d93-911f-0a5ddcc60518",
@@ -1530,7 +1597,8 @@
     "jif": 5.9,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "1a1aeea7-24d1-4dcf-860e-e285601559c3",
@@ -1560,7 +1628,8 @@
     "jif": 13.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "b2488cad-7e69-4ae7-b8e7-4ae73a6337a3",
@@ -1589,7 +1658,8 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bshipinyufajiaogongye%5D%20QuEChERS-HPLC.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "9f431795-b414-4b90-8aaa-6e2fa57a46b7",
@@ -1621,7 +1691,8 @@
     "jif": 3.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "8cc08c44-7af7-408f-9210-5d7addcf5850",
@@ -1649,7 +1720,11 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bzjuxuebao%5D%20butongpinzhongganju.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": [
+      "朱泰霖",
+      "王慧心"
+    ]
   },
   {
     "id": "cf972cd8-1b6c-4682-84c1-4757a13e4209",
@@ -1677,7 +1752,11 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bzjuxuebao%5D%20woguozhuyao.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": [
+      "梁姣娇",
+      "陈云义"
+    ]
   },
   {
     "id": "44b3bb31-9a3d-4987-9b17-e1cdc38f1200",
@@ -1708,7 +1787,8 @@
     "jif": 5.0,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "6b57d873-9434-42f4-8ca0-19ba802734b4",
@@ -1737,7 +1817,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "5e121fab-608d-411e-9cc0-74d535562823",
@@ -1767,7 +1848,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "70f822d9-f1ae-4a8f-ad65-7f49ddc15540",
@@ -1796,7 +1878,8 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "092563ec-d3a1-460d-aced-c243e40fb720",
@@ -1824,7 +1907,8 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bzjuxuebao%5D%20woguoguoshu.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "d8662ac9-13f8-44ba-83c8-278dc87f7d62",
@@ -1852,7 +1936,8 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bzjuxuebao%5D%20gaoyajingdian.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "ddc4d802-1b73-49bb-b6d9-6610dcdc9d23",
@@ -1881,8 +1966,12 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bmolecules%5D%20Analysis%20of%20Phenolic%20Components%20and%20Related%20Biological%20Activities%20of%2035%20Apple%20\\(Malus%20pumila%20Mill.\\",
     "jif": 5.1,
     "is_corresponding": false,
-    "is_co_first": false,
-    "corresponding_authors": []
+    "is_co_first": true,
+    "corresponding_authors": [],
+    "co_first_authors": [
+      "Liang Xiao",
+      "Wang Yue"
+    ]
   },
   {
     "id": "9ddaf8eb-93c1-442b-b149-cbd3afa4d03b",
@@ -1914,6 +2003,10 @@
     "is_co_first": true,
     "corresponding_authors": [
       "Sun Chongde"
+    ],
+    "co_first_authors": [
+      "Chen Jiebiao",
+      "Wang Yue"
     ]
   },
   {
@@ -1943,7 +2036,8 @@
     "jif": 6.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "ff465e00-5877-48ff-a8d9-8874444d03eb",
@@ -1975,6 +2069,10 @@
     "is_co_first": true,
     "corresponding_authors": [
       "Sun Chongde"
+    ],
+    "co_first_authors": [
+      "Liu Xiaojuan",
+      "Wang Yue"
     ]
   },
   {
@@ -2002,7 +2100,8 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "9fcc58b7-bdc3-4db1-8167-de6584e45f76",
@@ -2033,7 +2132,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "335eb851-c972-46ad-91bc-5df33780c70f",
@@ -2064,7 +2164,8 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "32b69479-f604-405c-8e43-dae659ca7de4",
@@ -2092,7 +2193,8 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2019%20%5Bzjuxuebao%5D%20chaoshengfuzhu.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "a85e5a1a-42a4-45d8-8eb3-ca0f78c5f068",
@@ -2122,7 +2224,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "b2ae6d6f-fb71-4497-a170-82893a53fe42",
@@ -2150,7 +2253,8 @@
     "jif": 4.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "527ac8ff-5dac-4268-8e63-22cded8eabdc",
@@ -2179,7 +2283,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "f7e03659-53d3-41e2-a53a-6a153bef9ac8",
@@ -2206,7 +2311,8 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "6d3f9d0e-0d2a-4792-b288-6d18f9945c10",
@@ -2238,7 +2344,8 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   },
   {
     "id": "76b186ef-f623-4823-847b-aa664b68facb",
@@ -2268,7 +2375,8 @@
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": []
+    "corresponding_authors": [],
+    "co_first_authors": []
   },
   {
     "id": "c6487cd0-a7a8-494c-b93d-b03d848a9d46",
@@ -2301,6 +2409,7 @@
     "is_co_first": false,
     "corresponding_authors": [
       "Sun Chongde"
-    ]
+    ],
+    "co_first_authors": []
   }
 ]

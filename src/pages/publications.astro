@@ -21,19 +21,42 @@ function groupByYear(list: any[]) {
   return Object.keys(byYear).sort((a, b) => b.localeCompare(a)).map(yr => ({ yr, papers: byYear[yr] }))
 }
 
-// 名字：从"Surname Given"翻转为"Given Surname"，王岳加粗，通讯作者加 *
-function fmtAuthorHtml(name: string, corrSet: Set<string>): string {
+function fmtAuthorHtml(name: string, corrSet: Set<string>, cofirstSet: Set<string>): string {
+  const hash = cofirstSet.has(name) ? '<sup>#</sup>' : ''
   const star = corrSet.has(name) ? '<sup>*</sup>' : ''
-  if (name === '王岳') return `<strong>王岳</strong>${star}`
-  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>${star}`
+  if (name === '王岳') return `<strong>王岳</strong>${hash}${star}`
+  if (name === 'Wang Yue') return `<strong>Yue Wang</strong>${hash}${star}`
   const parts = name.trim().split(' ')
   const display = parts.length === 2 ? `${parts[1]} ${parts[0]}` : name
-  return display + star
+  return display + hash + star
 }
 
-function authorListHtml(authors: string[], correspondingAuthors: string[] = []): string {
-  const corrSet = new Set(correspondingAuthors)
-  return authors.map(n => fmtAuthorHtml(n, corrSet)).join(', ')
+function authorListHtml(authors: string[], corr: string[] = [], cofirst: string[] = []): string {
+  const corrSet = new Set(corr)
+  const cofirstSet = new Set(cofirst)
+  return authors.map(n => fmtAuthorHtml(n, corrSet, cofirstSet)).join(', ')
+}
+
+function wyRole(p: any): string {
+  const authors: string[] = p.authors || []
+  const corr: string[] = p.corresponding_authors || []
+  const cofirst: string[] = p.co_first_authors || []
+  const wy = authors.includes('Wang Yue') ? 'Wang Yue' : '王岳'
+  const idx = authors.indexOf(wy)
+  if (idx < 0) return ''
+  const isWyCofirst = cofirst.includes(wy)
+  const isWyFirst = idx === 0
+  const isWyCorr = corr.includes(wy)
+  const isLast = idx === authors.length - 1
+  const parts: string[] = []
+  if (isWyCofirst) parts.push('共同第一')
+  else if (isWyFirst) parts.push('第一')
+  if (isWyCorr) {
+    if (corr.length > 1) parts.push('共同通讯')
+    else if (isLast) parts.push('最后通讯')
+    else parts.push('通讯')
+  }
+  return parts.join('/')
 }
 ---
 <Base title="论文" description="王岳，浙江大学，期刊论文列表">
@@ -56,8 +79,12 @@ function authorListHtml(authors: string[], correspondingAuthors: string[] = []):
     .badge-yellow { background: #fef3c7; color: #92400e }
     .if-badge  { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #dbeafe; color: #1e40af; margin-left: 6px; vertical-align: middle }
     .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; background: #e0e7ff; color: #4338ca; margin-left: 4px; vertical-align: middle }
-    .badge-corr { background: #fce7f3; color: #9d174d }
-    .badge-cofirst { background: #ede9fe; color: #5b21b6 }
+    .role-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; vertical-align: middle; margin-left: 6px }
+    .rb-first      { background: #dbeafe; color: #1e40af }
+    .rb-cofirst    { background: #ede9fe; color: #5b21b6 }
+    .rb-corr       { background: #fce7f3; color: #9d174d }
+    .rb-cocorr     { background: #ffedd5; color: #9a3412 }
+    .rb-lastcorr   { background: #dcfce7; color: #166534 }
   </style>
 
   <div class="page-header">
@@ -75,6 +102,8 @@ function authorListHtml(authors: string[], correspondingAuthors: string[] = []):
         <div class="paper-list">
           {ps.map((p: any) => {
             const num = globalIdx--
+            const role = wyRole(p)
+            const rbCls = role.includes('最后通讯') ? 'rb-lastcorr' : role.includes('共同通讯') ? 'rb-cocorr' : role.includes('通讯') ? 'rb-corr' : role.includes('共同第一') ? 'rb-cofirst' : 'rb-first'
             return (
               <div class="paper-card">
                 <div class="paper-num">{num}</div>
@@ -86,10 +115,10 @@ function authorListHtml(authors: string[], correspondingAuthors: string[] = []):
                     }
                     {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge badge-green" style="text-decoration:none">PDF</a>}
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
-                    {p.is_co_first && <span class="badge badge-cofirst">共同第一</span>}
+                    {role && <span class={`role-badge ${rbCls}`}>{role}</span>}
                   </div>
                   <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors)} />
+                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
                     <br />
                     <span class="journal">{p.journal}</span>
                     {p.volume && `, ${p.volume}`}
@@ -130,7 +159,7 @@ function authorListHtml(authors: string[], correspondingAuthors: string[] = []):
                     {p.is_highly_cited && <span class="badge badge-yellow">高被引</span>}
                   </div>
                   <div class="paper-meta">
-                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors)} />
+                    <Fragment set:html={authorListHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
                     <br />
                     <span class="journal">{p.journal}</span>
                     {p.volume && `, ${p.volume}`}

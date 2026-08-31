@@ -14,19 +14,40 @@ const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:a
 const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
 const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
 
-function fmtName(name: string, corrSet?: Set<string>): string {
+function fmtName(name: string, corrSet?: Set<string>, cofirstSet?: Set<string>): string {
+  const hash = (cofirstSet instanceof Set && cofirstSet.has(name)) ? '<sup>#</sup>' : ''
   const star = (corrSet instanceof Set && corrSet.has(name)) ? '<sup>*</sup>' : ''
-  if (name==='王岳') return `<strong>王岳</strong>${star}`
-  if (name==='Wang Yue') return `<strong>Yue Wang</strong>${star}`
+  if (name==='王岳') return `<strong>王岳</strong>${hash}${star}`
+  if (name==='Wang Yue') return `<strong>Yue Wang</strong>${hash}${star}`
   const parts = name.trim().split(' ')
   const display = parts.length===2 ? `${parts[1]} ${parts[0]}` : name
-  return display + star
+  return display + hash + star
 }
-function authorHtml(authors: string[], correspondingAuthors: string[] = []): string {
-  const corrSet = new Set(correspondingAuthors)
-  const shown = authors.slice(0,10)
-  const suffix = authors.length>10 ? ', <em>et al.</em>' : ''
-  return shown.map(n => fmtName(n, corrSet)).join(', ') + suffix
+function authorHtml(authors: string[], corr: string[] = [], cofirst: string[] = []): string {
+  const corrSet = new Set(corr)
+  const cofirstSet = new Set(cofirst)
+  return authors.map(n => fmtName(n, corrSet, cofirstSet)).join(', ')
+}
+function wyRole(p: any): string {
+  const authors: string[] = p.authors || []
+  const corr: string[] = p.corresponding_authors || []
+  const cofirst: string[] = p.co_first_authors || []
+  const wy = authors.includes('Wang Yue') ? 'Wang Yue' : '王岳'
+  const idx = authors.indexOf(wy)
+  if (idx < 0) return ''
+  const isWyCofirst = cofirst.includes(wy)
+  const isWyFirst = idx === 0
+  const isWyCorr = corr.includes(wy)
+  const isLast = idx === authors.length - 1
+  const parts: string[] = []
+  if (isWyCofirst) parts.push('共同第一')
+  else if (isWyFirst) parts.push('第一')
+  if (isWyCorr) {
+    if (corr.length > 1) parts.push('共同通讯')
+    else if (isLast) parts.push('最后通讯')
+    else parts.push('通��')
+  }
+  return parts.join('/')
 }
 
 function groupByYear(list: any[]): { yr: string; pubs: any[] }[] {
@@ -44,9 +65,12 @@ const fcGroups = groupByYear(firstCorrPapers)
 let fcIdx = firstCorrPapers.length
 const fcGroupsNum = fcGroups.map(({ yr, pubs }) => ({
   yr,
-  pubs: pubs.map(p => ({ ...p, num: fcIdx-- }))
+  pubs: pubs.map(p => {
+    const role = wyRole(p)
+    return { ...p, num: fcIdx--, role }
+  })
 }))
-fcIdx = firstCorrPapers.length  // reset counter after use
+fcIdx = firstCorrPapers.length
 
 // Pre-compute numbered co-author papers
 const coGroups = groupByYear(coAuthorPapers)
@@ -92,8 +116,12 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
   .jname { font-style: italic }
   .badge-hc { display: inline-block; background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
   .badge-pdf { display: inline-block; background: #d1fae5; color: #065f46; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; text-decoration: none }
-  .badge-corr { display: inline-block; background: #fce7f3; color: #9d174d; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
-  .badge-cofirst { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
+  .role-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 5px; vertical-align: middle }
+  .rb-first    { background: #dbeafe; color: #1e40af }
+  .rb-cofirst  { background: #ede9fe; color: #5b21b6 }
+  .rb-corr     { background: #fce7f3; color: #9d174d }
+  .rb-cocorr   { background: #ffedd5; color: #9a3412 }
+  .rb-lastcorr { background: #dcfce7; color: #166534 }
 
   .yr-sep { font-size: 12px; font-weight: 700; color: #6b7280; margin: 14px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 2px }
 
@@ -257,11 +285,14 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
               : p.title}
             {p.is_highly_cited && <span class="badge-hc">高被引</span>}
             {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
-            {p.is_co_first && <span class="badge-cofirst">共同第一</span>}
+            {p.role && (() => {
+              const cls = p.role.includes('最后通讯') ? 'rb-lastcorr' : p.role.includes('共同通讯') ? 'rb-cocorr' : p.role.includes('通讯') ? 'rb-corr' : p.role.includes('共同第一') ? 'rb-cofirst' : 'rb-first'
+              return <span class={`role-badge ${cls}`}>{p.role}</span>
+            })()}
           </span>
           <br />
           <span class="pmeta">
-            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors)} />
+            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
             {'. '}
             <span class="jname">{p.journal}</span>
             {p.volume && `, ${p.volume}`}
@@ -290,7 +321,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
           </span>
           <br />
           <span class="pmeta">
-            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors)} />
+            <Fragment set:html={authorHtml(p.authors, p.corresponding_authors, p.co_first_authors)} />
             {'. '}
             <span class="jname">{p.journal}</span>
             {p.volume && `, ${p.volume}`}
