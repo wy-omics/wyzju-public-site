@@ -10,7 +10,7 @@ const coAuthorPapers = [...papers].filter((p: any) => !isFirstCorr(p)).sort((a: 
 
 const total = papers.length
 const firstCorr = firstCorrPapers.length
-const highIf = papers.filter((p: any) => p.jif != null && p.jif >= 10).length
+const highIf = firstCorrPapers.filter((p: any) => p.jif != null && p.jif >= 10).length
 const fmtIf = (v: number) => Number.isInteger(v) ? v.toFixed(1) : String(v)
 
 function groupByYear(list: any[]) {

@@ -10,7 +10,7 @@ const isFirstCorr = (p: any) =>
 
 const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a:any,b:any) => b.date?.localeCompare(a.date))
 const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:any,b:any) => b.date?.localeCompare(a.date))
-const highIfCount = (papers as any[]).filter(p => p.jif != null && p.jif >= 10).length
+const highIfCount = firstCorrPapers.filter((p:any) => p.jif != null && p.jif >= 10).length
 const fmtIf = (v: number) => Number.isInteger(v) ? v.toFixed(1) : String(v)
 const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
 const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
