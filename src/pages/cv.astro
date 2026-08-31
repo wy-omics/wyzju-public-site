@@ -124,9 +124,12 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
   .rb-cofirst  { background: #bfdbfe; color: #1e3a8a }
   .if-badge  { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 5px; vertical-align: middle }
   .if5-badge { display: inline-block; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: 700; margin-left: 3px; vertical-align: middle }
-  .if-high  { background: #059669; color: #fff }
-  .if-mid   { background: #0284c7; color: #fff }
-  .if-low   { background: #e5e7eb; color: #6b7280 }
+  .if-high  { background: #fee2e2; color: #991b1b }
+  .if-mid   { background: #dbeafe; color: #1e40af }
+  .if-low   { background: #e0e7ff; color: #4338ca }
+  .if5-high { background: #fce7f3; color: #9d174d }
+  .if5-mid  { background: #e0e7ff; color: #4338ca }
+  .if5-low  { background: #f1f5f9; color: #64748b }
 
   .yr-sep { font-size: 12px; font-weight: 700; color: #6b7280; margin: 14px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 2px }
 
@@ -305,7 +308,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
             {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
-            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : p.if5 >= 5 ? 'if5-mid' : 'if5-low'}`}>IF<sub>5</sub> {p.if5}</span>}
             {p.doi && <span>. DOI: {p.doi}</span>}
           </span>
         </div>
@@ -336,7 +339,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
             {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
-            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : p.if5 >= 5 ? 'if5-mid' : 'if5-low'}`}>IF<sub>5</sub> {p.if5}</span>}
           </span>
         </div>
       ))}

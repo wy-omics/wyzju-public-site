@@ -79,9 +79,12 @@ function wyRole(p: any): string {
     .badge-yellow { background: #fef3c7; color: #92400e }
     .if-badge  { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 6px; vertical-align: middle }
     .if5-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 4px; vertical-align: middle }
-    .if-high  { background: #059669; color: #fff }
-    .if-mid   { background: #0284c7; color: #fff }
-    .if-low   { background: #e5e7eb; color: #6b7280 }
+    .if-high  { background: #fee2e2; color: #991b1b }
+    .if-mid   { background: #dbeafe; color: #1e40af }
+    .if-low   { background: #e0e7ff; color: #4338ca }
+    .if5-high { background: #fce7f3; color: #9d174d }
+    .if5-mid  { background: #e0e7ff; color: #4338ca }
+    .if5-low  { background: #f1f5f9; color: #64748b }
     .role-badge { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-weight: 700; vertical-align: middle; margin-left: 6px }
     .rb-corr       { background: #1e40af; color: #fff }
     .rb-lastcorr   { background: #1e40af; color: #fff }
@@ -128,7 +131,7 @@ function wyRole(p: any): string {
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
                     {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
-                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : p.if5 >= 5 ? 'if5-mid' : 'if5-low'}`}>IF<sub>5</sub> {p.if5}</span>}
                   </div>
                 </div>
               </div>
@@ -169,7 +172,7 @@ function wyRole(p: any): string {
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
                     {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : p.jif >= 5 ? 'if-mid' : 'if-low'}`}>IF {p.jif}</span>}
-                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if-high' : p.if5 >= 5 ? 'if-mid' : 'if-low'}`}>IF<sub>5</sub> {p.if5}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : p.if5 >= 5 ? 'if5-mid' : 'if5-low'}`}>IF<sub>5</sub> {p.if5}</span>}
                   </div>
                 </div>
               </div>
