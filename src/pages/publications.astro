@@ -10,6 +10,8 @@ const coAuthorPapers = [...papers].filter((p: any) => !isFirstCorr(p)).sort((a: 
 
 const total = papers.length
 const firstCorr = firstCorrPapers.length
+const highIf = papers.filter((p: any) => p.jif != null && p.jif >= 10).length
+const fmtIf = (v: number) => Number.isInteger(v) ? v.toFixed(1) : String(v)
 
 function groupByYear(list: any[]) {
   const byYear: Record<string, any[]> = {}
@@ -93,7 +95,7 @@ function wyRole(p: any): string {
 
   <div class="page-header">
     <h1>论文</h1>
-    <p>共 {total} 篇期刊论文 · 其中第一/通讯作者 {firstCorr} 篇</p>
+    <p>共 {total} 篇期刊论文 · 其中第一/通讯作者 {firstCorr} 篇 · 影响因子 ≥10 共 {highIf} 篇</p>
   </div>
 
   <div class="section-title">第一或通讯作者 / First or Corresponding Author</div>
@@ -128,8 +130,8 @@ function wyRole(p: any): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
                   </div>
                 </div>
               </div>
@@ -169,8 +171,8 @@ function wyRole(p: any): string {
                     {p.volume && `, ${p.volume}`}
                     {p.issue && `(${p.issue})`}
                     {p.pages && `, ${p.pages}`}
-                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+                    {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+                    {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
                   </div>
                 </div>
               </div>

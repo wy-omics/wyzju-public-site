@@ -62,7 +62,9 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -99,7 +101,9 @@
     "jif": 13.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -164,7 +168,9 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -193,14 +199,16 @@
     "volume": null,
     "issue": null,
     "pages": null,
-    "if5": 7.0,
+    "if5": 7,
     "author_role": "co_author",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BHorticultural%20Plant%20Journal%5D%20Methyl%20salicylate-induced%20CitERF92%20promotes%20the%20accumulation%20of%20PMFs%20in%20citrus.pdf",
     "jif": 7.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -228,7 +236,7 @@
     "volume": "7",
     "issue": "4",
     "pages": "e70186",
-    "if5": 5.0,
+    "if5": 5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BeFood%5D%20Microbial%20Oxidative%20Stress%20in%20Food%20Fermentations%20%20A%20Comprehensive%20Review.pdf",
@@ -344,7 +352,9 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -408,7 +418,9 @@
     "jif": 4.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Cao Jinping"
+    ],
     "co_first_authors": []
   },
   {
@@ -436,7 +448,7 @@
     "volume": "6",
     "issue": "3",
     "pages": "e70057",
-    "if5": 5.0,
+    "if5": 5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BeFood%5D%20A%20Comprehensive%20Review%20of%20VOCs%20as%20a%20Key%20Indicator%20in%20Food%20Authentication.pdf",
@@ -484,7 +496,10 @@
     "jif": 6.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Zheng Yixiong",
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -515,7 +530,9 @@
     "jif": 6.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -542,7 +559,7 @@
     "volume": "6",
     "issue": "3",
     "pages": "e70064",
-    "if5": 5.0,
+    "if5": 5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BeFood%5D%20Anti-Inflammatory%20and%20Antioxidant%20Activities%20of%20Polyphenols%20From%20Loquat.pdf",
@@ -590,7 +607,9 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -623,7 +642,9 @@
     "jif": 6.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -657,7 +678,9 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Cao Jinping"
+    ],
     "co_first_authors": []
   },
   {
@@ -686,7 +709,9 @@
     "jif": 10.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -710,7 +735,7 @@
     "volume": "6",
     "issue": "5",
     "pages": "e70092",
-    "if5": 5.0,
+    "if5": 5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BeFood%5D%20The%20Effects%20of%20Food%20on%20Circadian%20Rhythm%20%20A%20Comprehensive%20Review.pdf",
@@ -748,7 +773,9 @@
     "is_highly_cited": false,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": []
   },
   {
@@ -807,7 +834,9 @@
     "jif": 5.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Cao Jinping"
+    ],
     "co_first_authors": []
   },
   {
@@ -837,7 +866,9 @@
     "jif": 5.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Li Dongliang"
+    ],
     "co_first_authors": []
   },
   {
@@ -954,7 +985,7 @@
     "if5": 1.8,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "jif": 2.0,
+    "jif": 2,
     "is_corresponding": true,
     "is_co_first": false,
     "corresponding_authors": [
@@ -993,7 +1024,9 @@
     "jif": 5.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1094,7 +1127,9 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1190,7 +1225,9 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Cui"
+    ],
     "co_first_authors": []
   },
   {
@@ -1224,7 +1261,9 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": [
       "Zheng Juan",
       "Zhao Chenning"
@@ -1258,7 +1297,9 @@
     "jif": 9.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1354,7 +1395,9 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1381,7 +1424,9 @@
     "is_highly_cited": false,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": []
   },
   {
@@ -1407,7 +1452,9 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1467,7 +1514,9 @@
     "jif": 10.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1500,7 +1549,9 @@
     "jif": 5.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Zheng Yixiong"
+    ],
     "co_first_authors": [
       "Wang Yanshuai",
       "Chen Jiebiao"
@@ -1534,7 +1585,9 @@
     "jif": 3.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1597,7 +1650,9 @@
     "jif": 5.9,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Cao Jinping"
+    ],
     "co_first_authors": []
   },
   {
@@ -1628,7 +1683,9 @@
     "jif": 13.8,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1658,7 +1715,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bshipinyufajiaogongye%5D%20QuEChERS-HPLC.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "陈青俊"
+    ],
     "co_first_authors": []
   },
   {
@@ -1691,7 +1750,9 @@
     "jif": 3.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Cao Jinping"
+    ],
     "co_first_authors": []
   },
   {
@@ -1720,7 +1781,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bzjuxuebao%5D%20butongpinzhongganju.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": [
       "朱泰霖",
       "王慧心"
@@ -1752,7 +1815,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5Bzjuxuebao%5D%20woguozhuyao.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": [
       "梁姣娇",
       "陈云义"
@@ -1784,10 +1849,12 @@
     "author_role": "co_author",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5BFood%20Science%20%26%20Nutrition%5D%20Limonin%20induces%20apoptosis%20of%20HL-60%20cells%20by%20inhibiting%20NQO1%20activity.pdf",
-    "jif": 5.0,
+    "jif": 5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Chen Qingjun"
+    ],
     "co_first_authors": []
   },
   {
@@ -1878,7 +1945,9 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -1907,7 +1976,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bzjuxuebao%5D%20woguoguoshu.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": []
   },
   {
@@ -1936,7 +2007,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bzjuxuebao%5D%20gaoyajingdian.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "孙崇德"
+    ],
     "co_first_authors": []
   },
   {
@@ -1967,7 +2040,10 @@
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": true,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Lin Qiong",
+      "Cao Jinping"
+    ],
     "co_first_authors": [
       "Liang Xiao",
       "Wang Yue"
@@ -2036,7 +2112,9 @@
     "jif": 6.5,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -2100,7 +2178,9 @@
     "jif": 7.3,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -2164,7 +2244,9 @@
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -2193,7 +2275,9 @@
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2019%20%5Bzjuxuebao%5D%20chaoshengfuzhu.pdf",
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "曹锦萍"
+    ],
     "co_first_authors": []
   },
   {
@@ -2253,7 +2337,9 @@
     "jif": 4.6,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -2311,7 +2397,9 @@
     "jif": 10.4,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
     "co_first_authors": []
   },
   {
@@ -2375,7 +2463,9 @@
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": false,
-    "corresponding_authors": [],
+    "corresponding_authors": [
+      "Li Xian"
+    ],
     "co_first_authors": []
   },
   {

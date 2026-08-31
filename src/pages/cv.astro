@@ -10,6 +10,8 @@ const isFirstCorr = (p: any) =>
 
 const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a:any,b:any) => b.date?.localeCompare(a.date))
 const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:any,b:any) => b.date?.localeCompare(a.date))
+const highIfCount = (papers as any[]).filter(p => p.jif != null && p.jif >= 10).length
+const fmtIf = (v: number) => Number.isInteger(v) ? v.toFixed(1) : String(v)
 
 const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
 const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
@@ -194,7 +196,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
 
   <div class="s-title">科研统计</div>
   <div class="item" style="padding-left:0">
-    期刊论文 <strong>{papers.length}</strong> 篇（第一/通讯作者 <strong>{firstCorrPapers.length}</strong> 篇，高被引论文 <strong>2</strong> 篇）·
+    期刊论文 <strong>{papers.length}</strong> 篇（第一/通讯作者 <strong>{firstCorrPapers.length}</strong> 篇，影响因子≥10共 <strong>{highIfCount}</strong> 篇，高被引 <strong>2</strong> 篇）·
     被引 <strong>2200+</strong> 次 · H-index <strong>27</strong> · i10-index <strong>40</strong> ·
     授权专利 <strong>{(patents as any[]).length}</strong> 项（第一发明人 <strong>{firstPatents.length}</strong> 项）·
     软件著作权 <strong>{software.length}</strong> 项 · 行业/企业标准 <strong>{(standards as any[]).length}</strong> 项
@@ -305,8 +307,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
             {p.issue && `(${p.issue})`}
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
-            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
             {p.doi && <span>. DOI: {p.doi}</span>}
           </span>
         </div>
@@ -336,8 +338,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
             {p.issue && `(${p.issue})`}
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
-            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
           </span>
         </div>
       ))}

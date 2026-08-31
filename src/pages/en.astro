@@ -10,6 +10,8 @@ const isFirstCorr = (p: any) =>
 
 const firstCorrPapers = [...papers].filter(isFirstCorr).sort((a:any,b:any) => b.date?.localeCompare(a.date))
 const coAuthorPapers  = [...papers].filter((p:any) => !isFirstCorr(p)).sort((a:any,b:any) => b.date?.localeCompare(a.date))
+const highIfCount = (papers as any[]).filter(p => p.jif != null && p.jif >= 10).length
+const fmtIf = (v: number) => Number.isInteger(v) ? v.toFixed(1) : String(v)
 const firstPatents = (patents as any[]).filter(p => p.inventors?.[0]==='王岳'||p.inventors?.[0]==='Wang Yue')
 const coPatents    = (patents as any[]).filter(p => p.inventors?.[0]!=='王岳'&&p.inventors?.[0]!=='Wang Yue')
 
@@ -187,7 +189,7 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
 
   <div class="s-title">Research Metrics</div>
   <div class="item" style="padding-left:0">
-    {papers.length} journal papers ({firstCorrPapers.length} as first/corresponding author, 2 highly cited) ·
+    {papers.length} journal papers ({firstCorrPapers.length} as first/corresponding author, {highIfCount} with IF≥10, 2 highly cited) ·
     <strong>2,200+</strong> citations · H-index <strong>27</strong> · i10-index <strong>40</strong> ·
     {(patents as any[]).length} patents ({firstPatents.length} as first inventor) ·
     {software.length} software copyrights · {(standards as any[]).length} standards
@@ -289,8 +291,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
               {p.issue && `(${p.issue})`}
               {p.pages && `, ${p.pages}`}
               {p.date && ` (${p.date.slice(0,4)})`}
-              {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-              {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+              {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+              {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
               {p.doi && <span>. DOI: {p.doi}</span>}
             </span>
           </div>
@@ -321,8 +323,8 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
             {p.issue && `(${p.issue})`}
             {p.pages && `, ${p.pages}`}
             {p.date && ` (${p.date.slice(0,4)})`}
-            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {p.jif}</span>}
-            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {p.if5}</span>}
+            {p.jif != null && <span class={`if-badge ${p.jif >= 10 ? 'if-high' : 'if-mid'}`}>IF {fmtIf(p.jif)}</span>}
+            {p.if5 != null && <span class={`if5-badge ${p.if5 >= 10 ? 'if5-high' : 'if5-mid'}`}>IF<sub>5</sub> {fmtIf(p.if5)}</span>}
           </span>
         </div>
       ))}
