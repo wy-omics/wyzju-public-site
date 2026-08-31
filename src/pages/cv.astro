@@ -90,6 +90,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
   .jname { font-style: italic }
   .badge-hc { display: inline-block; background: #fef3c7; color: #92400e; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
   .badge-pdf { display: inline-block; background: #d1fae5; color: #065f46; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle; text-decoration: none }
+  .badge-corr { display: inline-block; background: #fce7f3; color: #9d174d; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
+  .badge-cofirst { display: inline-block; background: #ede9fe; color: #5b21b6; font-size: 10px; font-weight: 700; padding: 1px 5px; border-radius: 3px; margin-left: 5px; vertical-align: middle }
 
   .yr-sep { font-size: 12px; font-weight: 700; color: #6b7280; margin: 14px 0 6px; border-bottom: 1px solid var(--border); padding-bottom: 2px }
 
@@ -126,7 +128,7 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
         副研究员（Associate Researcher）<br />
         浙江大学 农业与生物技术学院 / 新农村发展研究院<br />
         特种作物数智化技术研究中心 副主任<br />
-        <span style="font-size:12.5px;color:#6b7280">College of Agriculture and Biotechnology / New Countryside Development Research Institute, Zhejiang University</span>
+        <span style="font-size:12.5px;color:#6b7280">College of Agriculture and Biotechnology / The Rural Development Academy Agricultural Research Station, Zhejiang University</span>
       </div>
       <div class="cv-contact">
         ✉ <a href="mailto:fruit@zju.edu.cn">fruit@zju.edu.cn</a>
@@ -253,6 +255,8 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
               : p.title}
             {p.is_highly_cited && <span class="badge-hc">高被引</span>}
             {p.pdf_url && <a href={p.pdf_url} target="_blank" rel="noopener" class="badge-pdf">PDF</a>}
+            {p.is_corresponding && <span class="badge-corr">通讯</span>}
+            {p.is_co_first && <span class="badge-cofirst">共同第一</span>}
           </span>
           <br />
           <span class="pmeta">
