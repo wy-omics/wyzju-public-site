@@ -2501,5 +2501,73 @@
       "Sun Chongde"
     ],
     "co_first_authors": []
+  },
+  {
+    "title": "Machine Learning-Guided Stress Atlases Reveal Co-Expression Rewiring and Divergent Cellular Deployment of Abiotic Stress Programs in Rice and Wheat",
+    "authors": [
+      "Wang Zixuan",
+      "Ge Zhouxuan",
+      "Chao Haoyu",
+      "Zatybekov Alibek",
+      "He Qirong",
+      "Zheng Xiaoying",
+      "Wang Yue",
+      "Zhang Shilong",
+      "Zhao Zhimeng",
+      "Yao Renbo",
+      "Ivanisenko Vladimir",
+      "Feng Cong",
+      "Chen Ming"
+    ],
+    "corresponding_authors": [
+      "Feng Cong",
+      "Chen Ming"
+    ],
+    "co_first_authors": [
+      "Wang Zixuan",
+      "Ge Zhouxuan"
+    ],
+    "journal": "International Journal of Molecular Sciences",
+    "volume": "27",
+    "pages": "7005",
+    "date": "2026-08-04",
+    "doi": "10.3390/ijms27157005",
+    "jif": 5.6,
+    "if5": 6.3,
+    "author_role": "co_author",
+    "is_highly_cited": false,
+    "is_corresponding": false,
+    "is_co_first": false
+  },
+  {
+    "title": "Transcriptomic Analysis Reveals the Molecular Mechanisms Underlying Heat-Induced Suppression of Polymethoxyflavone Accumulation in Citrus Leaves",
+    "authors": [
+      "Liu Xiaojuan",
+      "Liao Zhenkun",
+      "Hu Honghu",
+      "Zhou Chenwen",
+      "Wang Dengliang",
+      "Liu Lili",
+      "Wang Yue",
+      "Sun Chongde"
+    ],
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
+    "co_first_authors": [
+      "Liu Xiaojuan",
+      "Liao Zhenkun"
+    ],
+    "journal": "Horticulturae",
+    "volume": "12",
+    "pages": "1053",
+    "date": "2026-08-23",
+    "doi": "10.3390/horticulturae12091053",
+    "jif": 3.4,
+    "if5": 3.7,
+    "author_role": "co_author",
+    "is_highly_cited": false,
+    "is_corresponding": false,
+    "is_co_first": false
   }
 ]
