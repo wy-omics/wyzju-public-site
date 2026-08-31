@@ -100,6 +100,9 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
     padding-bottom: 4px; margin: 28px 0 12px;
   }
   .item { margin-bottom: 8px; font-size: 13.5px; line-height: 1.65; color: #1f2937 }
+  .rd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-bottom: 4px }
+  .rd-item { font-size: 13px; line-height: 1.6; color: #1f2937 }
+  .rd-item h3 { font-size: 13px; font-weight: 700; color: #1d4ed8; margin-bottom: 3px }
   .item .year { display: inline-block; min-width: 140px; color: #6b7280; font-size: 12.5px; vertical-align: top }
   .item .body { display: inline-block; width: calc(100% - 150px); vertical-align: top }
 
@@ -170,9 +173,28 @@ const coGroupsNum = groupByYear(coAuthorPapers).map(({ yr, pubs }) => ({
   </div>
 
   <div class="s-title">Research Interests</div>
-  <p class="item" style="padding-left:0">
-    Nutritional and flavor quality of fruits. Focused on elucidating the biosynthetic regulation, quality evolution, and endophyte-driven mechanisms of bioactive compounds in citrus and other fruits, alongside their health-promoting effects, and the development of AI-based agricultural databases and intelligent agents.
-  </p>
+  <div class="rd-grid">
+    <div class="rd-item">
+      <h3>Biosynthesis &amp; Metabolic Regulation of Bioactive Compounds</h3>
+      Focusing on polymethoxyflavones (PMFs), anthocyanins, and limonoids, we characterize key biosynthetic enzyme genes and metabolic pathways, and use integrated genomic–metabolomic approaches to reveal the molecular basis of bioactive compound divergence across citrus varieties.
+    </div>
+    <div class="rd-item">
+      <h3>Health Benefits &amp; Gut Microbiota Mechanisms</h3>
+      Systematically evaluating the antioxidant, anti-inflammatory, anti-tumor, and gut microbiota-modulatory effects of citrus flavonoids and anthocyanins, with a focus on the dietary polyphenol–gut microbiome–host metabolism axis.
+    </div>
+    <div class="rd-item">
+      <h3>Fruit Endophytes &amp; Microbial Fermentation</h3>
+      Characterizing endophytic microbial diversity and function in citrus fruits, investigating endophyte-mediated fermentation processes and oxidative stress responses, and developing standardized protocols for endophyte isolation and cryopreservation.
+    </div>
+    <div class="rd-item">
+      <h3>Postharvest Quality &amp; Preservation</h3>
+      Investigating postharvest quality deterioration in fruits and developing green preservation technologies — including polysaccharide-based coatings, essential oil/cyclodextrin inclusion complexes, and ultrasound-assisted treatments — to extend shelf life and reduce postharvest losses.
+    </div>
+    <div class="rd-item">
+      <h3>AI Databases &amp; Intelligent Agents for Agricultural Research</h3>
+      Building structured foundational databases for agricultural science and exploring the application of large language models in literature curation, data mining, and research decision support to advance AI-driven agricultural innovation.
+    </div>
+  </div>
 
   <div class="s-title">Education</div>
   <div class="item"><span class="year">2015.09 – 2020.06</span><span class="body">Zhejiang University · Pomology · <strong>Ph.D.</strong> (Supervisor: Prof. Chongde Sun)</span></div>

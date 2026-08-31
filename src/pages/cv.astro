@@ -106,6 +106,9 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
     padding-bottom: 4px; margin: 28px 0 12px;
   }
   .item { margin-bottom: 8px; font-size: 13.5px; line-height: 1.65; color: #1f2937 }
+  .rd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-bottom: 4px }
+  .rd-item { font-size: 13px; line-height: 1.6; color: #1f2937 }
+  .rd-item h3 { font-size: 13px; font-weight: 700; color: #1d4ed8; margin-bottom: 3px }
   .item .year { display: inline-block; min-width: 130px; color: #6b7280; font-size: 12.5px; vertical-align: top }
   .item .body { display: inline-block; width: calc(100% - 140px); vertical-align: top }
 
@@ -177,9 +180,28 @@ const coGroupsNum = coGroups.map(({ yr, pubs }) => ({
   </div>
 
   <div class="s-title">研究方向</div>
-  <p class="item" style="padding-left:0">
-    果实营养与风味品质。重点解析柑橘等果实品质活性物质的生物合成调控、品质演化与内生菌驱动机制及其健康功效，同时开展面向农业科研的 AI 基础数据库构建与智能体开发。
-  </p>
+  <div class="rd-grid">
+    <div class="rd-item">
+      <h3>活性物质生物合成与代谢调控</h3>
+      以多甲氧基类黄酮（PMFs）、花青素、柠檬苦素等为核心，解析生物合成关键酶基因功能与代谢通路，结合基因组与代谢组整合分析，揭示柑橘品种间活性物质分化的分子机制。
+    </div>
+    <div class="rd-item">
+      <h3>活性物质健康功效与肠道微生物机制</h3>
+      系统评价柑橘类黄酮、花青素等的抗氧化、抗炎、抗肿瘤及肠道微生物调节效应，聚焦"膳食多酚—肠道菌群—宿主代谢"轴的互作机制。
+    </div>
+    <div class="rd-item">
+      <h3>果实内生菌与微生物发酵</h3>
+      解析柑橘果实内生菌群落的多样性与功能，研究内生菌介导的食品发酵过程及微生物氧化应激响应，并开发内生菌标准化分离保藏操作规程。
+    </div>
+    <div class="rd-item">
+      <h3>果实采后品质保鲜</h3>
+      研究果实采后品质劣变规律，开发多糖基涂膜、精油/环糊精包合物及超声辅助保鲜等绿色技术，系统评价保鲜效果与机制，延长货架期并减少采后损失。
+    </div>
+    <div class="rd-item">
+      <h3>农业科研 AI 数据库与智能体</h3>
+      面向农业科学研究需求，构建结构化基础数据库，探索大语言模型在科研文献整理、数据挖掘与辅助决策中的应用，推动 AI 赋能农业科技创新。
+    </div>
+  </div>
 
   <div class="s-title">教育经历</div>
   <div class="item"><span class="year">2015.09 – 2020.06</span><span class="body">浙江大学，果树学，<strong>博士</strong>；导师：孙崇德 教授</span></div>
