@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro'
+---
+<Base title="奖励" description="王岳，浙江大学，荣誉与奖励">
+  <style>
+    .page-header { margin-bottom: 32px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
+    .page-header p { color: var(--gray); font-size: 14px }
+    .award-list { display: flex; flex-direction: column; gap: 14px }
+    .award-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; display: flex; gap: 20px; align-items: flex-start }
+    .award-year { min-width: 72px; font-size: 13px; color: var(--gray); font-weight: 600; padding-top: 2px; flex-shrink: 0 }
+    .award-body { flex: 1; font-size: 14px; line-height: 1.7; color: #374151 }
+    .award-body strong { color: #111827 }
+    .award-name { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px }
+    .award-detail { font-size: 13px; color: var(--gray); margin-top: 2px }
+    .badge-gold { display: inline-block; background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle }
+    .badge-first { display: inline-block; background: #fee2e2; color: #991b1b; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle }
+    .badge-blue { display: inline-block; background: #dbeafe; color: #1e40af; font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle }
+    h2 { font-size: 17px; font-weight: 700; margin: 32px 0 14px; padding-bottom: 8px; border-bottom: 2px solid var(--border) }
+  </style>
+
+  <div class="page-header">
+    <h1>奖励</h1>
+    <p>科研奖励 · 教学与竞赛指导奖励</p>
+  </div>
+
+  <h2>科研奖励</h2>
+  <div class="award-list">
+    <div class="award-card">
+      <div class="award-year">2023</div>
+      <div class="award-body">
+        <div class="award-name">高等学校科学研究优秀成果奖（科学技术）<span class="badge-first">一等奖</span></div>
+        <div>奖励类别：科学技术进步奖</div>
+        <div class="award-detail">项目：柑橘贮藏物流保鲜关键技术研发与应用 · 主要完成人 · 主办：教育部</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>学术交流奖励</h2>
+  <div class="award-list">
+    <div class="award-card">
+      <div class="award-year">2024.11</div>
+      <div class="award-body">
+        <div class="award-name">最佳汇报奖<span class="badge-gold">Best Presentation</span></div>
+        <div class="award-detail">第二届农业食品青年科学家学术沙龙 · 山东 济南</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>教学与竞赛指导奖励</h2>
+  <div class="award-list">
+    <div class="award-card">
+      <div class="award-year">2025.10</div>
+      <div class="award-body">
+        <div class="award-name">优秀创新创业导师<span class="badge-gold">中国国际大学生创新大赛（2025）</span></div>
+        <div class="award-detail">指导学生项目《星植幻境—全球最亮发光植物引领科幻走进现实》荣获金奖<span class="badge-gold" style="margin-left:6px">金奖</span></div>
+        <div class="award-detail">指导老师：都浩、吴晓波、孙崇德、王岳 · 主办：教育部等</div>
+      </div>
+    </div>
+  </div>
+</Base>
