@@ -2569,5 +2569,35 @@
     "is_highly_cited": false,
     "is_corresponding": false,
     "is_co_first": false
+  },
+  {
+    "title": "Effects of Early Light-Quality Pretreatment During Withering on the Taste and Aroma Quality of Autumn White Tea",
+    "authors": [
+      "Cao Hujing",
+      "Sun Jing",
+      "Song Yixin",
+      "Huang Haoyu",
+      "Zhu Yan",
+      "Zhu Xujun",
+      "Wang Yue",
+      "Tian Jingjing"
+    ],
+    "corresponding_authors": [
+      "Zhu Xujun",
+      "Wang Yue",
+      "Tian Jingjing"
+    ],
+    "co_first_authors": [],
+    "journal": "Food Frontiers",
+    "volume": "7",
+    "pages": "e70356",
+    "date": "2026-07-30",
+    "doi": "10.1002/fft2.70356",
+    "jif": 6.3,
+    "if5": 7.6,
+    "author_role": "corresponding",
+    "is_highly_cited": false,
+    "is_corresponding": true,
+    "is_co_first": false
   }
 ]
