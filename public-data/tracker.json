@@ -23,7 +23,7 @@
     "project_number": "226-2026-00062",
     "target_papers": 5,
     "papers": [
-      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 6}
+      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 7}
     ],
     "patents": [],
     "students": [],
@@ -35,19 +35,19 @@
     "target_papers": 5,
     "papers": [
       {"paper_id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd", "status": "已发表", "fund_marked": true, "fund_order": 1},
-      {"paper_id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "3e4cac19-773d-424c-b5e0-53ca64d4fca9", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "ab15d531-f34e-43da-b3ae-9f4addafad9c", "status": "已发表", "fund_marked": true, "fund_order": 1},
-      {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "4b3d5bb2-d0a5-47be-b6d1-9be3619d2b88", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "904e8316-7253-4c90-9eb5-0be796d15ac4", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 1},
-      {"paper_id": "2fe46d0c-19f4-48b7-b348-06f66a2d4965", "status": "已发表", "fund_marked": true, "fund_order": 1},
-      {"paper_id": "3c8b675e-f86e-477e-aeff-636035f13d0f", "status": "已发表", "fund_marked": true, "fund_order": 1},
+      {"paper_id": "2fe46d0c-19f4-48b7-b348-06f66a2d4965", "status": "已发表", "fund_marked": true, "fund_order": 2},
+      {"paper_id": "3c8b675e-f86e-477e-aeff-636035f13d0f", "status": "已发表", "fund_marked": true, "fund_order": 2},
       {"paper_id": "90356dd5-a74c-497c-beef-839e06f2ab47", "status": "已发表", "fund_marked": true, "fund_order": 2},
       {"paper_id": "2fd9cbdb-83c0-4145-8864-998c356999e7", "status": "已发表", "fund_marked": true, "fund_order": 2},
-      {"paper_id": "27dce7f1-fd45-4435-8fa5-0d211f26af40", "status": "已发表", "fund_marked": true, "fund_order": 3},
-      {"paper_id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0", "status": "已发表", "fund_marked": true, "fund_order": 3},
+      {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表", "fund_marked": true, "fund_order": 3},
+      {"paper_id": "27dce7f1-fd45-4435-8fa5-0d211f26af40", "status": "已发表", "fund_marked": true, "fund_order": 4},
+      {"paper_id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0", "status": "已发表", "fund_marked": true, "fund_order": 4},
+      {"paper_id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c", "status": "已发表", "fund_marked": true, "fund_order": 5},
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 5}
     ],
     "patents": [],
