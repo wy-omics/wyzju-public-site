@@ -1,5 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro'
+import papersRaw from '../../../public-data/papers.json'
+import patentsRaw from '../../../public-data/patents.json'
+import trackerRaw from '../../../public-data/tracker.json'
 
 const active = [
   { type: '国家自然科学基金面上项目', cn: '柑橘内生假单胞菌介导的陈皮关键品质形成及其SoxR–SoxS–zwf轴调控机制', number: '32672846', period: '2027.01~2030.12' },
@@ -14,135 +17,211 @@ const active = [
   { type: '横向项目', cn: '衢州柑橘果实风味和营养评价研究', number: '2025-KYY-600101-0017', period: '2026.01~2026.12' },
 ]
 
-import trackerRaw from '../../../public-data/tracker.json'
+const paperMap: Record<string, any> = {}
+for (const p of papersRaw as any[]) paperMap[p.id] = p
+
+const patentMap: Record<string, any> = {}
+for (const p of patentsRaw as any[]) patentMap[p.id] = p
+
 const tracker: Record<string, any> = {}
-for (const t of trackerRaw as any[]) {
-  tracker[t.project_number] = t
+for (const t of trackerRaw as any[]) tracker[t.project_number] = t
+
+function authorPos(paper: any): string {
+  const name = 'Wang Yue'
+  const isCorr = paper.is_corresponding === true
+  const isCoFirst = paper.is_co_first === true || (paper.co_first_authors && paper.co_first_authors.includes(name))
+  const idx = paper.authors ? paper.authors.indexOf(name) : -1
+  const isFirst = idx === 0
+  if (isFirst && isCoFirst && isCorr) return '共一/通讯'
+  if (isFirst && isCorr) return '第一/通讯'
+  if (isCoFirst && isCorr) return '共一/通讯'
+  if (isCorr) return '通讯'
+  if (isCoFirst) return '共同第一'
+  if (isFirst) return '第一'
+  if (idx > 0) return `第${idx + 1}`
+  return '参与'
 }
 
-const statusColor: Record<string, string> = {
-  '已发表': '#dcfce7',
-  '在审': '#fef9c3',
-  '撰写中': '#e0f2fe',
-  '已标注': '#d1fae5',
-  '待标注': '#fef3c7',
-  '已授权': '#dcfce7',
-  '实质审查': '#e0f2fe',
-  '申请中': '#fef9c3',
+function posColor(pos: string): string {
+  if (pos.includes('通讯') || pos.includes('第一')) return '#1e40af|#dbeafe'
+  return '#374151|#f3f4f6'
 }
-const statusText: Record<string, string> = {
-  '已发表': '#166534',
-  '在审': '#92400e',
-  '撰写中': '#075985',
-  '已标注': '#166534',
-  '待标注': '#92400e',
-  '已授权': '#166534',
-  '实质审查': '#075985',
-  '申请中': '#92400e',
+
+function resolveYear(dateStr: string): string {
+  return dateStr ? dateStr.slice(0, 4) : ''
 }
 ---
 <Base title="项目进度" description="王岳在研项目执行进度追踪">
   <style>
-    .page-header { margin-bottom: 32px }
-    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
-    .page-header p { color: var(--gray); font-size: 14px }
-    .proj-block { margin-bottom: 32px }
-    .proj-head { background: #fff; border: 1px solid var(--border); border-radius: 8px 8px 0 0; padding: 14px 18px; border-bottom: 2px solid var(--blue) }
-    .proj-type-tag { font-size: 12px; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 2px 9px; border-radius: 4px; margin-right: 8px }
-    .proj-period-tag { font-size: 12px; font-weight: 600; color: #fff; background: #059669; padding: 2px 8px; border-radius: 4px }
-    .proj-title { font-size: 15px; font-weight: 700; color: #111827; margin-top: 6px; line-height: 1.5 }
-    .proj-number { font-size: 12px; color: var(--gray); font-family: monospace; margin-top: 2px }
-    .proj-body { background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 0 }
-    .section { padding: 14px 18px; border-top: 1px solid var(--border) }
-    .section:first-child { border-top: none }
-    .sec-label { font-size: 12px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px }
-    .item-row { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: #374151; margin-bottom: 5px; line-height: 1.6 }
-    .item-row:last-child { margin-bottom: 0 }
+    .page-header { margin-bottom: 28px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 4px }
+    .page-header p { color: var(--gray); font-size: 13px }
+
+    .proj-block { margin-bottom: 28px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,.04) }
+
+    .proj-head { background: #fff; padding: 14px 18px; border-bottom: 2px solid #1d4ed8 }
+    .proj-head-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap }
+    .tag-type { font-size: 11px; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 2px 8px; border-radius: 4px }
+    .tag-period { font-size: 11px; font-weight: 600; color: #fff; background: #059669; padding: 2px 8px; border-radius: 4px }
+    .proj-title { font-size: 15px; font-weight: 700; color: #111827; line-height: 1.5 }
+    .proj-num { font-size: 11px; color: var(--gray); font-family: monospace; margin-top: 2px }
+
+    .section { background: #fff; padding: 12px 18px; border-top: 1px solid var(--border) }
+    .sec-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px }
+
+    /* paper row */
+    .paper-row { display: flex; flex-direction: column; gap: 3px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #f3f4f6 }
+    .paper-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none }
+    .paper-title { font-size: 13px; color: #111827; line-height: 1.55; font-weight: 500 }
+    .paper-title a { color: #111827 }
+    .paper-title a:hover { color: var(--blue) }
+    .paper-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; margin-top: 3px }
+    .meta-journal { font-size: 12px; color: var(--gray); font-style: italic }
+    .meta-year { font-size: 11px; color: #9ca3af }
+    .badge { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 3px; white-space: nowrap }
+    .badge-if { background: #fef3c7; color: #92400e }
+    .badge-if5 { background: #fef9c3; color: #713f12 }
+    .badge-pos-highlight { background: #dbeafe; color: #1e40af }
+    .badge-pos { background: #f3f4f6; color: #374151 }
+    .badge-pub { background: #dcfce7; color: #166534 }
+    .badge-review { background: #fef9c3; color: #92400e }
+    .badge-writing { background: #e0f2fe; color: #075985 }
+    .badge-marked { background: #d1fae5; color: #166534 }
+    .badge-unmarked { background: #fef3c7; color: #92400e }
+
+    /* patent row */
+    .patent-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px }
+    .patent-row:last-child { margin-bottom: 0 }
     .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 6px }
-    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0 }
-    .student-type { font-size: 11px; color: var(--gray); margin-left: 2px }
-    .milestone-date { font-size: 11px; font-family: monospace; color: var(--gray); white-space: nowrap; flex-shrink: 0 }
+    .patent-title { flex: 1; color: #111827; line-height: 1.55 }
+    .patent-num { font-size: 11px; color: var(--gray); font-family: monospace }
+
+    /* student row */
+    .student-row { display: flex; align-items: center; gap: 8px; font-size: 13px; margin-bottom: 6px }
+    .student-row:last-child { margin-bottom: 0 }
+    .student-name { font-weight: 600; color: #111827 }
+    .student-info { color: var(--gray); font-size: 12px }
+    .student-topic { color: #6b7280; font-size: 12px }
+
     .notes-text { font-size: 13px; color: #374151; line-height: 1.7 }
-    .empty-hint { font-size: 12px; color: #d1d5db; font-style: italic }
+    .empty { font-size: 12px; color: #d1d5db; font-style: italic }
+
+    .milestone-row { display: flex; gap: 10px; font-size: 13px; margin-bottom: 5px }
+    .milestone-date { font-size: 11px; font-family: monospace; color: var(--gray); white-space: nowrap; padding-top: 2px }
   </style>
 
   <div class="page-header">
     <h1>项目进度追踪</h1>
-    <p>在研项目执行情况 · 论文 · 专利 · 研究生培养</p>
+    <p>在研项目 · 关联论文（IF / IF5 / 标注位次）· 专利 · 研究生</p>
   </div>
 
   {active.map(proj => {
     const t = tracker[proj.number] || {}
-    const papers = t.papers || []
-    const patents = t.patents || []
-    const students = t.students || []
-    const milestones = t.milestones || []
-    const notes = t.notes || ''
+    const papers: any[] = t.papers || []
+    const patents: any[] = t.patents || []
+    const students: any[] = t.students || []
+    const milestones: any[] = t.milestones || []
+    const notes: string = t.notes || ''
+
     return (
       <div class="proj-block">
         <div class="proj-head">
-          <div>
-            <span class="proj-type-tag">{proj.type}</span>
-            <span class="proj-period-tag">{proj.period}</span>
+          <div class="proj-head-top">
+            <span class="tag-type">{proj.type}</span>
+            <span class="tag-period">{proj.period}</span>
           </div>
           <div class="proj-title">{proj.cn}</div>
-          <div class="proj-number">{proj.number}</div>
+          <div class="proj-num">{proj.number}</div>
         </div>
-        <div class="proj-body">
 
-          <div class="section">
-            <div class="sec-label">论文</div>
-            {papers.length > 0 ? papers.map((p: any) => (
-              <div class="item-row">
-                <span class="dot" />
-                <span style="flex:1">{p.doi ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a> : p.title}</span>
-                {p.fund_marked !== undefined && (
-                  <span class="tag" style={`background:${p.fund_marked ? '#d1fae5' : '#fef3c7'};color:${p.fund_marked ? '#166534' : '#92400e'}`}>
-                    {p.fund_marked ? '已标注' : '待标注'}
-                  </span>
-                )}
-                {p.status && <span class="tag" style={`background:${statusColor[p.status]||'#f3f4f6'};color:${statusText[p.status]||'#374151'}`}>{p.status}</span>}
-              </div>
-            )) : <div class="empty-hint">暂无关联论文</div>}
-          </div>
+        {/* Papers */}
+        <div class="section">
+          <div class="sec-label">论文 ({papers.length})</div>
+          {papers.length > 0 ? papers.map((entry: any) => {
+            const p = entry.paper_id ? paperMap[entry.paper_id] : null
+            const title = p ? p.title : (entry.title || '（未命名）')
+            const doi = p ? p.doi : entry.doi
+            const journal = p ? p.journal : (entry.journal || '')
+            const year = p ? resolveYear(p.date) : (entry.year || '')
+            const jif = p ? p.jif : entry.jif
+            const if5 = p ? p.if5 : entry.if5
+            const pos = p ? authorPos(p) : ''
+            const posIsKey = pos.includes('通讯') || pos.includes('第一')
+            const status: string = entry.status || (p ? '已发表' : '')
+            const statusClass = status === '已发表' ? 'badge-pub' : status === '在审' ? 'badge-review' : 'badge-writing'
+            const fundMarked: boolean | undefined = entry.fund_marked
 
-          <div class="section">
-            <div class="sec-label">专利</div>
-            {patents.length > 0 ? patents.map((p: any) => (
-              <div class="item-row">
-                <span class="dot" />
-                <span style="flex:1">{p.title}{p.number ? <span style="color:var(--gray);font-size:12px;margin-left:6px">({p.number})</span> : ''}</span>
-                {p.status && <span class="tag" style={`background:${statusColor[p.status]||'#f3f4f6'};color:${statusText[p.status]||'#374151'}`}>{p.status}</span>}
-              </div>
-            )) : <div class="empty-hint">暂无关联专利</div>}
-          </div>
-
-          <div class="section">
-            <div class="sec-label">研究生培养</div>
-            {students.length > 0 ? students.map((s: any) => (
-              <div class="item-row">
-                <span class="dot" />
-                <span style="font-weight:600">{s.name}</span>
-                <span class="student-type">{s.type} · {s.year}</span>
-                {s.topic && <span style="color:var(--gray);font-size:12px">— {s.topic}</span>}
-              </div>
-            )) : <div class="empty-hint">暂无关联研究生</div>}
-          </div>
-
-          {(milestones.length > 0 || notes) && (
-            <div class="section">
-              <div class="sec-label">进展备注</div>
-              {milestones.map((m: any) => (
-                <div class="item-row">
-                  <span class="milestone-date">{m.date}</span>
-                  <span>{m.text}</span>
+            return (
+              <div class="paper-row">
+                <div class="paper-title" set:html={doi
+                  ? `<a href="https://doi.org/${doi}" target="_blank" rel="noopener">${title}</a>`
+                  : title} />
+                <div class="paper-meta">
+                  {journal && <span class="meta-journal">{journal}</span>}
+                  {year && <span class="meta-year">{year}</span>}
+                  {jif != null && <span class="badge badge-if">IF {jif}</span>}
+                  {if5 != null && <span class="badge badge-if5">IF5 {if5}</span>}
+                  {pos && <span class={`badge ${posIsKey ? 'badge-pos-highlight' : 'badge-pos'}`}>{pos}</span>}
+                  {status && <span class={`badge ${statusClass}`}>{status}</span>}
+                  {fundMarked !== undefined && (
+                    <span class={`badge ${fundMarked ? 'badge-marked' : 'badge-unmarked'}`}>
+                      {fundMarked ? '已标注' : '待标注'}
+                    </span>
+                  )}
                 </div>
-              ))}
-              {notes && <div class="notes-text">{notes}</div>}
-            </div>
-          )}
-
+              </div>
+            )
+          }) : <div class="empty">暂无关联论文</div>}
         </div>
+
+        {/* Patents */}
+        <div class="section">
+          <div class="sec-label">专利 ({patents.length})</div>
+          {patents.length > 0 ? patents.map((entry: any) => {
+            const p = entry.patent_id ? patentMap[entry.patent_id] : null
+            const title = p ? p.title : (entry.title || '（未命名）')
+            const number = p ? p.patent_number : (entry.number || '')
+            const status: string = entry.status || (p?.grant_date ? '已授权' : '申请中')
+            const statusClass = status === '已授权' ? 'badge-pub' : status === '实质审查' ? 'badge-review' : 'badge-writing'
+            return (
+              <div class="patent-row">
+                <span class="dot" />
+                <div style="flex:1">
+                  <span class="patent-title">{title}</span>
+                  {number && <span class="patent-num"> {number}</span>}
+                </div>
+                <span class={`badge ${statusClass}`}>{status}</span>
+              </div>
+            )
+          }) : <div class="empty">暂无关联专利</div>}
+        </div>
+
+        {/* Students */}
+        <div class="section">
+          <div class="sec-label">研究生 ({students.length})</div>
+          {students.length > 0 ? students.map((s: any) => (
+            <div class="student-row">
+              <span class="dot" />
+              <span class="student-name">{s.name}</span>
+              <span class="student-info">{s.type} · {s.year}</span>
+              {s.topic && <span class="student-topic">— {s.topic}</span>}
+            </div>
+          )) : <div class="empty">暂无关联研究生</div>}
+        </div>
+
+        {/* Notes / milestones */}
+        {(milestones.length > 0 || notes) && (
+          <div class="section">
+            <div class="sec-label">备注</div>
+            {milestones.map((m: any) => (
+              <div class="milestone-row">
+                <span class="milestone-date">{m.date}</span>
+                <span>{m.text}</span>
+              </div>
+            ))}
+            {notes && <div class="notes-text">{notes}</div>}
+          </div>
+        )}
       </div>
     )
   })}
