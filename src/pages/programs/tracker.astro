@@ -1,0 +1,149 @@
+---
+import Base from '../../layouts/Base.astro'
+
+const active = [
+  { type: '国家自然科学基金面上项目', cn: '柑橘内生假单胞菌介导的陈皮关键品质形成及其SoxR–SoxS–zwf轴调控机制', number: '32672846', period: '2027.01~2030.12' },
+  { type: '浙江省三农九方项目', cn: '衢橘产业高质量发展关键技术研究与应用', number: '2026SNJF079', period: '2026.01~2027.12' },
+  { type: '基本科研业务费重大战略任务培育计划', cn: '植物源生鲜农产品智能保鲜物流与加工关键技术', number: '226-2026-00062', period: '2026.01~2028.12' },
+  { type: '浙江省自然科学基金杭州联合基金重大项目', cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究', number: 'LHZSD24C150001', period: '2024.01~2026.12' },
+  { type: '国家自然科学基金区域联合基金', cn: '柑橘类黄酮生物合成关键基因及其网络调控机制研究', number: 'U25A20688', period: '2026.01~2029.12' },
+  { type: '浙江省农业重大技术协同推广计划', cn: '柑橘采后品质维持及高值化利用技术研究与集成推广', number: '2026ZDXT02', period: '2026.01~2027.12' },
+  { type: '四川省重点研发省校合作项目', cn: '川红橘现代化加工关键技术创新与高值化陈皮产品研发', number: '2026YFHZ0239', period: '2026.01~2027.12' },
+  { type: '北京生命科技研究院合作项目', cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发', number: '2025-KYY-135000-0004-01', period: '2026.01~2029.12' },
+  { type: '北京生命科技研究院合作项目', cn: '基于能量与代谢流协同优化的烟草多模态合成底盘构建', number: '2025-KYY-135000-0004-05', period: '2026.01~2028.12' },
+  { type: '横向项目', cn: '衢州柑橘果实风味和营养评价研究', number: '2025-KYY-600101-0017', period: '2026.01~2026.12' },
+]
+
+import trackerRaw from '../../../public-data/tracker.json'
+const tracker: Record<string, any> = {}
+for (const t of trackerRaw as any[]) {
+  tracker[t.project_number] = t
+}
+
+const statusColor: Record<string, string> = {
+  '已发表': '#dcfce7',
+  '在审': '#fef9c3',
+  '撰写中': '#e0f2fe',
+  '已标注': '#d1fae5',
+  '待标注': '#fef3c7',
+  '已授权': '#dcfce7',
+  '实质审查': '#e0f2fe',
+  '申请中': '#fef9c3',
+}
+const statusText: Record<string, string> = {
+  '已发表': '#166534',
+  '在审': '#92400e',
+  '撰写中': '#075985',
+  '已标注': '#166534',
+  '待标注': '#92400e',
+  '已授权': '#166534',
+  '实质审查': '#075985',
+  '申请中': '#92400e',
+}
+---
+<Base title="项目进度" description="王岳在研项目执行进度追踪">
+  <style>
+    .page-header { margin-bottom: 32px }
+    .page-header h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px }
+    .page-header p { color: var(--gray); font-size: 14px }
+    .proj-block { margin-bottom: 32px }
+    .proj-head { background: #fff; border: 1px solid var(--border); border-radius: 8px 8px 0 0; padding: 14px 18px; border-bottom: 2px solid var(--blue) }
+    .proj-type-tag { font-size: 12px; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 2px 9px; border-radius: 4px; margin-right: 8px }
+    .proj-period-tag { font-size: 12px; font-weight: 600; color: #fff; background: #059669; padding: 2px 8px; border-radius: 4px }
+    .proj-title { font-size: 15px; font-weight: 700; color: #111827; margin-top: 6px; line-height: 1.5 }
+    .proj-number { font-size: 12px; color: var(--gray); font-family: monospace; margin-top: 2px }
+    .proj-body { background: #fff; border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; padding: 0 }
+    .section { padding: 14px 18px; border-top: 1px solid var(--border) }
+    .section:first-child { border-top: none }
+    .sec-label { font-size: 12px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px }
+    .item-row { display: flex; align-items: baseline; gap: 8px; font-size: 13px; color: #374151; margin-bottom: 5px; line-height: 1.6 }
+    .item-row:last-child { margin-bottom: 0 }
+    .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 6px }
+    .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 3px; white-space: nowrap; flex-shrink: 0 }
+    .student-type { font-size: 11px; color: var(--gray); margin-left: 2px }
+    .milestone-date { font-size: 11px; font-family: monospace; color: var(--gray); white-space: nowrap; flex-shrink: 0 }
+    .notes-text { font-size: 13px; color: #374151; line-height: 1.7 }
+    .empty-hint { font-size: 12px; color: #d1d5db; font-style: italic }
+  </style>
+
+  <div class="page-header">
+    <h1>项目进度追踪</h1>
+    <p>在研项目执行情况 · 论文 · 专利 · 研究生培养</p>
+  </div>
+
+  {active.map(proj => {
+    const t = tracker[proj.number] || {}
+    const papers = t.papers || []
+    const patents = t.patents || []
+    const students = t.students || []
+    const milestones = t.milestones || []
+    const notes = t.notes || ''
+    return (
+      <div class="proj-block">
+        <div class="proj-head">
+          <div>
+            <span class="proj-type-tag">{proj.type}</span>
+            <span class="proj-period-tag">{proj.period}</span>
+          </div>
+          <div class="proj-title">{proj.cn}</div>
+          <div class="proj-number">{proj.number}</div>
+        </div>
+        <div class="proj-body">
+
+          <div class="section">
+            <div class="sec-label">论文</div>
+            {papers.length > 0 ? papers.map((p: any) => (
+              <div class="item-row">
+                <span class="dot" />
+                <span style="flex:1">{p.doi ? <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}</a> : p.title}</span>
+                {p.fund_marked !== undefined && (
+                  <span class="tag" style={`background:${p.fund_marked ? '#d1fae5' : '#fef3c7'};color:${p.fund_marked ? '#166534' : '#92400e'}`}>
+                    {p.fund_marked ? '已标注' : '待标注'}
+                  </span>
+                )}
+                {p.status && <span class="tag" style={`background:${statusColor[p.status]||'#f3f4f6'};color:${statusText[p.status]||'#374151'}`}>{p.status}</span>}
+              </div>
+            )) : <div class="empty-hint">暂无关联论文</div>}
+          </div>
+
+          <div class="section">
+            <div class="sec-label">专利</div>
+            {patents.length > 0 ? patents.map((p: any) => (
+              <div class="item-row">
+                <span class="dot" />
+                <span style="flex:1">{p.title}{p.number ? <span style="color:var(--gray);font-size:12px;margin-left:6px">({p.number})</span> : ''}</span>
+                {p.status && <span class="tag" style={`background:${statusColor[p.status]||'#f3f4f6'};color:${statusText[p.status]||'#374151'}`}>{p.status}</span>}
+              </div>
+            )) : <div class="empty-hint">暂无关联专利</div>}
+          </div>
+
+          <div class="section">
+            <div class="sec-label">研究生培养</div>
+            {students.length > 0 ? students.map((s: any) => (
+              <div class="item-row">
+                <span class="dot" />
+                <span style="font-weight:600">{s.name}</span>
+                <span class="student-type">{s.type} · {s.year}</span>
+                {s.topic && <span style="color:var(--gray);font-size:12px">— {s.topic}</span>}
+              </div>
+            )) : <div class="empty-hint">暂无关联研究生</div>}
+          </div>
+
+          {(milestones.length > 0 || notes) && (
+            <div class="section">
+              <div class="sec-label">进展备注</div>
+              {milestones.map((m: any) => (
+                <div class="item-row">
+                  <span class="milestone-date">{m.date}</span>
+                  <span>{m.text}</span>
+                </div>
+              ))}
+              {notes && <div class="notes-text">{notes}</div>}
+            </div>
+          )}
+
+        </div>
+      </div>
+    )
+  })}
+</Base>
