@@ -26,6 +26,15 @@ for (const p of patentsRaw as any[]) patentMap[p.id] = p
 const tracker: Record<string, any> = {}
 for (const t of trackerRaw as any[]) tracker[t.project_number] = t
 
+function fundOrderLabel(order: number): string {
+  return `第${order}标注`
+}
+function fundOrderClass(order: number): string {
+  if (order === 1) return 'badge-fund1'
+  if (order === 2) return 'badge-fund2'
+  return 'badge-fundn'
+}
+
 function authorPos(paper: any): string {
   const name = 'Wang Yue'
   const isCorr = paper.is_corresponding === true
@@ -110,6 +119,10 @@ function resolveYear(dateStr: string): string {
     .badge-granted  { background: #dcfce7; color: #166534 }
     .badge-exam     { background: #e0f2fe; color: #075985 }
     .badge-filed    { background: #fef9c3; color: #92400e }
+    .badge-fund1    { background: #fef3c7; color: #78350f; font-weight: 700 }
+    .badge-fund2    { background: #fef9c3; color: #92400e }
+    .badge-fundn    { background: #f3f4f6; color: #6b7280 }
+    .count-chip.done { background: #dcfce7; color: #166534 }
 
     .patent-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px }
     .patent-row:last-child { margin-bottom: 0 }
@@ -133,11 +146,14 @@ function resolveYear(dateStr: string): string {
 
   {active.map(proj => {
     const t = tracker[proj.number] || {}
-    const papers: any[] = t.papers || []
+    const papersRaw2: any[] = (t.papers || []).slice().sort((a: any, b: any) => (a.fund_order || 99) - (b.fund_order || 99))
     const patents: any[] = t.patents || []
     const students: any[] = t.students || []
     const milestones: any[] = t.milestones || []
     const notes: string = t.notes || ''
+    const targetPapers: number | null = t.target_papers ?? null
+    const paperCount = papersRaw2.length
+    const paperDone = targetPapers !== null && paperCount >= targetPapers
 
     return (
       <details>
@@ -146,7 +162,9 @@ function resolveYear(dateStr: string): string {
             <span class="tag-type">{proj.type}</span>
             <span class="tag-period">{proj.period}</span>
             <div class="sum-counts">
-              <span class={`count-chip${papers.length ? ' has' : ''}`}>论文 {papers.length}</span>
+              <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
+                论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
+              </span>
               <span class={`count-chip${patents.length ? ' has' : ''}`}>专利 {patents.length}</span>
               <span class={`count-chip${students.length ? ' has' : ''}`}>研究生 {students.length}</span>
               <span class="chevron">▼</span>
@@ -158,8 +176,8 @@ function resolveYear(dateStr: string): string {
 
         {/* Papers */}
         <div class="section">
-          <div class="sec-label">论文 ({papers.length})</div>
-          {papers.length > 0 ? papers.map((entry: any) => {
+          <div class="sec-label">论文 ({paperCount}{targetPapers !== null ? `/${targetPapers}` : ''})</div>
+          {papersRaw2.length > 0 ? papersRaw2.map((entry: any) => {
             const p = entry.paper_id ? paperMap[entry.paper_id] : null
             const title = p ? p.title : (entry.title || '（未命名）')
             const doi = p ? p.doi : entry.doi
@@ -172,6 +190,7 @@ function resolveYear(dateStr: string): string {
             const status: string = entry.status || (p ? '已发表' : '')
             const statusClass = status === '已发表' ? 'badge-pub' : status === '在审' ? 'badge-review' : 'badge-draft'
             const fundMarked: boolean | undefined = entry.fund_marked
+            const fundOrder: number | undefined = entry.fund_order
             return (
               <div class="paper-row">
                 <div class="paper-title-text" set:html={doi
@@ -183,6 +202,9 @@ function resolveYear(dateStr: string): string {
                   {jif != null && <span class="badge badge-if">IF {jif}</span>}
                   {if5val != null && <span class="badge badge-if5">IF5 {if5val}</span>}
                   {pos && <span class={`badge ${posIsKey ? 'badge-pos-hi' : 'badge-pos'}`}>{pos}</span>}
+                  {fundOrder !== undefined && (
+                    <span class={`badge ${fundOrderClass(fundOrder)}`}>{fundOrderLabel(fundOrder)}</span>
+                  )}
                   {status && <span class={`badge ${statusClass}`}>{status}</span>}
                   {fundMarked !== undefined && (
                     <span class={`badge ${fundMarked ? 'badge-marked' : 'badge-unmarked'}`}>
