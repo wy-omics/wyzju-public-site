@@ -25,7 +25,18 @@
   },
   {
     "project_number": "LHZSD24C150001",
-    "papers": [],
+    "papers": [
+      {"paper_id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd", "status": "已发表", "fund_marked": true},
+      {"paper_id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0", "status": "已发表", "fund_marked": true},
+      {"paper_id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c", "status": "已发表", "fund_marked": true},
+      {"paper_id": "3e4cac19-773d-424c-b5e0-53ca64d4fca9", "status": "已发表", "fund_marked": true},
+      {"paper_id": "ab15d531-f34e-43da-b3ae-9f4addafad9c", "status": "已发表", "fund_marked": true},
+      {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表", "fund_marked": true},
+      {"paper_id": "90356dd5-a74c-497c-beef-839e06f2ab47", "status": "已发表", "fund_marked": true},
+      {"paper_id": "904e8316-7253-4c90-9eb5-0be796d15ac4", "status": "已发表", "fund_marked": true},
+      {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true},
+      {"paper_id": "3c8b675e-f86e-477e-aeff-636035f13d0f", "status": "已发表", "fund_marked": true}
+    ],
     "patents": [],
     "students": [],
     "milestones": [],
@@ -33,7 +44,9 @@
   },
   {
     "project_number": "U25A20688",
-    "papers": [],
+    "papers": [
+      {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true}
+    ],
     "patents": [],
     "students": [],
     "milestones": [],
@@ -49,7 +62,9 @@
   },
   {
     "project_number": "2026YFHZ0239",
-    "papers": [],
+    "papers": [
+      {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true}
+    ],
     "patents": [],
     "students": [],
     "milestones": [],
