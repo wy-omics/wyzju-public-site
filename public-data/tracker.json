@@ -2,6 +2,7 @@
   {
     "project_number": "32672846",
     "target_papers": 4,
+    "target_students": 2,
     "papers": [],
     "patents": [],
     "students": [],
@@ -23,6 +24,7 @@
   {
     "project_number": "226-2026-00062",
     "target_papers": 5,
+    "target_students": 10,
     "papers": [
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 7}
     ],
@@ -34,6 +36,7 @@
   {
     "project_number": "LHZSD24C150001",
     "target_papers": 5,
+    "target_students": 3,
     "papers": [
       {"paper_id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "3e4cac19-773d-424c-b5e0-53ca64d4fca9", "status": "已发表", "fund_marked": true, "fund_order": 1},
@@ -59,6 +62,7 @@
   {
     "project_number": "U25A20688",
     "target_papers": 5,
+    "target_students": 3,
     "papers": [
       {"paper_id": "2fd9cbdb-83c0-4145-8864-998c356999e7", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 2},

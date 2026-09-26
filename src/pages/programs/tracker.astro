@@ -155,8 +155,11 @@ function resolveYear(dateStr: string): string {
     const targetPatents: number | null = t.target_patents ?? null
     const paperCount = papersRaw2.length
     const patentCount = patents.length
+    const targetStudents: number | null = t.target_students ?? null
     const paperDone = targetPapers !== null && paperCount >= targetPapers
     const patentDone = targetPatents !== null && patentCount >= targetPatents
+    const studentDone = targetStudents !== null && students.length >= targetStudents
+    const showStudents = students.length > 0 || targetStudents !== null
 
     return (
       <details>
@@ -171,7 +174,11 @@ function resolveYear(dateStr: string): string {
               <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
                 专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
               </span>
-              <span class={`count-chip${students.length ? ' has' : ''}`}>研究生 {students.length}</span>
+              {showStudents && (
+                <span class={`count-chip${students.length ? ' has' : ''}${studentDone ? ' done' : ''}`}>
+                  研究生 {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
+                </span>
+              )}
               <span class="chevron">▼</span>
             </div>
           </div>
@@ -244,17 +251,19 @@ function resolveYear(dateStr: string): string {
         </div>
 
         {/* Students */}
-        <div class="section">
-          <div class="sec-label">研究生 ({students.length})</div>
-          {students.length > 0 ? students.map((s: any) => (
-            <div class="student-row">
-              <span class="dot" />
-              <span class="student-name">{s.name}</span>
-              <span class="student-meta">{s.type} · {s.year}</span>
-              {s.topic && <span style="color:var(--gray);font-size:12px">— {s.topic}</span>}
-            </div>
-          )) : <div class="empty">暂无关联研究生</div>}
-        </div>
+        {showStudents && (
+          <div class="section">
+            <div class="sec-label">研究生 ({students.length}{targetStudents !== null ? `/${targetStudents}` : ''})</div>
+            {students.length > 0 ? students.map((s: any) => (
+              <div class="student-row">
+                <span class="dot" />
+                <span class="student-name">{s.name}</span>
+                <span class="student-meta">{s.type} · {s.year}</span>
+                {s.topic && <span style="color:var(--gray);font-size:12px">— {s.topic}</span>}
+              </div>
+            )) : <div class="empty">暂无关联研究生</div>}
+          </div>
+        )}
 
         {/* Notes */}
         {(milestones.length > 0 || notes) && (
