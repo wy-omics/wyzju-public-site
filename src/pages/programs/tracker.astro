@@ -156,10 +156,28 @@ function resolveYear(dateStr: string): string {
     const paperCount = papersRaw2.length
     const patentCount = patents.length
     const targetStudents: number | null = t.target_students ?? null
+    const targetSoftwares: number | null = t.target_softwares ?? null
+    const targetStandards: number | null = t.target_standards ?? null
+    const targetDatabases: number | null = t.target_databases ?? null
+    const targetProducts: number | null = t.target_products ?? null
+    const targetByproducts: number | null = t.target_byproducts ?? null
+    const targetMajorProjects: number | null = t.target_major_projects ?? null
+    const softwares: any[] = t.softwares || []
+    const standards: any[] = t.standards || []
+    const databases: any[] = t.databases || []
+    const products: any[] = t.products || []
+    const byproducts: any[] = t.byproducts || []
+    const majorProjects: any[] = t.major_projects || []
     const paperDone = targetPapers !== null && paperCount >= targetPapers
     const patentDone = targetPatents !== null && patentCount >= targetPatents
     const studentDone = targetStudents !== null && students.length >= targetStudents
     const showStudents = students.length > 0 || targetStudents !== null
+    const showSoftwares = softwares.length > 0 || targetSoftwares !== null
+    const showStandards = standards.length > 0 || targetStandards !== null
+    const showDatabases = databases.length > 0 || targetDatabases !== null
+    const showProducts = products.length > 0 || targetProducts !== null
+    const showByproducts = byproducts.length > 0 || targetByproducts !== null
+    const showMajorProjects = majorProjects.length > 0 || targetMajorProjects !== null
 
     return (
       <details>
@@ -174,6 +192,36 @@ function resolveYear(dateStr: string): string {
               <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
                 专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
               </span>
+              {showSoftwares && (
+                <span class={`count-chip${softwares.length ? ' has' : ''}${softwares.length >= (targetSoftwares ?? Infinity) ? ' done' : ''}`}>
+                  软著 {softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''}
+                </span>
+              )}
+              {showStandards && (
+                <span class={`count-chip${standards.length ? ' has' : ''}${standards.length >= (targetStandards ?? Infinity) ? ' done' : ''}`}>
+                  标准 {standards.length}{targetStandards !== null ? `/${targetStandards}` : ''}
+                </span>
+              )}
+              {showDatabases && (
+                <span class={`count-chip${databases.length ? ' has' : ''}${databases.length >= (targetDatabases ?? Infinity) ? ' done' : ''}`}>
+                  数据库 {databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''}
+                </span>
+              )}
+              {showProducts && (
+                <span class={`count-chip${products.length ? ' has' : ''}${products.length >= (targetProducts ?? Infinity) ? ' done' : ''}`}>
+                  产品 {products.length}{targetProducts !== null ? `/${targetProducts}` : ''}
+                </span>
+              )}
+              {showByproducts && (
+                <span class={`count-chip${byproducts.length ? ' has' : ''}${byproducts.length >= (targetByproducts ?? Infinity) ? ' done' : ''}`}>
+                  副产物 {byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''}
+                </span>
+              )}
+              {showMajorProjects && (
+                <span class={`count-chip${majorProjects.length ? ' has' : ''}${majorProjects.length >= (targetMajorProjects ?? Infinity) ? ' done' : ''}`}>
+                  重大任务 {majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''}
+                </span>
+              )}
               {showStudents && (
                 <span class={`count-chip${students.length ? ' has' : ''}${studentDone ? ' done' : ''}`}>
                   研究生 {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
@@ -249,6 +297,96 @@ function resolveYear(dateStr: string): string {
             )
           }) : <div class="empty">暂无关联专利</div>}
         </div>
+
+        {/* Softwares */}
+        {showSoftwares && (
+          <div class="section">
+            <div class="sec-label">软件著作权 ({softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''})</div>
+            {softwares.length > 0 ? softwares.map((s: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{s.name || s.title || '（未命名）'}
+                  {s.number && <span style="font-size:11px;color:var(--gray);font-family:monospace;margin-left:6px">{s.number}</span>}
+                </span>
+                {s.status && <span class="badge badge-pub">{s.status}</span>}
+              </div>
+            )) : <div class="empty">暂无软件著作权</div>}
+          </div>
+        )}
+
+        {/* Standards */}
+        {showStandards && (
+          <div class="section">
+            <div class="sec-label">标准 ({standards.length}{targetStandards !== null ? `/${targetStandards}` : ''})</div>
+            {standards.length > 0 ? standards.map((s: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{s.name || s.title || '（未命名）'}
+                  {s.number && <span style="font-size:11px;color:var(--gray);font-family:monospace;margin-left:6px">{s.number}</span>}
+                </span>
+                {s.status && <span class="badge badge-pub">{s.status}</span>}
+              </div>
+            )) : <div class="empty">暂无标准</div>}
+          </div>
+        )}
+
+        {/* Databases */}
+        {showDatabases && (
+          <div class="section">
+            <div class="sec-label">数据库/图谱 ({databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''})</div>
+            {databases.length > 0 ? databases.map((d: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{d.name || d.title || '（未命名）'}</span>
+                {d.status && <span class="badge badge-pub">{d.status}</span>}
+              </div>
+            )) : <div class="empty">暂无数据库/图谱</div>}
+          </div>
+        )}
+
+        {/* Products */}
+        {showProducts && (
+          <div class="section">
+            <div class="sec-label">保鲜产品 ({products.length}{targetProducts !== null ? `/${targetProducts}` : ''})</div>
+            {products.length > 0 ? products.map((p: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{p.name || p.title || '（未命名）'}</span>
+                {p.status && <span class="badge badge-pub">{p.status}</span>}
+              </div>
+            )) : <div class="empty">暂无保鲜产品</div>}
+          </div>
+        )}
+
+        {/* Byproducts */}
+        {showByproducts && (
+          <div class="section">
+            <div class="sec-label">副产物原型 ({byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''})</div>
+            {byproducts.length > 0 ? byproducts.map((b: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{b.name || b.title || '（未命名）'}</span>
+                {b.status && <span class="badge badge-pub">{b.status}</span>}
+              </div>
+            )) : <div class="empty">暂无副产物原型</div>}
+          </div>
+        )}
+
+        {/* Major Projects */}
+        {showMajorProjects && (
+          <div class="section">
+            <div class="sec-label">重大任务 ({majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''})</div>
+            {majorProjects.length > 0 ? majorProjects.map((m: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{m.name || m.title || '（未命名）'}
+                  {m.number && <span style="font-size:11px;color:var(--gray);font-family:monospace;margin-left:6px">{m.number}</span>}
+                </span>
+                {m.status && <span class="badge badge-pub">{m.status}</span>}
+              </div>
+            )) : <div class="empty">暂无重大任务</div>}
+          </div>
+        )}
 
         {/* Students */}
         {showStudents && (

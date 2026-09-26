@@ -25,19 +25,26 @@
     "project_number": "226-2026-00062",
     "target_papers": 5,
     "target_patents": 5,
+    "target_softwares": 3,
+    "target_standards": 1,
+    "target_databases": 2,
+    "target_products": 1,
+    "target_byproducts": 1,
+    "target_major_projects": 2,
     "target_students": 10,
     "papers": [
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 7}
     ],
     "patents": [],
+    "softwares": [],
+    "standards": [],
+    "databases": [],
+    "products": [],
+    "byproducts": [],
+    "major_projects": [],
     "students": [],
-    "milestones": [
-      {"date": "2026.01—06", "text": "完成对象场景与技术路线确定，建立数据规范，形成指南建议"},
-      {"date": "2026.07—12", "text": "完成品质参数体系与数据库建设，形成关键模型，完成原型初步创制"},
-      {"date": "2027.01—06", "text": "推进关键模型与智能系统开发，形成材料/包装/产品原型"},
-      {"date": "2027.07—12", "text": "开展场景验证与系统集成完善，完成申报材料凝练与任务申报"}
-    ],
-    "notes": "【三大研究内容·六个方向】①品质评价与精准保鲜：原料端（加工专用原料品质形成与加工适性）+ 采后端（品质劣变机制与精准调控）；②AI材料与智能包装：材料端（基于天然高分子数据库的AI辅助设计）+ 包装端（环境精准控制智能保鲜）；③加工预测与副产物利用：加工端（营养保全、风味提升与品质预测）+ 资源端（副产物高值转化与综合利用）。共性支撑：AI算法、化学计量学与标准化体系。\n\n【考核指标】发表论文≥5篇；申请发明专利≥5项；软件著作权≥3项；国家/行业标准≥1项；数据库/知识图谱2个；智能保鲜包装产品1—2个；加工副产物产品原型1—2项；培养研究生≥10名（博士≥5名）、青年学术骨干3—5名；主持或参与国家重点研发计划2—3项，争取经费1.0—2.0亿元。"
+    "milestones": [],
+    "notes": ""
   },
   {
     "project_number": "LHZSD24C150001",
