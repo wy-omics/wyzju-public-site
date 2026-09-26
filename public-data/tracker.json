@@ -89,14 +89,23 @@
   },
   {
     "project_number": "2026ZDXT02",
-    "target_papers": null,
+    "target_patents": 3,
+    "target_standards": 3,
+    "target_databases": 1,
+    "target_products": 4,
+    "target_byproducts": 5,
     "papers": [
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 1}
     ],
     "patents": [],
+    "softwares": [],
+    "standards": [],
+    "databases": [],
+    "products": [],
+    "byproducts": [],
     "students": [],
     "milestones": [],
-    "notes": "考核指标：申请专利2项，制定技术规程/指南1份，推广应用新产品5种以上"
+    "notes": "其他指标：风味改善技术≥2项（压差增香、内生菌发酵等）；柑橘果实腐烂率降低≥3%；临海建立展示场所1个；筛选加工适性评价关键指标≥5个；开发高附加值加工原料≥2款（香柚精油、高叶酸柑橘果实微粉等）"
   },
   {
     "project_number": "2026YFHZ0239",
