@@ -122,7 +122,9 @@
   },
   {
     "project_number": "2025-KYY-135000-0004-01",
-    "target_papers": null,
+    "target_papers": 2,
+    "target_patents": 3,
+    "target_students": 5,
     "papers": [],
     "patents": [],
     "students": [],
