@@ -74,8 +74,9 @@
   },
   {
     "project_number": "U25A20688",
-    "target_papers": 5,
-    "target_students": 3,
+    "target_papers": 8,
+    "target_patents": 4,
+    "target_students": 8,
     "papers": [
       {"paper_id": "2fd9cbdb-83c0-4145-8864-998c356999e7", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 2},
@@ -84,7 +85,7 @@
     "patents": [],
     "students": [],
     "milestones": [],
-    "notes": "考核指标：发表高水平论文5-8篇，申请专利2-3项，培养研究生3-5名（含博士1-2名），挖掘优异新品种2-3个"
+    "notes": "考核指标：发表SCI论文8～10篇，申请发明专利4～6件，培养研究生8～10名"
   },
   {
     "project_number": "2026ZDXT02",
