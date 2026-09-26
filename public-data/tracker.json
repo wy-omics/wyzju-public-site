@@ -109,7 +109,8 @@
   },
   {
     "project_number": "2026YFHZ0239",
-    "target_papers": null,
+    "target_papers": 2,
+    "target_patents": 2,
     "papers": [
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 3},
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 4}
