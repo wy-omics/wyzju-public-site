@@ -85,7 +85,8 @@ function resolveYear(dateStr: string): string {
     .sum-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap }
     .tag-type { font-size: 11px; font-weight: 700; color: #1e40af; background: #dbeafe; padding: 2px 8px; border-radius: 4px }
     .tag-period { font-size: 11px; font-weight: 600; color: #fff; background: #059669; padding: 2px 8px; border-radius: 4px }
-    .sum-counts { margin-left: auto; display: flex; gap: 6px; flex-shrink: 0 }
+    .sum-right { margin-left: auto; display: flex; flex-direction: column; gap: 4px; align-items: flex-end }
+    .sum-counts { display: flex; gap: 6px; align-items: center }
     .count-chip { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 10px; background: #f3f4f6; color: #6b7280 }
     .count-chip.has { background: #eff6ff; color: #1d4ed8 }
     .chevron { margin-left: 8px; font-size: 12px; color: #9ca3af; transition: transform .2s; flex-shrink: 0 }
@@ -185,49 +186,55 @@ function resolveYear(dateStr: string): string {
           <div class="sum-top">
             <span class="tag-type">{proj.type}</span>
             <span class="tag-period">{proj.period}</span>
-            <div class="sum-counts">
-              <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
-                论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
-              </span>
-              <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
-                专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
-              </span>
-              {showSoftwares && (
-                <span class={`count-chip${softwares.length ? ' has' : ''}${softwares.length >= (targetSoftwares ?? Infinity) ? ' done' : ''}`}>
-                  软著 {softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''}
+            <div class="sum-right">
+              <div class="sum-counts">
+                <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
+                  论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
                 </span>
-              )}
-              {showStandards && (
-                <span class={`count-chip${standards.length ? ' has' : ''}${standards.length >= (targetStandards ?? Infinity) ? ' done' : ''}`}>
-                  标准 {standards.length}{targetStandards !== null ? `/${targetStandards}` : ''}
+                <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
+                  专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
                 </span>
+                {showStudents && (
+                  <span class={`count-chip${students.length ? ' has' : ''}${studentDone ? ' done' : ''}`}>
+                    研究生 {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
+                  </span>
+                )}
+                <span class="chevron">▼</span>
+              </div>
+              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects) && (
+                <div class="sum-counts">
+                  {showSoftwares && (
+                    <span class={`count-chip${softwares.length ? ' has' : ''}${softwares.length >= (targetSoftwares ?? Infinity) ? ' done' : ''}`}>
+                      软著 {softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''}
+                    </span>
+                  )}
+                  {showStandards && (
+                    <span class={`count-chip${standards.length ? ' has' : ''}${standards.length >= (targetStandards ?? Infinity) ? ' done' : ''}`}>
+                      标准 {standards.length}{targetStandards !== null ? `/${targetStandards}` : ''}
+                    </span>
+                  )}
+                  {showDatabases && (
+                    <span class={`count-chip${databases.length ? ' has' : ''}${databases.length >= (targetDatabases ?? Infinity) ? ' done' : ''}`}>
+                      数据库 {databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''}
+                    </span>
+                  )}
+                  {showProducts && (
+                    <span class={`count-chip${products.length ? ' has' : ''}${products.length >= (targetProducts ?? Infinity) ? ' done' : ''}`}>
+                      产品 {products.length}{targetProducts !== null ? `/${targetProducts}` : ''}
+                    </span>
+                  )}
+                  {showByproducts && (
+                    <span class={`count-chip${byproducts.length ? ' has' : ''}${byproducts.length >= (targetByproducts ?? Infinity) ? ' done' : ''}`}>
+                      副产物 {byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''}
+                    </span>
+                  )}
+                  {showMajorProjects && (
+                    <span class={`count-chip${majorProjects.length ? ' has' : ''}${majorProjects.length >= (targetMajorProjects ?? Infinity) ? ' done' : ''}`}>
+                      重大任务 {majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''}
+                    </span>
+                  )}
+                </div>
               )}
-              {showDatabases && (
-                <span class={`count-chip${databases.length ? ' has' : ''}${databases.length >= (targetDatabases ?? Infinity) ? ' done' : ''}`}>
-                  数据库 {databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''}
-                </span>
-              )}
-              {showProducts && (
-                <span class={`count-chip${products.length ? ' has' : ''}${products.length >= (targetProducts ?? Infinity) ? ' done' : ''}`}>
-                  产品 {products.length}{targetProducts !== null ? `/${targetProducts}` : ''}
-                </span>
-              )}
-              {showByproducts && (
-                <span class={`count-chip${byproducts.length ? ' has' : ''}${byproducts.length >= (targetByproducts ?? Infinity) ? ' done' : ''}`}>
-                  副产物 {byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''}
-                </span>
-              )}
-              {showMajorProjects && (
-                <span class={`count-chip${majorProjects.length ? ' has' : ''}${majorProjects.length >= (targetMajorProjects ?? Infinity) ? ' done' : ''}`}>
-                  重大任务 {majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''}
-                </span>
-              )}
-              {showStudents && (
-                <span class={`count-chip${students.length ? ' has' : ''}${studentDone ? ' done' : ''}`}>
-                  研究生 {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
-                </span>
-              )}
-              <span class="chevron">▼</span>
             </div>
           </div>
           <div class="proj-title">{proj.cn}</div>
