@@ -95,8 +95,24 @@ function resolveYear(dateStr: string): string {
     .proj-title { font-size: 14px; font-weight: 700; color: #111827; line-height: 1.5 }
     .proj-num { font-size: 11px; color: var(--gray); font-family: monospace; margin-top: 2px }
 
-    .section { padding: 12px 18px; border-top: 1px solid var(--border) }
-    .sec-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px }
+    .section { border-top: 1px solid var(--border) }
+    .section > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+      padding: 8px 18px;
+      border-bottom: none !important;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section > summary::-webkit-details-marker { display: none }
+    .section > summary:hover { background: #f9fafb }
+    .section[open] > summary { border-bottom: none }
+    .sec-label { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: .06em }
+    .sec-toggle { margin-left: auto; font-size: 11px; color: #d1d5db; transition: transform .15s }
+    .section:not([open]) > summary .sec-toggle { transform: rotate(-90deg) }
+    .sec-body { padding: 4px 18px 12px }
 
     .paper-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #f3f4f6 }
     .paper-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none }
@@ -142,7 +158,6 @@ function resolveYear(dateStr: string): string {
 
   <div class="page-header">
     <h1>项目进度追踪</h1>
-    <p>点击项目展开查看论文（IF / IF5 / 标注位次）· 专利 · 研究生</p>
   </div>
 
   {active.map(proj => {
@@ -242,8 +257,9 @@ function resolveYear(dateStr: string): string {
         </summary>
 
         {/* Papers */}
-        <div class="section">
-          <div class="sec-label">论文 ({paperCount}{targetPapers !== null ? `/${targetPapers}` : ''})</div>
+        <details class="section" open>
+          <summary class="sec-label">论文 ({paperCount}{targetPapers !== null ? `/${targetPapers}` : ''})<span class="sec-toggle">▾</span></summary>
+          <div class="sec-body">
           {papersRaw2.length > 0 ? papersRaw2.map((entry: any) => {
             const p = entry.paper_id ? paperMap[entry.paper_id] : null
             const title = p ? p.title : (entry.title || '（未命名）')
@@ -282,11 +298,13 @@ function resolveYear(dateStr: string): string {
               </div>
             )
           }) : <div class="empty">暂无关联论文</div>}
-        </div>
+          </div>
+        </details>
 
         {/* Patents */}
-        <div class="section">
-          <div class="sec-label">专利 ({patents.length})</div>
+        <details class="section" open>
+          <summary class="sec-label">专利 ({patents.length}{targetPatents !== null ? `/${targetPatents}` : ''})<span class="sec-toggle">▾</span></summary>
+          <div class="sec-body">
           {patents.length > 0 ? patents.map((entry: any) => {
             const p = entry.patent_id ? patentMap[entry.patent_id] : null
             const title = p ? p.title : (entry.title || '（未命名）')
@@ -303,12 +321,14 @@ function resolveYear(dateStr: string): string {
               </div>
             )
           }) : <div class="empty">暂无关联专利</div>}
-        </div>
+          </div>
+        </details>
 
         {/* Softwares */}
         {showSoftwares && (
-          <div class="section">
-            <div class="sec-label">软件著作权 ({softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">软件著作权 ({softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {softwares.length > 0 ? softwares.map((s: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -318,13 +338,15 @@ function resolveYear(dateStr: string): string {
                 {s.status && <span class="badge badge-pub">{s.status}</span>}
               </div>
             )) : <div class="empty">暂无软件著作权</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Standards */}
         {showStandards && (
-          <div class="section">
-            <div class="sec-label">标准 ({standards.length}{targetStandards !== null ? `/${targetStandards}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">标准 ({standards.length}{targetStandards !== null ? `/${targetStandards}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {standards.length > 0 ? standards.map((s: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -334,13 +356,15 @@ function resolveYear(dateStr: string): string {
                 {s.status && <span class="badge badge-pub">{s.status}</span>}
               </div>
             )) : <div class="empty">暂无标准</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Databases */}
         {showDatabases && (
-          <div class="section">
-            <div class="sec-label">数据库/图谱 ({databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">数据库/图谱 ({databases.length}{targetDatabases !== null ? `/${targetDatabases}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {databases.length > 0 ? databases.map((d: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -348,13 +372,15 @@ function resolveYear(dateStr: string): string {
                 {d.status && <span class="badge badge-pub">{d.status}</span>}
               </div>
             )) : <div class="empty">暂无数据库/图谱</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Products */}
         {showProducts && (
-          <div class="section">
-            <div class="sec-label">保鲜产品 ({products.length}{targetProducts !== null ? `/${targetProducts}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">保鲜产品 ({products.length}{targetProducts !== null ? `/${targetProducts}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {products.length > 0 ? products.map((p: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -362,13 +388,15 @@ function resolveYear(dateStr: string): string {
                 {p.status && <span class="badge badge-pub">{p.status}</span>}
               </div>
             )) : <div class="empty">暂无保鲜产品</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Byproducts */}
         {showByproducts && (
-          <div class="section">
-            <div class="sec-label">副产物原型 ({byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">副产物原型 ({byproducts.length}{targetByproducts !== null ? `/${targetByproducts}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {byproducts.length > 0 ? byproducts.map((b: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -376,13 +404,15 @@ function resolveYear(dateStr: string): string {
                 {b.status && <span class="badge badge-pub">{b.status}</span>}
               </div>
             )) : <div class="empty">暂无副产物原型</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Major Projects */}
         {showMajorProjects && (
-          <div class="section">
-            <div class="sec-label">重大任务 ({majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">重大任务 ({majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {majorProjects.length > 0 ? majorProjects.map((m: any) => (
               <div class="patent-row">
                 <span class="dot" />
@@ -392,13 +422,15 @@ function resolveYear(dateStr: string): string {
                 {m.status && <span class="badge badge-pub">{m.status}</span>}
               </div>
             )) : <div class="empty">暂无重大任务</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Students */}
         {showStudents && (
-          <div class="section">
-            <div class="sec-label">研究生 ({students.length}{targetStudents !== null ? `/${targetStudents}` : ''})</div>
+          <details class="section" open>
+            <summary class="sec-label">研究生 ({students.length}{targetStudents !== null ? `/${targetStudents}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {students.length > 0 ? students.map((s: any) => (
               <div class="student-row">
                 <span class="dot" />
@@ -407,13 +439,15 @@ function resolveYear(dateStr: string): string {
                 {s.topic && <span style="color:var(--gray);font-size:12px">— {s.topic}</span>}
               </div>
             )) : <div class="empty">暂无关联研究生</div>}
-          </div>
+            </div>
+          </details>
         )}
 
         {/* Notes */}
         {(milestones.length > 0 || notes) && (
-          <div class="section">
-            <div class="sec-label">备注 / 考核指标</div>
+          <details class="section" open>
+            <summary class="sec-label">备注 / 考核指标<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
             {milestones.map((m: any) => (
               <div class="milestone-row">
                 <span class="mdate">{m.date}</span>
@@ -421,7 +455,8 @@ function resolveYear(dateStr: string): string {
               </div>
             ))}
             {notes && <div class="notes-text">{notes}</div>}
-          </div>
+            </div>
+          </details>
         )}
       </details>
     )
