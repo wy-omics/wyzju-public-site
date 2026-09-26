@@ -152,8 +152,11 @@ function resolveYear(dateStr: string): string {
     const milestones: any[] = t.milestones || []
     const notes: string = t.notes || ''
     const targetPapers: number | null = t.target_papers ?? null
+    const targetPatents: number | null = t.target_patents ?? null
     const paperCount = papersRaw2.length
+    const patentCount = patents.length
     const paperDone = targetPapers !== null && paperCount >= targetPapers
+    const patentDone = targetPatents !== null && patentCount >= targetPatents
 
     return (
       <details>
@@ -165,7 +168,9 @@ function resolveYear(dateStr: string): string {
               <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
                 论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
               </span>
-              <span class={`count-chip${patents.length ? ' has' : ''}`}>专利 {patents.length}</span>
+              <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
+                专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
+              </span>
               <span class={`count-chip${students.length ? ' has' : ''}`}>研究生 {students.length}</span>
               <span class="chevron">▼</span>
             </div>
