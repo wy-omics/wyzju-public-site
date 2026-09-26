@@ -82,6 +82,14 @@ const active = [
     period: '2026.01~2026.12',
     role: '主持',
   },
+  {
+    type: '台州研究院合作项目',
+    cn: '特色果蔬高值化利用开发',
+    en: 'Collaborative Project with Taizhou Research Institute',
+    number: '',
+    period: '2026.01~2027.12',
+    role: '主持',
+  },
 ]
 
 const finished = [
@@ -184,8 +192,8 @@ const finished = [
           <span class="proj-type">{p.type}</span>
           <span class="proj-period">{p.period}</span>
         </div>
-        <div class="proj-cn">{p.cn}（{p.number}）</div>
-        <div class="proj-en">{p.en} (Grant No. {p.number})</div>
+        <div class="proj-cn">{p.cn}{p.number ? `（${p.number}）` : ''}</div>
+        <div class="proj-en">{p.en}{p.number ? ` (Grant No. ${p.number})` : ''}</div>
         <div class="proj-footer">
           <span class={`role-badge${p.role === '参与' ? ' coauth' : ''}`}>{p.role}</span>
         </div>

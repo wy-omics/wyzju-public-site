@@ -15,6 +15,7 @@ const active = [
   { type: '北京生命科技研究院合作项目', cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发', number: '2025-KYY-135000-0004-01', period: '2026.01~2029.12' },
   { type: '北京生命科技研究院合作项目', cn: '基于能量与代谢流协同优化的烟草多模态合成底盘构建', number: '2025-KYY-135000-0004-05', period: '2026.01~2028.12' },
   { type: '横向项目', cn: '衢州柑橘果实风味和营养评价研究', number: '2025-KYY-600101-0017', period: '2026.01~2026.12' },
+  { type: '台州研究院合作项目', cn: '特色果蔬高值化利用开发', number: 'TBD-TZYJY', period: '2026.01~2027.12' },
 ]
 
 const paperMap: Record<string, any> = {}
@@ -178,12 +179,14 @@ function resolveYear(dateStr: string): string {
     const targetProducts: number | null = t.target_products ?? null
     const targetByproducts: number | null = t.target_byproducts ?? null
     const targetMajorProjects: number | null = t.target_major_projects ?? null
+    const targetTransfers: number | null = t.target_transfers ?? null
     const softwares: any[] = t.softwares || []
     const standards: any[] = t.standards || []
     const databases: any[] = t.databases || []
     const products: any[] = t.products || []
     const byproducts: any[] = t.byproducts || []
     const majorProjects: any[] = t.major_projects || []
+    const transfers: any[] = t.transfers || []
     const paperDone = targetPapers !== null && paperCount >= targetPapers
     const patentDone = targetPatents !== null && patentCount >= targetPatents
     const studentDone = targetStudents !== null && students.length >= targetStudents
@@ -194,6 +197,7 @@ function resolveYear(dateStr: string): string {
     const showProducts = products.length > 0 || targetProducts !== null
     const showByproducts = byproducts.length > 0 || targetByproducts !== null
     const showMajorProjects = majorProjects.length > 0 || targetMajorProjects !== null
+    const showTransfers = transfers.length > 0 || targetTransfers !== null
 
     return (
       <details>
@@ -216,7 +220,7 @@ function resolveYear(dateStr: string): string {
                 )}
                 <span class="chevron">▼</span>
               </div>
-              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects) && (
+              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects || showTransfers) && (
                 <div class="sum-counts">
                   {showSoftwares && (
                     <span class={`count-chip${softwares.length ? ' has' : ''}${softwares.length >= (targetSoftwares ?? Infinity) ? ' done' : ''}`}>
@@ -248,12 +252,17 @@ function resolveYear(dateStr: string): string {
                       重大任务 {majorProjects.length}{targetMajorProjects !== null ? `/${targetMajorProjects}` : ''}
                     </span>
                   )}
+                  {showTransfers && (
+                    <span class={`count-chip${transfers.length ? ' has' : ''}${transfers.length >= (targetTransfers ?? Infinity) ? ' done' : ''}`}>
+                      成果转化 {transfers.length}{targetTransfers !== null ? `/${targetTransfers}` : ''}
+                    </span>
+                  )}
                 </div>
               )}
             </div>
           </div>
           <div class="proj-title">{proj.cn}</div>
-          <div class="proj-num">{proj.number}</div>
+          {!proj.number.startsWith('TBD') && <div class="proj-num">{proj.number}</div>}
         </summary>
 
         {/* Papers */}
@@ -422,6 +431,24 @@ function resolveYear(dateStr: string): string {
                 {m.status && <span class="badge badge-pub">{m.status}</span>}
               </div>
             )) : <div class="empty">暂无重大任务</div>}
+            </div>
+          </details>
+        )}
+
+        {/* Transfers */}
+        {showTransfers && (
+          <details class="section" open>
+            <summary class="sec-label">成果转化 ({transfers.length}{targetTransfers !== null ? `/${targetTransfers}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
+            {transfers.length > 0 ? transfers.map((tr: any) => (
+              <div class="patent-row">
+                <span class="dot" />
+                <span style="flex:1;color:#111827;line-height:1.55">{tr.name || tr.title || '（未命名）'}
+                  {tr.partner && <span style="font-size:11px;color:var(--gray);margin-left:6px">{tr.partner}</span>}
+                </span>
+                {tr.status && <span class="badge badge-pub">{tr.status}</span>}
+              </div>
+            )) : <div class="empty">暂无成果转化</div>}
             </div>
           </details>
         )}
