@@ -1,5 +1,90 @@
 [
   {
+    "id": "0c9c2f7a-3087-4fee-9c90-da48cbfcc1e2",
+    "title": "促进果生炭疽菌高效产孢的方法及获得孢子悬液和应用",
+    "date": "2026-01-01",
+    "featured": false,
+    "public_summary": null,
+    "patent_type": "国家发明专利",
+    "patent_number": "ZL202610231528.2",
+    "inventors": [
+      "孙翠",
+      "鲍星池",
+      "孙崇德",
+      "曹锦萍",
+      "王岳",
+      "颜晓婷",
+      "周燕"
+    ],
+    "country": "中国",
+    "grant_date": "2026-07-10",
+    "application_date": "2026-02-27",
+    "pdf_url": null
+  },
+  {
+    "id": "782c1e2d-486a-451f-a1e2-59ba721cf61b",
+    "title": "基于多源特征融合的水果硬度无损检测方法",
+    "date": "2026-01-01",
+    "featured": false,
+    "public_summary": null,
+    "patent_type": "国家发明专利",
+    "patent_number": "ZL202610352571.4",
+    "inventors": [
+      "孙翠",
+      "刘子由",
+      "孙崇德",
+      "曹锦萍",
+      "王岳"
+    ],
+    "country": "中国",
+    "grant_date": "2026-06-30",
+    "application_date": "2026-03-23",
+    "pdf_url": null
+  },
+  {
+    "id": "2e3b5f45-8057-47df-b6a3-9010e433ca90",
+    "title": "一种基于滑动窗口修正的果蔬采后失重率预测方法和预测系统",
+    "date": "2026-01-01",
+    "featured": false,
+    "public_summary": null,
+    "patent_type": "国家发明专利",
+    "patent_number": "ZL202610018923.2",
+    "inventors": [
+      "曹锦萍",
+      "苏颖媛",
+      "孙崇德",
+      "杜海燕",
+      "周燕",
+      "樊一泽",
+      "王岳",
+      "康晨"
+    ],
+    "country": "中国",
+    "grant_date": "2026-03-24",
+    "application_date": "2026-01-08",
+    "pdf_url": null
+  },
+  {
+    "id": "a01c54ef-8019-4be6-a927-fa9b13b3e317",
+    "title": "一种杨梅采后品质监测的方法",
+    "date": "2026-01-01",
+    "featured": false,
+    "public_summary": null,
+    "patent_type": "国家发明专利",
+    "patent_number": "ZL202311785058.7",
+    "inventors": [
+      "曹锦萍",
+      "高嘉沛",
+      "孙崇德",
+      "王岳",
+      "郑暄昂"
+    ],
+    "country": "中国",
+    "grant_date": "2026-03-13",
+    "application_date": "2023-12-22",
+    "pdf_url": null
+  },
+  {
     "id": "a97fd401-6c0a-401e-b0d2-d0d6884b02be",
     "title": "一种小青柑陈化的方法及其应用",
     "date": "2026-01-01",
@@ -253,7 +338,7 @@
     "featured": false,
     "public_summary": null,
     "patent_type": "国家发明专利",
-    "patent_number": "ZL2022110184202.0",
+    "patent_number": "ZL202210184202.0",
     "inventors": [
       "王岳",
       "孙崇德",
