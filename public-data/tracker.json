@@ -243,5 +243,17 @@
     "students": [],
     "milestones": [],
     "notes": "台州研究院合作项目；技术成果：攻克4-6项特色果蔬加工核心技术，建成台州地区药食同源领域特色研发平台"
+  },
+  {
+    "project_number": "TBD-BALANCE",
+    "papers": [
+      {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表"},
+      {"paper_id": "90356dd5-a74c-497c-beef-839e06f2ab47", "status": "已发表"},
+      {"paper_id": "4223ef36-3e5e-4952-8125-3e7adeff3165", "status": "已发表"},
+      {"paper_id": "df9aac82-8662-4a15-b7a0-3ee65ddc9a86", "status": "2025年录用"}
+    ],
+    "patents": [],
+    "students": [],
+    "milestones": []
   }
 ]
