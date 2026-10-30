@@ -110,7 +110,7 @@
     ],
     "target_papers": 5,
     "target_patents": 2,
-    "target_students": 3,
+    "target_students": 4,
     "papers": [
       {"paper_id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd", "status": "已发表", "fund_marked": true, "fund_order": 1},
       {"paper_id": "3e4cac19-773d-424c-b5e0-53ca64d4fca9", "status": "已发表", "fund_marked": true, "fund_order": 1},
@@ -129,7 +129,7 @@
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 5}
     ],
     "patents": [{"patent_id": "e5d69195-ab2e-4218-ba40-8d94ca54b02be", "status": "已授权"}, {"patent_id": "f38b194d-1327-40b6-8bf5-e974731ba6be", "status": "已授权"}],
-    "students": [],
+    "students": [{"name": "廖斌", "type": "博士", "year": "2025.06毕业"}, {"name": "廖震坤", "type": "博士", "year": "2024.12毕业"}, {"name": "李羽佳", "type": "硕士", "year": "2025.06毕业"}, {"name": "胡洪露", "type": "硕士", "year": "2026.06毕业"}],
     "milestones": [],
     "notes": "考核指标：发表高水平论文5-8篇，申请专利2-3项，培养研究生3-5名（含博士1-2名），创制新种质2～3份"
   },
