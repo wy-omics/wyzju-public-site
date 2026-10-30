@@ -320,7 +320,7 @@ function resolveYear(dateStr: string): string {
             const title = p ? p.title : (entry.title || '（未命名）')
             const number = p ? p.patent_number : (entry.number || '')
             const status: string = entry.status || (p?.grant_date ? '已授权' : '申请中')
-            const statusClass = status === '已授权' ? 'badge-granted' : status === '实质审查' ? 'badge-exam' : 'badge-filed'
+            const statusClass = status.startsWith('已授权') ? 'badge-granted' : status === '实质审查' ? 'badge-exam' : 'badge-filed'
             return (
               <div class="patent-row">
                 <span class="dot" />
