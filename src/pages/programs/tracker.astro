@@ -171,7 +171,7 @@ function resolveYear(dateStr: string): string {
     const notes: string = t.notes || ''
     const targetPapers: number | null = t.target_papers ?? null
     const targetPatents: number | null = t.target_patents ?? null
-    const paperCount = papersRaw2.length
+    const paperCount = papersRaw2.filter((entry: any) => entry.performance_eligible !== false).length
     const patentCount = patents.length
     const targetStudents: number | null = t.target_students ?? null
     const targetSoftwares: number | null = t.target_softwares ?? null
@@ -266,6 +266,13 @@ function resolveYear(dateStr: string): string {
           {!proj.number.startsWith('TBD') && <div class="proj-num">{proj.number}</div>}
         </summary>
 
+        {t.research_goals && t.research_goals.length > 0 && (
+          <details class="section">
+            <summary class="sec-label">研究和考核目标 <span class="sec-toggle">▾</span></summary>
+            <div class="sec-body"><ul>{t.research_goals.map((goal: any) => <li>{goal.title}</li>)}</ul></div>
+          </details>
+        )}
+
         {/* Papers */}
         <details class="section" open>
           <summary class="sec-label">论文 ({paperCount}{targetPapers !== null ? `/${targetPapers}` : ''})<span class="sec-toggle">▾</span></summary>
@@ -299,6 +306,7 @@ function resolveYear(dateStr: string): string {
                     <span class={`badge ${fundOrderClass(fundOrder)}`}>{fundOrderLabel(fundOrder)}</span>
                   )}
                   {status && <span class={`badge ${statusClass}`}>{status}</span>}
+                  {entry.performance_eligible === false && <span class="badge badge-review">不计项目业绩</span>}
                   {fundMarked !== undefined && (
                     <span class={`badge ${fundMarked ? 'badge-marked' : 'badge-unmarked'}`}>
                       {fundMarked ? '已标注' : '待标注'}

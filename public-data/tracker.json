@@ -52,6 +52,60 @@
   },
   {
     "project_number": "LHZSD24C150001",
+    "research_goals": [
+      {
+        "title": "A01 鉴别风味与营养代谢通路优异调控基因，明确功能及作用机制",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A02 揭示柑橘风味和营养品质形成的分子调控机制",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A03 发表高水平论文5–8篇",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A04 申报专利2–3件",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A05 专著1部",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A06 创制新种质2–3份",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A07 培养研究生3–5名，其中博士1–2名",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A08 获批省部级以上项目2–3项",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A09 申报省部级以上奖励1–2项",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "A10 提供柑橘营养和风味育种相关政策决策参考，增加当地橘农收益",
+        "basis": "盖章任务书 PDF 第10页，已对照扫描页；总体目标"
+      },
+      {
+        "title": "王岳分工：柑橘风味关键基因挖掘",
+        "basis": "任务书 PDF 第5页"
+      },
+      {
+        "title": "成果表：预期发表期刊论文8篇",
+        "basis": "盖章任务书 PDF 第11页"
+      },
+      {
+        "title": "成果表：项目组成员晋升职称1人",
+        "basis": "盖章任务书 PDF 第11页"
+      }
+    ],
     "target_papers": 5,
     "target_students": 3,
     "papers": [
@@ -66,7 +120,7 @@
       {"paper_id": "90356dd5-a74c-497c-beef-839e06f2ab47", "status": "已发表", "fund_marked": true, "fund_order": 2},
       {"paper_id": "2fd9cbdb-83c0-4145-8864-998c356999e7", "status": "已发表", "fund_marked": true, "fund_order": 2},
       {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表", "fund_marked": true, "fund_order": 3},
-      {"paper_id": "27dce7f1-fd45-4435-8fa5-0d211f26af40", "status": "已发表", "fund_marked": true, "fund_order": 4},
+      {"paper_id": "27dce7f1-fd45-4435-8fa5-0d211f26af40", "status": "已发表", "fund_marked": true, "fund_order": 4, "performance_eligible": false, "performance_note": "第一单位非浙江大学，不计入项目业绩"},
       {"paper_id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0", "status": "已发表", "fund_marked": true, "fund_order": 4},
       {"paper_id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c", "status": "已发表", "fund_marked": true, "fund_order": 5},
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 5}
