@@ -188,6 +188,7 @@ const finished = [
     .proj-cn { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 3px; line-height: 1.5 }
     .proj-en { font-size: 12px; color: var(--gray); line-height: 1.5; margin-bottom: 6px }
     .proj-footer { display: flex; gap: 12px; font-size: 12px; color: var(--gray) }
+    .proj-order { margin-left: auto; color: #9ca3af; font-size: 12px; font-weight: 600 }
     .proj-number { font-family: monospace }
     .role-badge { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 4px; background: #f0fdf4; color: #166534 }
     .role-badge.coauth { background: #f9fafb; color: #6b7280 }
@@ -208,10 +209,11 @@ const finished = [
           <span class="proj-type">{p.type}</span>
           <span class="proj-period">{p.period}</span>
         </div>
-        <div class="proj-cn">{index + 1}. {p.cn}{p.number ? `（${p.number}）` : ''}</div>
+        <div class="proj-cn">{p.cn}{p.number ? `（${p.number}）` : ''}</div>
         <div class="proj-en">{p.en}{p.number ? ` (Grant No. ${p.number})` : ''}</div>
         <div class="proj-footer">
           <span class={`role-badge${p.role === '参与' ? ' coauth' : ''}`}>{p.role}</span>
+          <span class="proj-order">{index + 1}</span>
         </div>
       </div>
     ))}
