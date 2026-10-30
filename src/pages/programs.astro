@@ -11,30 +11,6 @@ const active = [
     role: '主持',
   },
   {
-    type: '浙江省三农九方项目',
-    cn: '衢橘产业高质量发展关键技术研究与应用',
-    en: 'the Scientific and Technological Cooperation Project of the Agriculture and Rural Affairs Department of Zhejiang Province',
-    number: '2026SNJF079',
-    period: '2026.01~2027.12',
-    role: '主持',
-  },
-  {
-    type: '基本科研业务费重大战略任务培育计划',
-    cn: '植物源生鲜农产品智能保鲜物流与加工关键技术',
-    en: 'the Fundamental Research Funds for the Central Universities',
-    number: '226-2026-00062',
-    period: '2026.01~2028.12',
-    role: '主持',
-  },
-  {
-    type: '浙江省自然科学基金杭州联合基金重大项目',
-    cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究',
-    en: 'the Zhejiang Provincial Natural Science Foundation of China – Hangzhou Joint Fund',
-    number: 'LHZSD24C150001',
-    period: '2024.01~2026.12',
-    role: '课题负责人',
-  },
-  {
     type: '国家自然科学基金区域联合基金',
     cn: '柑橘类黄酮生物合成关键基因及其网络调控机制研究',
     en: 'the National Natural Science Foundation of China',
@@ -51,19 +27,19 @@ const active = [
     role: '课题负责人',
   },
   {
+    type: '浙江省三农九方项目',
+    cn: '衢橘产业高质量发展关键技术研究与应用',
+    en: 'the Scientific and Technological Cooperation Project of the Agriculture and Rural Affairs Department of Zhejiang Province',
+    number: '2026SNJF079',
+    period: '2026.01~2027.12',
+    role: '主持',
+  },
+  {
     type: '四川省重点研发省校合作项目',
     cn: '川红橘现代化加工关键技术创新与高值化陈皮产品研发',
     en: 'the Science and Technology Program of Sichuan Province',
     number: '2026YFHZ0239',
     period: '2026.01~2027.12',
-    role: '课题负责人',
-  },
-  {
-    type: '北京生命科技研究院合作项目',
-    cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发',
-    en: 'Collaborative Project with Beijing Life Science Academy',
-    number: '2025-KYY-135000-0004-01',
-    period: '2026.01~2029.12',
     role: '课题负责人',
   },
   {
@@ -75,6 +51,22 @@ const active = [
     role: '课题负责人',
   },
   {
+    type: '北京生命科技研究院合作项目',
+    cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发',
+    en: 'Collaborative Project with Beijing Life Science Academy',
+    number: '2025-KYY-135000-0004-01',
+    period: '2026.01~2029.12',
+    role: '课题负责人',
+  },
+  {
+    type: '基本科研业务费重大战略任务培育计划',
+    cn: '植物源生鲜农产品智能保鲜物流与加工关键技术',
+    en: 'the Fundamental Research Funds for the Central Universities',
+    number: '226-2026-00062',
+    period: '2026.07~2028.12',
+    role: '主持',
+  },
+  {
     type: '横向项目',
     cn: '衢州柑橘果实风味和营养评价研究',
     en: 'Commissioned Research Project',
@@ -84,6 +76,14 @@ const active = [
   },
   {
     type: '台州研究院合作项目',
+    cn: '特色果蔬高值化利用开发',
+    en: 'Collaborative Project with Taizhou Research Institute',
+    number: '',
+    period: '2026.01~2027.12',
+    role: '主持',
+  },
+  {
+    type: '台州市科技计划项目',
     cn: '台州特色柑橘内生菌资源库构建与高值化利用关键技术研发',
     en: 'Collaborative Project with Taizhou Research Institute',
     number: '',
@@ -91,12 +91,20 @@ const active = [
     role: '主持',
   },
   {
-    type: '台州研究院合作项目',
-    cn: '特色果蔬高值化利用开发',
-    en: 'Collaborative Project with Taizhou Research Institute',
+    type: '浙江省自然科学基金杭州联合基金重大项目',
+    cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究',
+    en: 'the Zhejiang Provincial Natural Science Foundation of China – Hangzhou Joint Fund',
+    number: 'LHZSD24C150001',
+    period: '2024.01~2026.12',
+    role: '课题负责人',
+  },
+  {
+    type: '平衡建筑研究中心项目',
+    cn: '平衡建筑研究中心项目',
+    en: '',
     number: '',
-    period: '2026.01~2027.12',
-    role: '主持',
+    period: '待确认',
+    role: '待确认',
   },
 ]
 
@@ -194,13 +202,13 @@ const finished = [
 
   <h2>在研项目</h2>
   <div class="proj-list">
-    {active.map(p => (
+    {active.map((p, index) => (
       <div class="proj-card">
         <div class="proj-header">
           <span class="proj-type">{p.type}</span>
           <span class="proj-period">{p.period}</span>
         </div>
-        <div class="proj-cn">{p.cn}{p.number ? `（${p.number}）` : ''}</div>
+        <div class="proj-cn">{index + 1}. {p.cn}{p.number ? `（${p.number}）` : ''}</div>
         <div class="proj-en">{p.en}{p.number ? ` (Grant No. ${p.number})` : ''}</div>
         <div class="proj-footer">
           <span class={`role-badge${p.role === '参与' ? ' coauth' : ''}`}>{p.role}</span>

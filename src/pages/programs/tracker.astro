@@ -6,17 +6,18 @@ import trackerRaw from '../../../public-data/tracker.json'
 
 const active = [
   { type: '国家自然科学基金面上项目', cn: '柑橘内生假单胞菌介导的陈皮关键品质形成及其SoxR–SoxS–zwf轴调控机制', number: '32672846', period: '2027.01~2030.12' },
-  { type: '浙江省三农九方项目', cn: '衢橘产业高质量发展关键技术研究与应用', number: '2026SNJF079', period: '2026.01~2027.12' },
-  { type: '基本科研业务费重大战略任务培育计划', cn: '植物源生鲜农产品智能保鲜物流与加工关键技术', number: '226-2026-00062', period: '2026.01~2028.12' },
-  { type: '浙江省自然科学基金杭州联合基金重大项目', cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究', number: 'LHZSD24C150001', period: '2024.01~2026.12' },
   { type: '国家自然科学基金区域联合基金', cn: '柑橘类黄酮生物合成关键基因及其网络调控机制研究', number: 'U25A20688', period: '2026.01~2029.12' },
   { type: '浙江省农业重大技术协同推广计划', cn: '柑橘采后品质维持及高值化利用技术研究与集成推广', number: '2026ZDXT02', period: '2026.01~2027.12' },
+  { type: '浙江省三农九方项目', cn: '衢橘产业高质量发展关键技术研究与应用', number: '2026SNJF079', period: '2026.01~2027.12' },
   { type: '四川省重点研发省校合作项目', cn: '川红橘现代化加工关键技术创新与高值化陈皮产品研发', number: '2026YFHZ0239', period: '2026.01~2027.12' },
-  { type: '北京生命科技研究院合作项目', cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发', number: '2025-KYY-135000-0004-01', period: '2026.01~2029.12' },
   { type: '北京生命科技研究院合作项目', cn: '基于能量与代谢流协同优化的烟草多模态合成底盘构建', number: '2025-KYY-135000-0004-05', period: '2026.01~2028.12' },
+  { type: '北京生命科技研究院合作项目', cn: '烟草源碱性磷酸酶分离纯化关键技术与集成工艺开发', number: '2025-KYY-135000-0004-01', period: '2026.01~2029.12' },
+  { type: '基本科研业务费重大战略任务培育计划', cn: '植物源生鲜农产品智能保鲜物流与加工关键技术', number: '226-2026-00062', period: '2026.07~2028.12' },
   { type: '横向项目', cn: '衢州柑橘果实风味和营养评价研究', number: '2025-KYY-600101-0017', period: '2026.01~2026.12' },
-  { type: '台州研究院合作项目', cn: '台州特色柑橘内生菌资源库构建与高值化利用关键技术研发', number: 'TBD-TZYJY2', period: '待定' },
   { type: '台州研究院合作项目', cn: '特色果蔬高值化利用开发', number: 'TBD-TZYJY', period: '2026.01~2027.12' },
+  { type: '台州市科技计划项目', cn: '台州特色柑橘内生菌资源库构建与高值化利用关键技术研发', number: 'TBD-TZYJY2', period: '待定' },
+  { type: '浙江省自然科学基金杭州联合基金重大项目', cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究', number: 'LHZSD24C150001', period: '2024.01~2026.12' },
+  { type: '平衡建筑研究中心项目', cn: '平衡建筑研究中心项目', number: 'TBD-BALANCE', period: '待确认' },
 ]
 
 const paperMap: Record<string, any> = {}
@@ -162,7 +163,7 @@ function resolveYear(dateStr: string): string {
     <h1>项目进度追踪</h1>
   </div>
 
-  {active.map(proj => {
+  {active.map((proj, index) => {
     const t = tracker[proj.number] || {}
     const papersRaw2: any[] = (t.papers || []).slice().sort((a: any, b: any) => (a.fund_order || 99) - (b.fund_order || 99))
     const patents: any[] = t.patents || []
@@ -262,7 +263,7 @@ function resolveYear(dateStr: string): string {
               )}
             </div>
           </div>
-          <div class="proj-title">{proj.cn}</div>
+          <div class="proj-title">{index + 1}. {proj.cn}</div>
           {!proj.number.startsWith('TBD') && <div class="proj-num">{proj.number}</div>}
         </summary>
 
