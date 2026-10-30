@@ -97,7 +97,10 @@
     "papers": [
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 1}
     ],
-    "patents": [],
+    "patents": [
+      {"patent_id": "7c6fb0f1-49e1-4272-9f6e-efd09b3b7fd2", "status": "办理登记中"},
+      {"title": "一种柑橘皮超细粉体及其制备方法", "status": "已申请"}
+    ],
     "softwares": [],
     "standards": [],
     "databases": [],
