@@ -132,7 +132,7 @@
     "if5": 6.9,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BJAFC%5D%20Finger%20Citron%20(Citrus%20medica%20L.%20var.%20sarcodactylis%20Swingle",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BJAFC%5D%20Finger%20Citron%20%28Citrus%20medica%20L.%20var.%20sarcodactylis%20Swingle%29%20and%20Its%20Characteristic%20Component%20Limettin%20Alleviated%20Diet-Induced%20Obesity.pdf",
     "jif": 6.7,
     "is_corresponding": true,
     "is_co_first": false,
@@ -171,7 +171,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BPBT%5D%20Fusaricidins%20from%20Paenibacillus%20polymyxa%20ZJU11%20mediate%20the%20biological%20%20main%20control%20of%20postharvest%20mango%20anthracnose.pdf"
   },
   {
     "id": "3c8b675e-f86e-477e-aeff-636035f13d0f",
@@ -309,7 +310,7 @@
     "if5": 7.6,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BFood%20Frontiers%5D%20Recent%20Advances%20in%20the%20Bioactive%20Compounds%20of%20Prunes%20Prunus%20domestica%20L%20and%20Their%20Health.pdf",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BFood%20Frontiers%5D%20Recent%20Advances%20in%20the%20Bioactive%20Compounds%20of%20Prunes%20Prunus%20domestica%20L%20and%20Their%20Health.pdf",
     "jif": 6.3,
     "is_corresponding": true,
     "is_co_first": false,
@@ -562,7 +563,7 @@
     "if5": 5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BeFood%5D%20Anti-Inflammatory%20and%20Antioxidant%20Activities%20of%20Polyphenols%20From%20Loquat.pdf",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2025%20%5BeFood%5D%20Anti-Inflammatory%20and%20Antioxidant%20Activities%20of%20Polyphenols.pdf",
     "jif": 5.7,
     "is_corresponding": true,
     "is_co_first": false,
@@ -638,7 +639,7 @@
     "if5": 8.5,
     "author_role": "co_author",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2025%20%5BFuture%20Foods%5D%20Green%20extraction%20of%20total%20flavonoids%20(TF",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2025%20%5BFuture%20Foods%5D%20Green%20extraction%20of%20total%20flavonoids%20%28TF%29%20from%20Citrus%20pericarp%20using%20novel%20air%20nanobubbles%20%28NBs%29%20stabilized%20with%20biosurfactants%20assisted%20by%20ultrasonic%20disruption%20%28UD%29%20.pdf",
     "jif": 6.6,
     "is_corresponding": false,
     "is_co_first": false,
@@ -712,7 +713,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2025%20%5BJournal%20of%20Future%20Foods%5DThe%20effects%20of%20controlled%20freezing-point%20storage%20on%20the%20postharvest%20quality%20of%20satsuma%20mandarin.pdf"
   },
   {
     "id": "4223ef36-3e5e-4952-8125-3e7adeff3165",
@@ -776,7 +778,8 @@
     "corresponding_authors": [
       "孙崇德"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2024%20%5B%E5%86%9C%E5%AD%A6%E5%AD%A6%E6%8A%A5%5D%20%E5%A4%A7%E9%A3%9F%E7%89%A9%E8%A7%82%E6%8C%87%E5%AF%BC%E4%B8%8B%E7%9A%84%E5%86%9C%E4%B8%9A%E7%A7%91%E5%AD%A6%E5%88%9B%E6%96%B0.pdf"
   },
   {
     "id": "9ef19f7d-eba2-4741-a2dd-cc421d1e5dcf",
@@ -837,7 +840,8 @@
     "corresponding_authors": [
       "Cao Jinping"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2024%20%5BJFCA%5D%20Characterization%20of%20flavor%20quality%20deterioration%20of%20postharvest%20Chinese%20bayberry%20%28Myrica%20rubra%20cv.%20Dongkui%29%20at%20different%20storage%20temperatures.pdf"
   },
   {
     "id": "442e7451-01f8-4583-a869-1a2452ded523",
@@ -869,7 +873,8 @@
     "corresponding_authors": [
       "Li Dongliang"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2025%20%5BFrontiers%20in%20Bioengineering%20and%20Biotechnology%20%5D%20Fermentation%20of%20cigar%20tobacco%20leaves%20with%20citrus%20flavonoids%20changes%20in%20chemical%2C%20microbiological%2C%20and%20sensory%20properties.pdf"
   },
   {
     "id": "63e91fc5-7ad7-4aa2-8e9e-031f50c0f7d0",
@@ -917,7 +922,8 @@
       "Liang Xiao",
       "Wang Yue",
       "Shen Wanxia"
-    ]
+    ],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2024%20%5BMolecular%20Plant%5D%20Genomic%20and%20metabolomic%20insights%20into%20the%20selection%20and%20differentiation%20of%20bioactive%20compounds%20in%20citrus.pdf"
   },
   {
     "id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd",
@@ -954,7 +960,8 @@
     "corresponding_authors": [
       "Wang Yue"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2024%20%5BFood%20Chemistry%5D%20Hepatoprotective%20potential%20of%20four%20fruit%20extracts%20rich%20in%20different%20structural%20flavonoids%20against.pdf"
   },
   {
     "id": "27dce7f1-fd45-4435-8fa5-0d211f26af40",
@@ -992,7 +999,8 @@
       "Wang Dengliang",
       "Wang Yue"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2024%20%5BPhyton-International%20Journal%20of%20Experimental%20Botany%5D%20Inhibitory%20effect%20of%20Ponkan%20%28Citrus%20reticulata%20%27Ponkan%27%29%20flavonoids.pdf"
   },
   {
     "id": "ab15d531-f34e-43da-b3ae-9f4addafad9c",
@@ -1130,7 +1138,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2024%20%5BPBT%5D%20The%20antifungal%20activity%20and%20mechanism%20of%20Perillaldehyde%20and%20its%20stabilized%20encapsulation%20technology%20for%20fruit%20preservation.pdf"
   },
   {
     "id": "8340ea44-de4c-4754-b97d-b23a6f91a85e",
@@ -1197,7 +1206,8 @@
       "Wang Yue",
       "Leng Feng"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2023%20%5BFood%20Chemistry%5D%20Anthocyanins%20distribution%2C%20transcriptional%20regulation%2C%20epigenetic%20and%20post-translational%20modification%20in%20fruits.pdf"
   },
   {
     "id": "c5c50b67-163a-4543-b681-8e8788dc44e2",
@@ -1228,7 +1238,8 @@
     "corresponding_authors": [
       "Sun Cui"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2023%20%5BFood%20Chemistry%5D%20Detection%20and%20classification%20of%20volatile%20compounds%20emitted%20by%20three%20fungi-infected%20citrus%20fruit%20using%20gas%20chromatography-mass%20spectrometry.pdf"
   },
   {
     "id": "11aa7a38-35e2-48c2-873a-0c1ca041c8bc",
@@ -1267,7 +1278,8 @@
     "co_first_authors": [
       "Zheng Juan",
       "Zhao Chenning"
-    ]
+    ],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2023%20%5BHorticulture%20Research%5D%20Functional%20characterization%20of%20two%20flavone%20synthase%20II%20members%20in%20citrus.pdf"
   },
   {
     "id": "3d7dde2e-9ba4-4fc5-9793-c9088e3bb9af",
@@ -1300,7 +1312,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2023%20%5BHorticulture%20Research%5D%20Genome-wide%20analysis%20of%20cytrochrome%20P450%20genes%20in%20Citrus%20clementina%20and%20characterization%20of%20a%20CYP%20gene%20encoding%20flavonoid%203%27-hydroxylase.pdf"
   },
   {
     "id": "2f757e7c-6754-475c-9af3-f9ef982d5f38",
@@ -1391,7 +1404,7 @@
     "if5": 6.9,
     "author_role": "co_author",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2023%20%5BJAFC%5D%20Polymethoxyflavone%E2%80%93Enriched%20Fraction%20from%20Ougan%20\\(Citrus%20reticulata%20cv.%20Suavissima\\",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2023%20%5BJAFC%5D%20Polymethoxyflavone%E2%80%93Enriched%20Fraction%20from%20Ougan%20%28Citrus%20reticulata%20cv.%20Suavissima%29%20Attenuated%20Diabetes%20and%20Modulated%20Gut%20Microbiota%20in%20Diabetic%20KK-Ay%20Mice.pdf",
     "jif": 6.7,
     "is_corresponding": false,
     "is_co_first": false,
@@ -1427,7 +1440,8 @@
     "corresponding_authors": [
       "孙崇德"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2022%20%5B%E4%B8%AD%E5%9B%BD%E9%A3%9F%E5%93%81%E5%AD%A6%E6%8A%A5%5D%2023%E4%B8%AA%E6%9F%91%E6%A9%98%E5%93%81%E7%A7%8D%E6%9E%9C%E5%AE%9E%E6%B2%B9%E8%83%9E%E5%B1%82%E7%B1%BB%E9%BB%84%E9%85%AE%E7%BB%84%E5%88%86%E9%89%B4%E5%AE%9A%E4%B8%8E%E6%8A%97%E6%B0%A7%E5%8C%96%E6%B4%BB%E6%80%A7%E7%A0%94%E7%A9%B6.pdf"
   },
   {
     "id": "702d7d4b-bd3a-4348-84ea-49cf52fa27fb",
@@ -1455,7 +1469,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2022%20%5BFood%20Chemistry%5D%20Advances%20of%20section%20drying%20in%20citrus%20fruit%2C%20the%20metabolic%20changes%2C%20mechanisms%20and%20prevention%20methods.pdf"
   },
   {
     "id": "084871dd-bcba-4c18-b740-01f0ba5fd31e",
@@ -1517,7 +1532,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2022%20%5BFood%20Packaging%20and%20Shelf%20Life%5D%20Comparison%20of%20physiochemical%20characteristics%20of%20Citrus%20reticulata%20cv.%20Shatangju%20fruit%20with%20different%20fruit%20sizes%20after%20storage.pdf"
   },
   {
     "id": "daf4c636-f0cc-4e88-9d95-e5d30fe3d8f9",
@@ -1555,7 +1571,8 @@
     "co_first_authors": [
       "Wang Yanshuai",
       "Chen Jiebiao"
-    ]
+    ],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2022%20%5BFrontiers%20in%20Nutrition%5D%20Cyanidin-3-O-glucoside%20extracted%20from%20the%20Chinese%20bayberry%20%28Myrica%20rubra%20Sieb.%20et%20Zucc.%29%20alleviates%20antibiotic-associated%20diarrhea.pdf"
   },
   {
     "id": "5f570ffe-e1c0-4c49-bd97-bb6bba4dbeac",
@@ -1653,7 +1670,8 @@
     "corresponding_authors": [
       "Cao Jinping"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2022%20%5BFrontiers%20in%20plant%20science%5D%20Integrated%20Physiochemical%2C%20Hormonal%2C%20and%20Transcriptomic%20Analysis%20Revealed%20the%20Underlying%20Mechanisms%20for%20Granulation%20in%20Huyou%20%28Citrus%20changshanensis%29%20Fruit.pdf"
   },
   {
     "id": "1a1aeea7-24d1-4dcf-860e-e285601559c3",
@@ -1686,7 +1704,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5BFood%20Hydrocolloids%5D%20Preparation%20and%20characterization%20of%20pectin-based%20edible%20coating%20agent%20encapsulating%20carvacrolHP%CE%B2CD%20inclusion%20complex%20for%20inhibiting%20fungi.pdf"
   },
   {
     "id": "b2488cad-7e69-4ae7-b8e7-4ae73a6337a3",
@@ -1879,7 +1898,7 @@
     "if5": null,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2021%20%5BOMCL%5D%20Polymethoxyflavones%20in%20Citrus%20Regulate%20Lipopolysaccharide-Induced%20Oscillating%20Decay%20of%20Circadian%20Rhythm%20Genes%20by%20Inhibiting%20Nlrp3%20Expression%20-%20%E5%89%AF%E6%9C%AC.pdf",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2021%20%5BOMCL%5D%20Polymethoxyflavones%20in%20Citrus%20Regulate%20Lipopolysaccharide-Induced%20Oscillating%20Decay%20of%20Circadian%20Rhythm%20Genes%20by%20Inhibiting%20Nlrp3%20Expression.pdf",
     "is_corresponding": false,
     "is_co_first": false,
     "corresponding_authors": [
@@ -1916,7 +1935,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2021%20%5BFC%5D%20Tangeretin%20maintains%20antioxidant%20activity%20by%20reducing%20CUL3%20mediated%20NRF2%20ubiquitination.pdf"
   },
   {
     "id": "70f822d9-f1ae-4a8f-ad65-7f49ddc15540",
@@ -1948,7 +1968,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2021%20%5BFood%20Chemistry%5D%20Ultrasound-mediated%20molecular%20self-assemble%20of%20thymol%20with%202-hydroxypropyl-%CE%B2-cyclodextrin%20for%20fruit%20preservation.pdf"
   },
   {
     "id": "092563ec-d3a1-460d-aced-c243e40fb720",
@@ -2036,7 +2057,7 @@
     "if5": 5.5,
     "author_role": "co_author",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bmolecules%5D%20Analysis%20of%20Phenolic%20Components%20and%20Related%20Biological%20Activities%20of%2035%20Apple%20\\(Malus%20pumila%20Mill.\\",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5Bmolecules%5D%20Analysis%20of%20Phenolic%20Components%20and%20Related%20Biological%20Activities%20of%2035%20Apple%20%28Malus%20pumila%20Mill.%29%20Cultivars.pdf",
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": true,
@@ -2115,7 +2136,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5BJxB%5D%20Characterization%20of%20a%20caffeoyl-CoA%20O-methyltransferase-like%20enzyme%20involved%20in%20biosynthesis%20of%20polymethoxylated%20flavones%20in%20Citrus%20reticulata.pdf"
   },
   {
     "id": "ff465e00-5877-48ff-a8d9-8874444d03eb",
@@ -2181,7 +2203,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2020%20%5BPostharvest%20Biology%20and%20Technology%5D%20Physiochemical%20changes%20in%20Citrus%20reticulata%20cv.%20Shatangju%20fruit%20during%20vesicle%20collapse.pdf"
   },
   {
     "id": "9fcc58b7-bdc3-4db1-8167-de6584e45f76",
@@ -2213,7 +2236,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2020%20%5BFCT%5D%20Polymethoxyflavones%20from%20Citrus%20inhibited%20gastric%20cancer%20cell%20proliferation%20through%20inducing%20apoptosis%20by%20upregulating%20RAR%CE%B2%2C%20both%20in%20vitro%20and%20in%20vivo.pdf"
   },
   {
     "id": "335eb851-c972-46ad-91bc-5df33780c70f",
@@ -2309,7 +2333,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2019%20%5BFCT%5D%20Identification%20of%20phenolic%20compounds%20from%20a%20unique%20citrus%20species.pdf"
   },
   {
     "id": "b2ae6d6f-fb71-4497-a170-82893a53fe42",
@@ -2340,7 +2365,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2019%20%5BScientia%20Horticulturae%5D%20The%20effects%20of%20transportation%20temperature%20on%20the%20decay%20rate%20and%20quality%20of%20postharvest%20Ponkan%20%28Citrus%20reticulata%20Blanco%29%20fruit%20in%20different%20storage%20periods.pdf"
   },
   {
     "id": "527ac8ff-5dac-4268-8e63-22cded8eabdc",
@@ -2363,7 +2389,7 @@
     "if5": 6.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2019%20%5BNutrients%5D%20Three%20polymethoxyflavones%20purified%20from%20Ougan%20\\(Citrus%20reticulata%20cv.%20Suavissima\\",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2019%20%5BNutrients%5D%20Three%20polymethoxyflavones%20purified%20from%20Ougan%20%28Citrus%20reticulata%20cv.%20Suavissima%29%20.pdf",
     "jif": 5.8,
     "is_corresponding": false,
     "is_co_first": false,
@@ -2400,7 +2426,8 @@
     "corresponding_authors": [
       "Sun Chongde"
     ],
-    "co_first_authors": []
+    "co_first_authors": [],
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2018%20%5BFood%20Chemistry%5D%20Characteristics%20and%20immune-enhancing%20activity%20of%20pectic%20polysaccharides%20from%20sweet%20cherry%20%28Prunus%20avium%29.pdf"
   },
   {
     "id": "6d3f9d0e-0d2a-4792-b288-6d18f9945c10",
@@ -2426,7 +2453,7 @@
     "if5": 5.5,
     "author_role": "first_or_corresponding",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2017%20%5BMolecules%5D%20Antioxidant%20capacity%2C%20anticancer%20ability%20and%20flavonoids%20composition%20of%2035%20citrus%20\\(Citrus%20reticulata%20Blanco\\",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2017%20%5BMolecules%5D%20Antioxidant%20capacity%2C%20anticancer%20ability%20and%20flavonoids%20composition%20of%2035%20citrus%20%28Citrus%20reticulata%20Blanco%29%20varieties.pdf",
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": false,
@@ -2459,7 +2486,7 @@
     "if5": 5.5,
     "author_role": "co_author",
     "is_highly_cited": false,
-    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2017%20%5Bmolecules%5DCharacterization%20and%20purification%20of%20bergamottin%20from%20Citrus%20grandis%20\\(L.\\",
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2017%20%5Bmolecules%5DCharacterization%20and%20purification%20of%20bergamottin%20from%20Citrus%20grandis%20%28L.%29%20Osbeck%20cv.%20Yongjiazaoxiangyou%20and%20Its%20Antiproliferative%20Activity%20and%20Effect%20on.pdf",
     "jif": 5.1,
     "is_corresponding": false,
     "is_co_first": false,
@@ -2537,7 +2564,8 @@
     "author_role": "co_author",
     "is_highly_cited": false,
     "is_corresponding": false,
-    "is_co_first": false
+    "is_co_first": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BIJMS%5D%20Machine%20Learning-Guided%20Stress%20Atlases%20Reveal%20Co-Expression%20Rewiring%20and%20Divergent%20Cellular%20Deployment%20of%20Abiotic%20Stress%20Programs%20in%20Rice%20and%20Wheat.pdf"
   },
   {
     "title": "Transcriptomic Analysis Reveals the Molecular Mechanisms Underlying Heat-Induced Suppression of Polymethoxyflavone Accumulation in <em>Citrus</em> Leaves",
@@ -2568,7 +2596,8 @@
     "author_role": "co_author",
     "is_highly_cited": false,
     "is_corresponding": false,
-    "is_co_first": false
+    "is_co_first": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5Bhorticulturae%5D%20Transcriptomic%20analysis%20reveals%20the%20molecular%20mechanisms%20underlying%20heat-induced%20suppression%20of%20polymethoxyflavone%20accumulation%20in%20citrus%20leaves.pdf"
   },
   {
     "title": "Effects of Early Light-Quality Pretreatment During Withering on the Taste and Aroma Quality of Autumn White Tea",
@@ -2598,6 +2627,7 @@
     "author_role": "corresponding",
     "is_highly_cited": false,
     "is_corresponding": true,
-    "is_co_first": false
+    "is_co_first": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BFood%20Frontiers%5D%20Effects%20of%20Early%20Light%E2%80%90Quality%20Pretreatment%20During%20Withering%20on%20the%20Taste%20and%20Aroma%20Quality.pdf"
   }
 ]
