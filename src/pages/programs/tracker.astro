@@ -212,14 +212,14 @@ function resolveYear(dateStr: string): string {
               <div class="sum-counts">
                 <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
                   论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
-                  {['U25A20688', '2026SNJF079'].includes(proj.number) && `（第一标注 ${papersRaw2.filter((entry: any) => entry.performance_eligible !== false && entry.fund_order === 1).length} 篇）`}
+                  {['U25A20688', '2026SNJF079', '2026YFHZ0239'].includes(proj.number) && `（第一标注 ${papersRaw2.filter((entry: any) => entry.performance_eligible !== false && entry.fund_order === 1).length} 篇）`}
                 </span>
                 <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
                   专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
                 </span>
                 {showStudents && (
                   <span class={`count-chip${students.length ? ' has' : ''}${studentDone ? ' done' : ''}`}>
-                    研究生 {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
+                    {proj.number === '2026YFHZ0239' ? '硕士' : '研究生'} {students.length}{targetStudents !== null ? `/${targetStudents}` : ''}
                   </span>
                 )}
                 <span class="chevron">▼</span>
@@ -473,7 +473,7 @@ function resolveYear(dateStr: string): string {
         {/* Students */}
         {showStudents && (
           <details class="section" open>
-            <summary class="sec-label">研究生 ({students.length}{targetStudents !== null ? `/${targetStudents}` : ''})<span class="sec-toggle">▾</span></summary>
+            <summary class="sec-label">{proj.number === '2026YFHZ0239' ? '硕士' : '研究生'} ({students.length}{targetStudents !== null ? `/${targetStudents}` : ''})<span class="sec-toggle">▾</span></summary>
             <div class="sec-body">
             {students.length > 0 ? students.map((s: any) => (
               <div class="student-row">

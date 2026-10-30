@@ -174,6 +174,8 @@
     "project_number": "2026YFHZ0239",
     "target_papers": 2,
     "target_patents": 2,
+    "target_students": 1,
+    "progress_metrics": [{"label": "产品", "completed": 0, "target": 1}, {"label": "菌株", "completed": 0, "target": 2}],
     "papers": [
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 3},
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 4}
@@ -181,7 +183,7 @@
     "patents": [],
     "students": [],
     "milestones": [],
-    "notes": "考核指标：开发川红橘陈皮高值化产品1个，关键加工技术创新，缩短传统陈化周期"
+    "notes": "考核指标：公开发表论文2篇；发明专利受理1项、实用新型专利受理1项；毕业硕士研究生1人；开发川陈皮健康饮品等产品1款；筛选鉴定川陈皮陈化发酵优势菌株2～3株；川陈皮陈化时间6～12个月，橙皮苷含量≥3.5%。"
   },
   {
     "project_number": "2025-KYY-135000-0004-01",
