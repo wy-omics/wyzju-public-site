@@ -15,7 +15,7 @@ const active = [
   { type: '基本科研业务费重大战略任务培育计划', cn: '植物源生鲜农产品智能保鲜物流与加工关键技术', number: '226-2026-00062', period: '2026.07~2028.12' },
   { type: '衢州检测项目', cn: '衢州柑橘果实风味和营养评价研究', number: '2025-KYY-600101-0017', period: '2026.01~2026.12' },
   { type: '台州研究院合作项目', cn: '特色果蔬高值化利用开发', number: 'TBD-TZYJY', period: '2026.01~2027.12' },
-  { type: '台州市科技计划项目', cn: '台州特色柑橘内生菌资源库构建与高值化利用关键技术研发', number: 'TBD-TZYJY2', period: '待定' },
+  { type: '台州市科技计划项目', cn: '台州特色柑橘内生菌资源库构建与高值化利用关键技术研发', number: 'TBD-TZYJY2', period: '2027.01~2028.12' },
   { type: '浙江省自然科学基金杭州联合基金重大项目', cn: '柑橘风味和营养物质形成的关键基因及其分子调控机制研究', number: 'LHZSD24C150001', period: '2024.01~2026.12' },
   { type: '平衡建筑研究中心项目', cn: '平衡建筑研究中心项目', number: 'TBD-BALANCE', period: '待确认' },
 ]
@@ -405,7 +405,7 @@ function resolveYear(dateStr: string): string {
         {/* Products */}
         {showProducts && (
           <details class="section" open>
-            <summary class="sec-label">保鲜产品 ({products.length}{targetProducts !== null ? `/${targetProducts}` : ''})<span class="sec-toggle">▾</span></summary>
+            <summary class="sec-label">{proj.number === 'TBD-TZYJY' ? '产品' : '保鲜产品'} ({products.length}{targetProducts !== null ? `/${targetProducts}` : ''})<span class="sec-toggle">▾</span></summary>
             <div class="sec-body">
             {products.length > 0 ? products.map((p: any) => (
               <div class="patent-row">
@@ -413,7 +413,7 @@ function resolveYear(dateStr: string): string {
                 <span style="flex:1;color:#111827;line-height:1.55">{p.name || p.title || '（未命名）'}</span>
                 {p.status && <span class="badge badge-pub">{p.status}</span>}
               </div>
-            )) : <div class="empty">暂无保鲜产品</div>}
+            )) : <div class="empty">{proj.number === 'TBD-TZYJY' ? '暂无产品' : '暂无保鲜产品'}</div>}
             </div>
           </details>
         )}
