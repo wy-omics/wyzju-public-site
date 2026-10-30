@@ -16,7 +16,7 @@
     "papers": [
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 2}
     ],
-    "patents": [],
+    "patents": [{"patent_id": "a97fd401-6c0a-401e-b0d2-d0d6884b02be", "status": "已授权"}],
     "students": [],
     "milestones": [],
     "notes": "考核指标：发表论文1～2篇，申请专利1～2项，撰写衢橘产业技术指南1份，研发功能性产品5种以上，建立菌株资源库1个"
