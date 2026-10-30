@@ -20,7 +20,8 @@
     "patents": [{"patent_id": "a97fd401-6c0a-401e-b0d2-d0d6884b02be", "status": "已授权"}],
     "students": [],
     "milestones": [],
-    "notes": "考核指标：发表论文1～2篇，申请专利1～2项，撰写衢橘产业技术指南1份，研发功能性产品5种以上，建立菌株资源库1个"
+    "progress_metrics": [{"label": "深加工产品", "completed": 0, "target": 5}, {"label": "衢橘数据库", "completed": 0, "target": 1}, {"label": "陈化加工技术", "completed": 1, "target": 1}],
+    "notes": "浙江大学承担：建立并推广衢橘皮陈化加工技术1套；橘皮加工副产物附加值较原材料提高20%以上；发表论文1～2篇；申请专利1～2项。项目总体还包括建立衢橘皮物化特性基础数据库1个、开发高附加值深加工产品4～5种等。"
   },
   {
     "project_number": "226-2026-00062",

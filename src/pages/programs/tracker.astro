@@ -169,6 +169,7 @@ function resolveYear(dateStr: string): string {
     const patents: any[] = t.patents || []
     const students: any[] = t.students || []
     const milestones: any[] = t.milestones || []
+    const progressMetrics: any[] = t.progress_metrics || []
     const notes: string = t.notes || ''
     const targetPapers: number | null = t.target_papers ?? null
     const targetPatents: number | null = t.target_patents ?? null
@@ -211,7 +212,7 @@ function resolveYear(dateStr: string): string {
               <div class="sum-counts">
                 <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
                   论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
-                  {proj.number === 'U25A20688' && `（第一标注 ${papersRaw2.filter((entry: any) => entry.performance_eligible !== false && entry.fund_order === 1).length} 篇）`}
+                  {['U25A20688', '2026SNJF079'].includes(proj.number) && `（第一标注 ${papersRaw2.filter((entry: any) => entry.performance_eligible !== false && entry.fund_order === 1).length} 篇）`}
                 </span>
                 <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
                   专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
@@ -223,8 +224,13 @@ function resolveYear(dateStr: string): string {
                 )}
                 <span class="chevron">▼</span>
               </div>
-              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects || showTransfers) && (
+              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects || showTransfers || progressMetrics.length > 0) && (
                 <div class="sum-counts">
+                  {progressMetrics.map((metric: any) => (
+                    <span class={`count-chip${metric.completed ? ' has' : ''}${metric.completed >= metric.target ? ' done' : ''}`}>
+                      {metric.label} {metric.completed}/{metric.target}
+                    </span>
+                  ))}
                   {showSoftwares && (
                     <span class={`count-chip${softwares.length ? ' has' : ''}${softwares.length >= (targetSoftwares ?? Infinity) ? ' done' : ''}`}>
                       软著 {softwares.length}{targetSoftwares !== null ? `/${targetSoftwares}` : ''}
