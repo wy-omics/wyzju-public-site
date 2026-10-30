@@ -169,6 +169,8 @@ function resolveYear(dateStr: string): string {
     const patents: any[] = t.patents || []
     const students: any[] = t.students || []
     const milestones: any[] = t.milestones || []
+    const books: any[] = t.books || []
+    const targetBooks: number | null = t.target_books ?? null
     const progressMetrics: any[] = t.progress_metrics || []
     const notes: string = t.notes || ''
     const targetPapers: number | null = t.target_papers ?? null
@@ -194,6 +196,7 @@ function resolveYear(dateStr: string): string {
     const patentDone = targetPatents !== null && patentCount >= targetPatents
     const studentDone = targetStudents !== null && students.length >= targetStudents
     const showStudents = students.length > 0 || targetStudents !== null
+    const showBooks = books.length > 0 || targetBooks !== null
     const showSoftwares = softwares.length > 0 || targetSoftwares !== null
     const showStandards = standards.length > 0 || targetStandards !== null
     const showDatabases = databases.length > 0 || targetDatabases !== null
@@ -224,8 +227,13 @@ function resolveYear(dateStr: string): string {
                 )}
                 <span class="chevron">▼</span>
               </div>
-              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects || showTransfers || progressMetrics.length > 0) && (
+              {(showSoftwares || showStandards || showDatabases || showProducts || showByproducts || showMajorProjects || showTransfers || showBooks || progressMetrics.length > 0) && (
                 <div class="sum-counts">
+                  {showBooks && (
+                    <span class={`count-chip${books.length ? ' has' : ''}${targetBooks !== null && books.length >= targetBooks ? ' done' : ''}`}>
+                      专著 {books.length}{targetBooks !== null ? `/${targetBooks}` : ''}
+                    </span>
+                  )}
                   {progressMetrics.map((metric: any) => (
                     <span class={`count-chip${metric.completed ? ' has' : ''}${metric.completed >= metric.target ? ' done' : ''}`}>
                       {metric.label} {metric.completed}/{metric.target}
@@ -334,7 +342,7 @@ function resolveYear(dateStr: string): string {
           {patents.length > 0 ? patents.map((entry: any) => {
             const p = entry.patent_id ? patentMap[entry.patent_id] : null
             const title = p ? p.title : (entry.title || '（未命名）')
-            const number = p ? p.patent_number : (entry.number || '')
+            const number = p?.patent_number || entry.number || ''
             const status: string = entry.status || (p?.grant_date ? '已授权' : '申请中')
             const statusClass = status.startsWith('已授权') ? 'badge-granted' : status === '实质审查' ? 'badge-exam' : 'badge-filed'
             return (
@@ -349,6 +357,21 @@ function resolveYear(dateStr: string): string {
           }) : <div class="empty">暂无关联专利</div>}
           </div>
         </details>
+
+        {/* Books */}
+        {showBooks && (
+          <details class="section" open>
+            <summary class="sec-label">专著 ({books.length}{targetBooks !== null ? `/${targetBooks}` : ''})<span class="sec-toggle">▾</span></summary>
+            <div class="sec-body">
+              {books.length > 0 ? books.map((book: any) => (
+                <div class="patent-row">
+                  <span class="dot" />
+                  <span style="flex:1;color:#111827;line-height:1.55">《{book.title}》 · {book.role} · {book.publisher} · {book.date} · ISBN {book.isbn}</span>
+                </div>
+              )) : <div class="empty">暂无专著</div>}
+            </div>
+          </details>
+        )}
 
         {/* Softwares */}
         {showSoftwares && (

@@ -250,9 +250,14 @@
       {"paper_id": "5743e073-9792-40fb-9c0f-9c95ec24931e", "status": "已发表"},
       {"paper_id": "90356dd5-a74c-497c-beef-839e06f2ab47", "status": "已发表"},
       {"paper_id": "4223ef36-3e5e-4952-8125-3e7adeff3165", "status": "已发表"},
-      {"paper_id": "df9aac82-8662-4a15-b7a0-3ee65ddc9a86", "status": "2025年录用"}
+      {"paper_id": "df9aac82-8662-4a15-b7a0-3ee65ddc9a86", "status": "2025年录用"},
+      {"paper_id": "d46c6112-1a7f-4422-a74c-9d13f80398b4", "status": "已发表"},
+      {"paper_id": "c30e6718-c72c-4657-9ec7-4b5f834dc074", "status": "已发表"}
     ],
-    "patents": [],
+    "target_patents": 2,
+    "patents": [{"patent_id": "0906095f-f9e9-4c10-892f-fd607877d9bc", "status": "已登记"}, {"patent_id": "0ea97bec-f29d-49e9-8a46-649d951ca09a", "number": "2024/05212", "status": "已授权"}],
+    "target_books": 1,
+    "books": [{"title": "果树盆栽和庭院种植及养护技术", "role": "王岳：共同主编", "publisher": "中国农业出版社", "date": "2025.08", "isbn": "978-7-109-33431-1"}],
     "students": [],
     "milestones": []
   }
