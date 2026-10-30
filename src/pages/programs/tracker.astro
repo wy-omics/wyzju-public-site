@@ -211,6 +211,7 @@ function resolveYear(dateStr: string): string {
               <div class="sum-counts">
                 <span class={`count-chip${paperCount ? ' has' : ''}${paperDone ? ' done' : ''}`}>
                   论文 {paperCount}{targetPapers !== null ? `/${targetPapers}` : ''}
+                  {proj.number === 'U25A20688' && `（第一标注 ${papersRaw2.filter((entry: any) => entry.performance_eligible !== false && entry.fund_order === 1).length} 篇）`}
                 </span>
                 <span class={`count-chip${patentCount ? ' has' : ''}${patentDone ? ' done' : ''}`}>
                   专利 {patentCount}{targetPatents !== null ? `/${targetPatents}` : ''}
