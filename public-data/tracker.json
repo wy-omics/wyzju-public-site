@@ -109,6 +109,7 @@
       }
     ],
     "target_papers": 5,
+    "target_patents": 2,
     "target_students": 3,
     "papers": [
       {"paper_id": "2683f5af-9a38-498d-a38c-16c3b8b7cccd", "status": "已发表", "fund_marked": true, "fund_order": 1},
@@ -127,10 +128,10 @@
       {"paper_id": "51d76b1a-2dd4-4406-ad48-936c1c28f35c", "status": "已发表", "fund_marked": true, "fund_order": 5},
       {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 5}
     ],
-    "patents": [],
+    "patents": [{"patent_id": "e5d69195-ab2e-4218-ba40-8d94ca54b02be", "status": "已授权"}, {"patent_id": "f38b194d-1327-40b6-8bf5-e974731ba6be", "status": "已授权"}],
     "students": [],
     "milestones": [],
-    "notes": "考核指标：发表高水平论文5-8篇，申请专利2-3项，培养研究生3-5名（含博士1-2名），挖掘重要功能基因新品种2-3个"
+    "notes": "考核指标：发表高水平论文5-8篇，申请专利2-3项，培养研究生3-5名（含博士1-2名），创制新种质2～3份"
   },
   {
     "project_number": "U25A20688",
