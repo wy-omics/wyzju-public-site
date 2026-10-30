@@ -42,7 +42,7 @@ const coInventor    = (patents as any[]).filter(p => p.inventors?.[0] !== '王�
             }).join('，') + ((p.inventors?.length > 8) ? '，等' : '')
           } />
           {p.grant_date && <span> · 授权 {p.grant_date}</span>}
-          {!p.grant_date && p.application_date && <span> · 申请 {p.application_date}</span>}
+          {p.application_date && <span> · 申请 {p.application_date}</span>}
         </div>
       </div>
     ))}
@@ -65,7 +65,7 @@ const coInventor    = (patents as any[]).filter(p => p.inventors?.[0] !== '王�
             }).join('，') + ((p.inventors?.length > 8) ? '，等' : '')
           } />
           {p.grant_date && <span> · 授权 {p.grant_date}</span>}
-          {!p.grant_date && p.application_date && <span> · 申请 {p.application_date}</span>}
+          {p.application_date && <span> · 申请 {p.application_date}</span>}
         </div>
       </div>
     ))}
