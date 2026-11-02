@@ -2629,5 +2629,41 @@
     "is_corresponding": true,
     "is_co_first": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/first%20or%20corresponding%20author/2026%20%5BFood%20Frontiers%5D%20Effects%20of%20Early%20Light%E2%80%90Quality%20Pretreatment%20During%20Withering%20on%20the%20Taste%20and%20Aroma%20Quality.pdf"
+  },
+  {
+    "id": "ce9ade98-a831-4675-84a9-74fe60568d67",
+    "title": "Mulberry-derived endophytic Bacillus velezensis suppresses gray mold and promotes mulberry growth via reshaping the root metabolism and microbiome",
+    "date": "2026-09-06",
+    "featured": false,
+    "public_summary": null,
+    "authors": [
+      "Liuxue Wang",
+      "Yixuan Zhang",
+      "Wanting Li",
+      "Xinyi Zhang",
+      "Cheng Li",
+      "Yinxin Liu",
+      "Zhenzhu Su",
+      "Yue Wang",
+      "Chongde Sun",
+      "Lingxia Huang"
+    ],
+    "journal": "Journal of Advanced Research",
+    "doi": "10.1016/j.jare.2026.09.002",
+    "volume": null,
+    "issue": null,
+    "pages": null,
+    "author_role": "co_author",
+    "is_highly_cited": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BJARE%5D%20Mulberry-derived%20endophytic%20Bacillus%20velezensis%20suppresses%20gray%20mold%20and%20promotes%20mulberry%20growth%20via%20reshaping%20the%20root%20metabolism%20and%20microbiome.pdf",
+    "jif": null,
+    "if5": null,
+    "corresponding_authors": [
+      "Chongde Sun",
+      "Lingxia Huang"
+    ],
+    "co_first_authors": [],
+    "is_corresponding": false,
+    "is_co_first": false
   }
 ]
