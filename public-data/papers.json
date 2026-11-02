@@ -2637,16 +2637,16 @@
     "featured": false,
     "public_summary": null,
     "authors": [
-      "Liuxue Wang",
-      "Yixuan Zhang",
-      "Wanting Li",
-      "Xinyi Zhang",
-      "Cheng Li",
-      "Yinxin Liu",
-      "Zhenzhu Su",
-      "Yue Wang",
-      "Chongde Sun",
-      "Lingxia Huang"
+      "Wang Liuxue",
+      "Zhang Yixuan",
+      "Li Wanting",
+      "Zhang Xinyi",
+      "Li Cheng",
+      "Liu Yinxin",
+      "Su Zhenzhu",
+      "Wang Yue",
+      "Sun Chongde",
+      "Huang Lingxia"
     ],
     "journal": "Journal of Advanced Research",
     "doi": "10.1016/j.jare.2026.09.002",
@@ -2659,8 +2659,7 @@
     "jif": 17.1,
     "if5": 14.8,
     "corresponding_authors": [
-      "Chongde Sun",
-      "Lingxia Huang"
+      "Huang Lingxia"
     ],
     "co_first_authors": [],
     "is_corresponding": false,
