@@ -2664,5 +2664,42 @@
     "co_first_authors": [],
     "is_corresponding": false,
     "is_co_first": false
+  },
+  {
+    "id": "c4d1c2f9-1f6d-4563-8e27-437094984cd6",
+    "title": "Integrated microwave–moist heat–hot air processing induces selected aged-like quality and bioactivity signatures in Citri Reticulatae Pericarpium (Chenpi)",
+    "date": "2026-03-12",
+    "featured": false,
+    "public_summary": null,
+    "authors": [
+      "Wu Manxi",
+      "Yang Han",
+      "Shen Xinyu",
+      "Effendi Darren Haris",
+      "Zhang Zixuan",
+      "Wang Dengliang",
+      "Cao Jinping",
+      "Wang Yue",
+      "Sun Chongde"
+    ],
+    "journal": "Food Chemistry",
+    "doi": "10.1016/j.foodchem.2026.152109",
+    "volume": "533",
+    "issue": null,
+    "pages": "152109",
+    "author_role": "co_author",
+    "is_highly_cited": false,
+    "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BFC%5D%20Integrated%20microwave-moist%20heat-hot%20air%20processing%20induces%20selected%20aged-like%20quality%20and%20bioactivity%20signatures%20in%20Citri%20Reticulatae%20Pericarpium%20%28Chenpi%29.pdf",
+    "jif": 10.4,
+    "if5": 10.5,
+    "corresponding_authors": [
+      "Sun Chongde"
+    ],
+    "co_first_authors": [
+      "Wu Manxi",
+      "Yang Han"
+    ],
+    "is_corresponding": false,
+    "is_co_first": false
   }
 ]
