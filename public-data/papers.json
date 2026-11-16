@@ -2687,19 +2687,20 @@
     "volume": "533",
     "issue": null,
     "pages": "152109",
-    "author_role": "co_author",
+    "author_role": "corresponding",
     "is_highly_cited": false,
     "pdf_url": "https://github.com/wy-omics/academic_file/blob/main/co_author/2026%20%5BFC%5D%20Integrated%20microwave-moist%20heat-hot%20air%20processing%20induces%20selected%20aged-like%20quality%20and%20bioactivity%20signatures%20in%20Citri%20Reticulatae%20Pericarpium%20%28Chenpi%29.pdf",
     "jif": 10.4,
     "if5": 10.5,
     "corresponding_authors": [
+      "Wang Yue",
       "Sun Chongde"
     ],
     "co_first_authors": [
       "Wu Manxi",
       "Yang Han"
     ],
-    "is_corresponding": false,
+    "is_corresponding": true,
     "is_co_first": false
   }
 ]
