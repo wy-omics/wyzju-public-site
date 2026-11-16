@@ -15,7 +15,8 @@
     "target_papers": 1,
     "target_patents": 1,
     "papers": [
-      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 2}
+      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 2},
+      {"paper_id": "c4d1c2f9-1f6d-4563-8e27-437094984cd6", "status": "已发表", "fund_marked": true, "fund_order": 1}
     ],
     "patents": [{"patent_id": "a97fd401-6c0a-401e-b0d2-d0d6884b02be", "status": "已授权"}],
     "students": [],
@@ -35,7 +36,8 @@
     "target_major_projects": 2,
     "target_students": 10,
     "papers": [
-      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 7}
+      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 7},
+      {"paper_id": "c4d1c2f9-1f6d-4563-8e27-437094984cd6", "status": "已发表", "fund_marked": true, "fund_order": 4}
     ],
     "patents": [
       {"patent_id": "a97fd401-6c0a-401e-b0d2-d0d6884b02be", "status": "已授权"},
@@ -156,7 +158,8 @@
     "target_products": 4,
     "target_byproducts": 5,
     "papers": [
-      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 1}
+      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 1},
+      {"paper_id": "c4d1c2f9-1f6d-4563-8e27-437094984cd6", "status": "已发表", "fund_marked": true, "fund_order": 3}
     ],
     "patents": [
       {"patent_id": "7c6fb0f1-49e1-4272-9f6e-efd09b3b7fd2", "status": "已授权，办理登记中"},
@@ -179,7 +182,8 @@
     "progress_metrics": [{"label": "产品", "completed": 0, "target": 1}, {"label": "菌株", "completed": 0, "target": 2}],
     "papers": [
       {"paper_id": "52e66640-5ecf-4999-9190-ff851ab670ff", "status": "已发表", "fund_marked": true, "fund_order": 3},
-      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 4}
+      {"paper_id": "4669614d-cd58-444a-8d8a-8bfae767121e", "status": "已发表", "fund_marked": true, "fund_order": 4},
+      {"paper_id": "c4d1c2f9-1f6d-4563-8e27-437094984cd6", "status": "已发表", "fund_marked": true, "fund_order": 2}
     ],
     "patents": [],
     "students": [],
